@@ -5,9 +5,68 @@
         p {
             background-color: bisque;
         }
+
+        #my-section {
+            display: grid;
+            grid-template-rows: 20px 1fr 20px 1fr 20px 1fr 20px;
+            grid-template-columns: 20px 1fr 20px 1fr 20px 1fr 20px;
+            grid-template-areas: 
+                ". . . . . . ."
+                ". it1 . it2 . it3 ."
+                ". . . . . . ."
+                ". it4 . it5 . it6 ." 
+                ". . . . . . ."
+                ". it7 . it8 . it9 ."
+                ". . . . . . .";
+        }
+
+        .section-item {
+            background-color: aqua;
+        }
+
+        #it1 {
+            grid-area: it1;
+        }
+        #it2 {
+            grid-area: it2;
+        }
+        #it3 {
+            grid-area: it3;
+        }
+
+        #it4 {
+            grid-area: it4;
+        }
+        #it5 {
+            grid-area: it5;
+        }
+        #it6 {
+            grid-area: it6;
+        }
+
+        #it7 {
+            grid-area: it7;
+        }
+        #it8 {
+            grid-area: it8;
+        }
+        #it9 {
+            grid-area: it9;
+        }
         </style>
     </head>
     <body>
         <p>Hello World!</p>
+        <div id="my-section">
+            <div class="section-item" id="it1"> 1 </div>
+            <div class="section-item" id="it2"> 2 </div>
+            <div class="section-item" id="it3"> 3 </div>
+            <div class="section-item" id="it4"> 4 </div>
+            <div class="section-item" id="it5"> 5 </div>
+            <div class="section-item" id="it6"> 6 </div>
+            <div class="section-item" id="it7"> 7 </div>
+            <div class="section-item" id="it8"> 8 </div>
+            <div class="section-item" id="it9"> 9 </div>
+        </div>
     </body>
 </html>
