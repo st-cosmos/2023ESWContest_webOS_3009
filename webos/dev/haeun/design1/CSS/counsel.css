@@ -1,0 +1,70 @@
+.img_set {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: 24px 51px 24px 21px;
+}
+
+.small-image {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+}
+
+  /*변수*/
+  :root{
+    --basic: #000;
+    --highlight: #FCC419;
+    --shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+ }
+  /*글씨체*/
+.title_yellow{
+    color: var(--highlight);
+    font-size: 50px;
+    font-weight: 700;
+}
+
+/*frame*/
+.search_frame{
+    width: 598px;
+    height: 127px;
+    border-radius: 20px;
+    border: 5px solid #F9E4AD;
+    background: #F9F9F9;
+    box-shadow: var(--shadow);
+    margin: 80px;
+
+}
+.application_frame{
+    width: 701px;
+    height: 127px;
+    border-radius: 20px;
+    border: 5px solid var(--highlight);
+    background: var(--highlight);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    
+    color: #FFF;
+    font-size: 53px;
+    font-weight: 700;
+    
+    justify-content: center;
+    text-align: center;
+}
+#layout{
+    display: flex;
+    flex-direction: row;
+    height: 686px;
+    flex-shrink: 0;
+    justify-content: space-between; 
+    background: #F9F9F9;
+
+}
+#application{
+    padding: 238px 80px 0 30px;;
+}
+
+#application img{
+    float: right;
+}

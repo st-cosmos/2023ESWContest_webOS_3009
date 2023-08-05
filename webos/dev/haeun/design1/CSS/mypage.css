@@ -1,0 +1,45 @@
+/*section_profile*/
+#profile {
+    height: 179px;
+    flex-shrink: 0;
+}
+.user-profile{
+    padding: 20px 40px;
+}
+#modification-profile{
+    line-height: 87px;
+    padding: 0 20px;
+    display: inline-block;
+    border-radius: 30px;
+    border: 2px solid #FCC419;
+    background: #FFF;
+    font-size: 30px;
+    font-weight: 700;
+}
+#user-name{
+    margin: 0 50px;
+}
+/*section_menu*/
+#menu{
+    height: 520px;
+    padding: 19px 0 30px 53px;
+}
+.categories {
+    height: 260px;
+    flex-shrink: 0;
+    margin: 0;    
+    padding: 19px 0 0 0;
+}
+.con p{
+    font-size: 40px;
+    font-weight: 100;
+    display: inline;
+}
+.categories img{
+    margin-right: 30px; 
+  }
+
+  .categories h3,
+  .categories li{
+    margin-bottom: 30px;
+  }
