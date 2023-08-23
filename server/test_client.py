@@ -1,6 +1,6 @@
 import requests
 
-base_url = 'http://10.50.9.106:9999'
+base_url = 'http://172.30.1.80:9999'
 
 url = base_url+'/Diary'
 body = {

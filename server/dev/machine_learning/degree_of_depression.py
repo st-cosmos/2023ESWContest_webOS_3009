@@ -2,7 +2,7 @@
 #데이터 불러오기
 import pandas as pd
 
-df = pd.read_csv('server/dev/sentiment_tweets3.csv')
+df = pd.read_csv('.\server\dev\machine_learning\sentiment_tweets3.csv')
 df = df.drop(10313)
 df.rename(columns={'message to examine': 'text', 'label (depression result)': 'label'}, inplace=True)
 
@@ -45,6 +45,11 @@ text_encoded = tokenizer.texts_to_sequences(text)
 
 word_to_index = tokenizer.word_index
 
+import pickle
+
+with open('tokenizer.pickle', 'wb') as handle:
+    pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
 threshold = 2
 total_cnt = len(word_to_index) # 단어의 수
 rare_cnt = 0 # 등장 빈도수가 threshold보다 작은 단어의 개수를 카운트
@@ -64,7 +69,7 @@ vocab_size = len(word_to_index) + 1
 
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-max_len = 300
+max_len = 500
 text_padded = pad_sequences(text_encoded, maxlen = max_len)
 target = df["label"]
 
@@ -83,49 +88,34 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X_over, y_over, test_size = 0.25, random_state = 42)
 
 ###
-#cnn 모델
-from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.layers import Embedding, Dropout, Conv1D, GlobalMaxPooling1D, Dense, Input, Flatten, Concatenate
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-from tensorflow.keras.models import load_model
+#rnn 모델
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding
+from tensorflow.keras.layers import LSTM
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.optimizers import Adam
 
-embedding_dim = 128
-dropout_prob = (0.5, 0.8) #임베딩 층 이후에는 50% 드롭아웃
-num_filters = 128
+model = Sequential()
+feature_num=100
+model.add(Embedding(input_dim = vocab_size, output_dim = feature_num, input_length = max_len ))
+model.add(LSTM(units=128))
+model.add(Dense(units=1,activation="sigmoid"))
+model.compile(
+    optimizer=Adam(learning_rate=0.001),
+    loss="binary_crossentropy",
+    metrics=["accuracy"]
+)
 
-model_input = Input(shape = (max_len,)) #max_len = 30
-z = Embedding(vocab_size, embedding_dim, input_length = max_len, name="embedding")(model_input)
-# 단어 집합의 크기(vocab_size) : 19416
-z = Dropout(dropout_prob[0])(z)
+model.fit(X_train, y_train, epochs=5, batch_size=64, validation_split=0.2)
 
-conv_blocks =[]
+y_pred=model.predict(X_test)
+y_pred=(y_pred>0.5)
 
-for sz in [3,4,5]:
-    conv = Conv1D(filters = num_filters,
-                  kernel_size = sz,
-                  padding = 'valid',
-                  activation = 'relu',
-                  strides = 1)(z)
-    conv = GlobalMaxPooling1D()(conv) #maxpooling
-    conv = Flatten()(conv)
-    conv_blocks.append(conv)
+from sklearn.metrics import accuracy_score,confusion_matrix
 
-# 각각 maxpooling한 결과를 연결(concatenate) 한다.
-z = Concatenate()(conv_blocks) if len(conv_blocks) > 1 else conv_blocks[0]
-z = Dropout(dropout_prob[1])(z)
-z = Dense(128, activation="relu")(z)
-model_output = Dense(1, activation="sigmoid")(z)
+score=accuracy_score(y_test,y_pred)
+print("Test Score:{:.2f}%".format(score*100))
 
-model = Model(model_input, model_output)
-model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics=['acc'])
-
-es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=4)
-
-mc = ModelCheckpoint('CNN_model.h5', monitor='val_acc', mode='max', verbose=1, save_best_only=True)
-
-model.fit(X_train, y_train, batch_size = 64, epochs=5, validation_data = (X_test, y_test), verbose=2, callbacks=[es, mc])
-
-loaded_model = load_model('server/dev\CNN_model.h5')
-print("\n 테스트 정확도: %.4f" % (loaded_model.evaluate(X_test, y_test)[1]))
+model.save('rnn_model.h5')
 
 

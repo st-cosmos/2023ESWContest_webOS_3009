@@ -7,15 +7,19 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 stemmer=PorterStemmer()
 nltk.download('stopwords')
 
-tokenizer = Tokenizer()
-
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 ###
 #cnn 모델
 from tensorflow.keras.models import load_model
 
-loaded_model = load_model('server/dev\CNN_model.h5')
+loaded_model = load_model('server/ml_files/rnn_model.h5')
+
+#Tokenizer Object 파일로드
+import pickle
+
+with open('server/ml_files/rnn_tokenizer.pickle', 'rb') as handle:
+    loaded_tokenizer = pickle.load(handle)
 
 ###
 #입력 데이터 수치값 도출
@@ -40,20 +44,19 @@ def sentiment_predict(new_sentence):
 
   text.append(message)
 
-  max_len = 300
-  encoded = tokenizer.texts_to_sequences(text) # 정수 인코딩
+  max_len = 500
+  encoded = loaded_tokenizer.texts_to_sequences(text) # 정수 인코딩
   pad_new = pad_sequences(encoded, maxlen = max_len) # 패딩
   score = float(loaded_model.predict(pad_new)) # 예측
-  value = round(score * 1000, 2)
+  value = round(score * 100, 2)
 
   return value
 
 #input 값 읽기
-text = open('server\dev\input.txt', 'r', encoding="utf8").read()
-
+text = open('server/ml_files/input.txt', 'r', encoding="utf8").read()
 value = sentiment_predict(text)
 print(value)
 
 #output 값 쓰기
-with open('server\dev\output.txt', 'w') as f:
+with open('.\server\ml_files\output.txt', 'w') as f:
     f.write(str(value))
