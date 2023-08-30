@@ -9,21 +9,21 @@ const PORT = 9999;
 const app = express();
 app.use(express.json());
 
+console.log(`Server IP address: ${IP_ADDRESS}`);
+console.log(`Server is running on port ${PORT}`);
+
 app.get('/', (req, res)=>{
     res.send("Hello World!");
 });
 
 app.post('/Diary', (req, res)=>{
-    // console.log(req.body, typeof(req.body));
     let data = req.body;
     if(typeof(data) == 'string') {
         data = JSON.parse(data);
     }
     console.log(data.text);
     
-    //일기 텍스트 input.txt에 저장
     const fs = require('fs');
-
     const receivedText = data.text;
     
     fs.writeFile('server/ml_files/input.txt', receivedText, (err) => {
@@ -32,40 +32,40 @@ app.post('/Diary', (req, res)=>{
         } else {
           console.log('Text saved successfully.');
         }
-     });
+    });
 
-    //main.py 호출 및 실행
     const { spawn } = require('child_process');
-
     const pythonProcess = spawn('python', ['server/dev/machine_learning/main.py']);
-        
+
+    let stdoutData = '';
+    let stderrData = '';
+
     pythonProcess.stdout.on('data', (data) => {
       const value = data.toString();
       console.log(`stdout: ${value}`);
+      stdoutData += value;
     });
-      
+
     pythonProcess.stderr.on('data', (data) => {
       const value = data.toString();
       console.error(`stderr: ${value}`);
+      stderrData += value;
     });
-      
+
     pythonProcess.on('close', (code) => {
       console.log(`child process exited with code ${code}`);
-    });
-    
-    //score값 저장
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
 
-      let score = value;
-
-      let message = {
-        "score" : value
+      // 클라이언트로 결과 및 IP 주소 전송
+      const result = {
+        stdout: stdoutData,
+        stderr: stderrData,
+        exitCode: code
       };
-      res.send(message);
-      
-      console.log(score, typeof(score));
-   });
+
+      res.json(result);
+    });
 });
 
-app.listen(PORT, ()=>console.log(`Server is running | http://${IP_ADDRESS}:${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
