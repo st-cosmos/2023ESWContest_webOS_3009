@@ -55,7 +55,7 @@ app.post('/Diary', (req, res)=>{
     pythonProcess.on('close', (code) => {
       console.log(`child process exited with code ${code}`);
 
-      // 클라이언트로 결과 및 IP 주소 전송
+      // 클라이언트로 결과 전송
       const result = {
         stdout: stdoutData,
         stderr: stderrData,

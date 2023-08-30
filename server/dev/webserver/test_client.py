@@ -15,7 +15,7 @@ if response.status_code == 200:
     result = response.json()
     stdout = result.get("stdout", "")
     
-    # 정규식을 사용하여 숫자 형식 찾기
+    # stdout에서 value 값만 추출
     extracted_values = re.findall(r'\b\d+\.\d+\b', stdout)
     
     if extracted_values:
