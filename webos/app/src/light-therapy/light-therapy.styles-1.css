@@ -1,0 +1,520 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;700&display=swap');
+:root {
+    --deep-green: #BAE291;
+    --light-green: #E6EFDD;
+    --brown: #401D1D;
+    --deep-purple: #773DEF;
+    --shadow:  0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  /*글꼴*/
+  #page-title{
+      color: #000;
+      font-family: Inter;
+      font-size: 50px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      
+}
+.menu-title{
+    color: #000;
+    text-shadow: var(--shadow);
+    font-family: Inter;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#time-setting{
+    color: #000;
+    text-shadow: var(--shadow);
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+#on-off-on{
+    color: #000;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#on-off-off{
+    color: rgba(0, 0, 0, 0.30);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+#switch-button{
+    color: #000;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#preview-title{
+    color: #000;
+    font-family: Inter;
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;  
+}
+#preview-content{
+    color: #000;
+    text-align: justify;
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#time{
+    color: #000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
+    text-align: center;
+}
+#timer-button{
+    color: #000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+/*박스*/
+#header{
+    display: flex;
+    width: 1916px;
+    padding-left: 20px;
+    align-items: center; 
+    border-bottom: 0.5px solid #000;
+    background: #FFF;      
+}
+#time-setting{
+    width: 188px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 2px solid #BAE291;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-right: 470px;
+}
+#on-off-on {
+    width: 188px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 3px solid #BAE291;
+    background: #BAE291;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+#on-off-off{
+    width: 188px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #F5F5F5;
+}
+#switch-bar{
+    width: 188px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 70px;
+    border: 2px solid var(--deep-green);
+    background: var(--light-green);
+    box-shadow: var(--shadow);
+}
+#switch-button{
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0; 
+    fill: #FFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+#menu{
+    width: 1106px;
+    height: 704px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+.color-preset {
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+
+    margin-right: 96px;
+}
+#preview{
+    width: 534px;
+    height: 704px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+#preview-img{
+    width: 85px;
+    height: 85px;
+    flex-shrink: 0;
+    fill: #A07AF0;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+#time-graph{
+    width: 320px;
+    height: 320px;
+    flex-shrink: 0;
+    border-radius: 320px;
+    border: 5px solid #A2CA7A;
+    background: #FFF;
+}
+#timer-button{
+    width: 188px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #BAE291;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+/*position*/
+#switch {
+    position: relative;
+}
+#switch-button {
+    position: absolute;
+    top: 11px;
+    left: 7px;
+}
+#color-control{
+    position: absolute;
+    top: 11px;
+    left: 7px;
+}
+#color-button{
+    position: absolute;
+    top: 3px;
+    left: 7px;
+}
+#color-control-set{
+    position: relative;
+}
+#light-control-set{
+    position: relative;
+}
+#light-control{
+    position: absolute;
+    top: 11px;
+    left: 7px;
+}
+#light-button{
+    position: absolute;
+    top: 3px;
+    left: 7px;
+}
+.subtitle{
+    margin-right: 20px;
+}
+#time-setting, #on-off-on, #on-off-off{
+    justify-content: center;
+    text-align: center;
+}
+.menu-array {
+    display: flex;
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+.menu-title {
+    margin-right: 20px; /* 스위치와 간격을 주기 위한 마진 설정 (원하는 값으로 조정) */
+}
+#preview-header{
+    display: flex;
+    align-items: center;
+}
+#preview-title{
+    margin-right: 20px;
+}
+#timer-visual {
+    text-align: center; /* 가로 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center; /* 세로 중앙 정렬 */
+}
+#timer-button {
+    /* 텍스트 스타일링 및 가운데 정렬 */
+    text-align: center;
+    justify-content: center;
+    margin-left: 99px;
+}
+
+#timer-button p {
+    display: inline-block; /* 블록 요소를 인라인 레벨로 변경합니다. */
+}
+.timer-text-margin{
+    margin: 18px 0px;
+}
+.time-margin{
+    margin: 118px 0px;
+}
+/*grid*/
+#grid{
+    display: grid;
+    grid-template-rows: 131px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "body-section"
+}
+#header{
+    display: grid;
+    grid-template-rows: 131px;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+    "back-button page-title"
+}
+#body-section{
+    display: grid;
+    grid-template-rows: 20px 1fr 20px;
+    grid-template-columns: 20px 1fr 20px 1fr 20px;
+    grid-template-areas: 
+    ". . . . ."
+    ". left-section . right-section ."
+    ". . . . ."
+}
+#left-section{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "menu"
+}
+#right-section{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "preview"
+}
+/*#preview{
+    display: grid;
+    grid-template-rows: 60px 85px 46px 1fr 60px;
+    grid-template-columns: 70px 1fr 70px;
+    grid-template-areas: 
+    ". . ."
+    ". preview-header ."
+    ". . ."
+    ". preview-content ."
+    ". . ."
+}*/
+#preview{
+    display: grid;
+    grid-template-rows: 60px 320px 172px 84px 68px;
+    grid-template-columns: 70px 1fr 70px;
+    grid-template-areas: 
+    ". . ."
+    ". timer-visual ."
+    ". . ."
+    ". timer-button ."
+    ". . ."
+}
+#menu{
+    display: grid;
+    grid-template-rows: 73px 60px 73px 60px 73px 60px 73px 60px 73px 60px 73px;
+    grid-template-columns: 42px 1fr 40px;
+    grid-template-areas: 
+    ". . ."
+    ". menu-list-1 ."
+    ". . ."
+    ". menu-list-2 ."
+    ". . ."
+    ". menu-list-3 ."
+    ". . ."
+    ". menu-list-4 ."
+    ". . ."
+    ". menu-list-5 ."
+    ". . ."
+}
+
+/*#menu-list-2{
+    display: grid;
+    grid-template-rows: 60px;
+    grid-template-columns: 120px 50px 1fr;
+    grid-template-areas: 
+    "subtitle2 . color-control"
+}*/
+
+#light-control-set{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "light-control"
+    "light-control-img"
+}
+#light-control-img{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns:35px 770px 35px;
+    grid-template-areas: 
+    "moon . sun"
+}
+/*
+#{
+    display: grid;
+    grid-template-rows: 19px 1fr 50px 1fr 50px 1fr 24px;
+    grid-template-columns: 42px 1fr 40px;
+    grid-template-areas: 
+    ". . ."
+}*/
+
+#header{
+    grid-area: header;
+}
+#back-button{
+    grid-area: back-button;
+}
+#page-title{
+    grid-area: page-title;
+}
+#body-section{
+    grid-area: body-section;
+}
+#left-section{
+    grid-area: left-section;
+}
+#subtitle1{
+    grid-area: subtitle1;
+}
+#subtitle2{
+    grid-area: subtitle2;
+}
+#subtitle3{
+    grid-area: subtitle3;
+}
+#subtitle4{
+    grid-area: subtitle4;
+}
+#subtitle5{
+    grid-area: subtitle5;
+}
+#switch{
+    grid-area: switch;
+}
+#switch-bar{
+    grid-area: switch-bar;
+}
+#switch-button{
+    grid-area: switch-button;
+}
+#color-control{
+    grid-area: color-control;
+}
+#color-bar{
+    grid-area: color-bar;
+}
+#color-button{
+    grid-area: color-button;
+}
+#light-control{
+    grid-area: light-control;
+}
+#light-control-img{
+    grid-area: light-control-img;
+}
+#light-bar{
+    grid-area: light-bar;
+}
+#light-button{
+    grid-area: light-button;
+}
+#moon{
+    grid-area: moon;
+}
+#sun{
+    grid-area: sun;
+}
+#color-preset-1{
+    grid-area: color-preset-1;
+}
+#color-preset-2{
+    grid-area: color-preset-2;
+}
+#color-preset-3{
+    grid-area: color-preset-3;
+}
+#color-preset-4{
+    grid-area: color-preset-4;
+}
+#time-setting{
+    grid-area: time-setting;
+}
+#on-off-on{
+    grid-area: on-off-on;
+}
+#on-off-off{
+    grid-area: on-off-off;
+}
+#right-section{
+    grid-area: right-section;
+}
+#preview{
+    grid-area: preview;
+}
+#preview-title{
+    grid-area: preview-title;
+}
+#preview-content{
+    grid-area: preview-content;
+}
+#preview-img{
+    grid-area: preview-img;
+}
+#preview-header{
+    grid-area: preview-header;
+}
+#menu-list-2{
+    grid-area: menu-list-2
+}
+#menu-list-3{
+    grid-area: menu-list-3;
+}
+#menu-list-4{
+    grid-area: menu-list-4;
+}
+#menu-list-5{
+    grid-area: menu-list-5;
+}
+#menu-list-1{
+    grid-area: menu-list-1;
+}
+#timer-visual{
+    grid-area: timer-visual;
+}
+#time-graph{
+    grid-area: time-graph;
+}
+#time{
+    grid-area: time;
+}
+#timer-button{
+    grid-area: timer-button;
+}

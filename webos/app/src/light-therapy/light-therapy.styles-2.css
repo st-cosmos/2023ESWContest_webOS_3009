@@ -1,0 +1,384 @@
+@import url(normalize.css);
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;700&display=swap');
+/*box*/
+#header{
+    display: flex;
+    width: 1916px;
+    padding-left: 20px;
+    align-items: center; 
+    border-bottom: 0.5px solid #000;
+    background: #FFF;      
+}
+#menu{
+    width: 1106px;
+    height: 704px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+#switch-bar{
+    width: 188px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 70px;
+    border: 2px solid #BAE291;
+    background: #E6EFDD;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+#preview{
+    width: 534px;
+    height: 704px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+.selected-bar{
+    width: 815.518px;
+    height: 5.707px;
+    flex-shrink: 0;
+    background: linear-gradient(to right, black, white);
+}
+.unselected-bar{
+    width: 815.518px;
+    height: 5.707px;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+/*글꼴*/
+#page-title{
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.menu-title{
+    font-family: Inter;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal
+}
+.selected{
+    color: #000;
+}
+.unselected{
+    color: rgba(0, 0, 0, 0.35);
+}
+
+#preview-title{
+    color: #000;
+    font-family: Inter;
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+#preview-content{
+    color: #000;
+    text-align: justify;
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+/*position*/
+#switch {
+    position: relative;
+}
+#switch-button {
+    position: absolute;
+    top: 9px;
+    left: 95px;
+}
+#light-control-set-morning{
+    position: relative;
+}
+#light-control-morning{
+    position: absolute;
+    top: 11px;
+    left: 7px;
+}
+#light-button-morning{
+    position: absolute;
+    top: -6px;
+    left: 7px;
+}
+#light-control-set-lunch{
+    position: relative;
+}
+#light-control-lunch{
+    position: absolute;
+    top: 11px;
+    left: 7px;
+}
+#light-button-lunch{
+    position: absolute;
+    top: -6px;
+    left: 7px;
+}
+#light-control-set-evening{
+    position: relative;
+}
+#light-control-evening{
+    position: absolute;
+    top: 11px;
+    left: 7px;
+}
+#light-button-evening{
+    position: absolute;
+    top: -6px;
+    left: 7px;
+}
+#light-control-set-night{
+    position: relative;
+}
+#light-control-night{
+    position: absolute;
+    top: 11px;
+    left: 7px;
+}
+#light-button-night{
+    position: absolute;
+    top: -6px;
+    left: 7px;
+}
+/*position*/
+.menu-array {
+    display: flex;
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.menu-title, #preview-title{
+    margin-right: 20px; /* 스위치와 간격을 주기 위한 마진 설정 (원하는 값으로 조정) */
+}
+/*grid*/
+#grid{
+    display: grid;
+    grid-template-rows: 131px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "body-section"
+}
+#header{
+    display: grid;
+    grid-template-rows: 131px;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+    "back-button page-title"
+}
+#body-section{
+    display: grid;
+    grid-template-rows: 20px 1fr 20px;
+    grid-template-columns: 20px 1fr 20px 1fr 20px;
+    grid-template-areas: 
+    ". . . . ."
+    ". left-section . right-section ."
+    ". . . . ."
+}
+#left-section{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "menu"
+}
+#menu{
+    display: grid;
+    grid-template-rows: 73px 60px 73px 60px 73px 60px 73px 60px 73px 60px 73px;
+    grid-template-columns: 42px 1fr 40px;
+    grid-template-areas: 
+    ". . ."
+    ". menu-list-1 ."
+    ". . ."
+    ". menu-list-2 ."
+    ". . ."
+    ". menu-list-3 ."
+    ". . ."
+    ". menu-list-4 ."
+    ". . ."
+    ". menu-list-5 ."
+    ". . ."
+}
+#light-control-set-morning{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "light-control-morning"
+    "light-control-img-morning"
+}
+#light-control-img-morning{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns:35px 770px 35px;
+    grid-template-areas: 
+    "moon-morning . sun-morning"
+}
+#light-control-set-lunch{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "light-control-lunch"
+    "light-control-img-lunch"
+}
+#light-control-img-lunch{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns:35px 770px 35px;
+    grid-template-areas: 
+    "moon-lunch . sun-lunch"
+}
+#light-control-set-evening{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "light-control-evening"
+    "light-control-img-evening"
+}
+#light-control-img-evening{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns:35px 770px 35px;
+    grid-template-areas: 
+    "moon-evening . sun-evening"
+}
+#light-control-set-night{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "light-control-night"
+    "light-control-img-night"
+}
+#light-control-img-night{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns:35px 770px 35px;
+    grid-template-areas: 
+    "moon-night . sun-night"
+}
+#right-section{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "preview"
+}
+#preview{
+    display: grid;
+    grid-template-rows: 60px 85px 46px 1fr 60px;
+    grid-template-columns: 70px 1fr 70px;
+    grid-template-areas: 
+    ". . ."
+    ". preview-header ."
+    ". . ."
+    ". preview-content ."
+    ". . ."
+}
+#header{
+    grid-area: header;
+}
+#back-button{
+    grid-area: back-button;
+}
+#page-title{
+    grid-area: page-title;
+}
+#body-section{
+    grid-area: body-section;
+}
+#left-section{
+    grid-area: left-section;
+}
+#right-section{
+    grid-area: right-section;
+}
+#menu-list-1{
+    grid-area: menu-list-1;
+}
+#menu-list-2{
+    grid-area: menu-list-2;
+}
+#menu-list-3{
+    grid-area: menu-list-3;
+}
+#menu-list-4{
+    grid-area: menu-list-4;
+}
+#menu-list-5{
+    grid-area: menu-list-5;
+}
+#light-control-set-morning{
+    grid-area: light-control-set-morning;
+}
+#light-control-morning{
+    grid-area: light-control-morning;
+}
+#light-control-img-morning{
+    grid-area: light-control-img-morning;
+}
+#moon-morning{
+    grid-area: moon-morning;
+}
+#sun-morning{
+    grid-area: sun-morning;
+}
+#light-control-set-lunch{
+    grid-area: light-control-set-lunch;
+}
+#light-control-lunch{
+    grid-area: light-control-lunch;
+}
+#light-control-img-lunch{
+    grid-area: light-control-img-lunch;
+}
+#moon-lunch{
+    grid-area: moon-lunch;
+}
+#sun-lunch{
+    grid-area: sun-lunch;
+}
+#light-control-set-evening{
+    grid-area: light-control-set-evening;
+}
+#light-control-evening{
+    grid-area: light-control-evening;
+}
+#light-control-img-evening{
+    grid-area: light-control-img-evening;
+}
+#moon-evening{
+    grid-area: moon-evening;
+}
+#sun-evening{
+    grid-area: sun-evening;
+}
+#light-control-set-night{
+    grid-area: light-control-set-night;
+}
+#light-control-night{
+    grid-area: light-control-night;
+}
+#light-control-img-night{
+    grid-area: light-control-img-night;
+}
+#moon-night{
+    grid-area: moon-night;
+}
+#sun-night{
+    grid-area: sun-night;
+}
+#preview-header{
+    grid-area: preview-header;
+}
+#preview-content{
+    grid-area: preview-content;
+}
