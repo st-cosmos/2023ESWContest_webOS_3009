@@ -1,0 +1,35 @@
+body {
+    margin: 0; /* 기본 마진 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+}
+#my-section1 {
+    white-space: nowrap; /* 줄 바꿈 방지 */
+    overflow: hidden; /* 넘치는 부분 숨김 */
+    text-overflow: ellipsis; /* 넘치는 부분에 대한 점 표시 (...) */
+    display: grid;
+    grid-template-rows: 31px 1fr 31px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        ". . ."
+        "it1 it2 ."
+        ". . .";
+    max-height: 130px;
+    border-bottom: 0.5px solid #000;
+}
+
+#it1 {
+    grid-area: it1;
+    padding-left:27px;
+}
+
+#it2 {
+    grid-area: it2;
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+}
+
