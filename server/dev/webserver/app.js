@@ -1,5 +1,7 @@
 const ip = require('ip');
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 
 // network settings
 const IP_ADDRESS = ip.address();
@@ -22,11 +24,10 @@ app.post('/Diary', (req, res)=>{
         data = JSON.parse(data);
     }
     console.log(data.text);
-    
-    const fs = require('fs');
+
     const receivedText = data.text;
     
-    fs.writeFile('server/ml_files/input.txt', receivedText, (err) => {
+    fs.writeFile('../../ml_files/input.txt', receivedText, (err) => {
         if (err) {
           console.error('Error saving text:', err);
         } else {
@@ -35,7 +36,7 @@ app.post('/Diary', (req, res)=>{
     });
 
     const { spawn } = require('child_process');
-    const pythonProcess = spawn('python', ['server/dev/machine_learning/main.py']);
+    const pythonProcess = spawn('python', ['../machine_learning/main.py']);
 
     let stdoutData = '';
     let stderrData = '';
@@ -54,15 +55,15 @@ app.post('/Diary', (req, res)=>{
 
     pythonProcess.on('close', (code) => {
       console.log(`child process exited with code ${code}`);
-
-      // 클라이언트로 결과 전송
-      const result = {
-        stdout: stdoutData,
-        stderr: stderrData,
-        exitCode: code
-      };
-
-      res.json(result);
+      
+      fs.readFile('../../ml_files/output.txt', 'utf-8', (err, data)=>{
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log(data);
+        res.json({"score" : Number(data)});
+      });
     });
 });
 

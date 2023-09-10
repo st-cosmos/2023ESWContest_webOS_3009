@@ -134,5 +134,3 @@ dist
 *.h5
 *.csv
 *.pickle
-input.txt
-output.txt

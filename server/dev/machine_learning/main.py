@@ -13,12 +13,12 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 #cnn 모델
 from tensorflow.keras.models import load_model
 
-loaded_model = load_model('server/ml_files/rnn_model.h5')
+loaded_model = load_model('../../ml_files/rnn_model.h5')
 
 #Tokenizer Object 파일로드
 import pickle
 
-with open('server/ml_files/rnn_tokenizer.pickle', 'rb') as handle:
+with open('../../ml_files/rnn_tokenizer.pickle', 'rb') as handle:
     loaded_tokenizer = pickle.load(handle)
 
 ###
@@ -53,10 +53,10 @@ def sentiment_predict(new_sentence):
   return value
 
 #input 값 읽기
-text = open('server/ml_files/input.txt', 'r', encoding="utf8").read()
+text = open('../../ml_files/input.txt', 'r', encoding="utf8").read()
 value = sentiment_predict(text)
 print(value)
 
 #output 값 쓰기
-with open('.\server\ml_files\output.txt', 'w') as f:
+with open('../../ml_files/output.txt', 'w') as f:
     f.write(str(value))
