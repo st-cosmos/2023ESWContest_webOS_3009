@@ -129,3 +129,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .DS_Store
+
+# model,data files
+*.npy
+*.h5
+*.csv
+*.pickle
