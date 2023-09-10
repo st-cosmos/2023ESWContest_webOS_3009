@@ -1,0 +1,538 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;700&display=swap');
+/*글꼴*/
+#page-title{
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.sound-list-titles{
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.selected-font-color{
+    color: #4C6039;
+}
+.unselected-font-color{
+    color: #000;
+}
+.sound-information{
+    color: rgba(0, 0, 0, 0.59);
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;   
+}
+#sound-title{
+    color: #000;
+    font-family: Inter;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+#sound-title-kr{
+    color: #000;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;   
+}
+#sound-explanation{
+    color: #000;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+}
+#sound-time p{
+    color: #000;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+#timer-title{
+    color: #000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#timer-time-setting{
+    color: #000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+#button-timer-on-off{
+    color: #000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+/*box*/
+#header{
+    display: flex;
+    width: 1916px;
+    align-items: center;
+    border-bottom: 0.5px solid #000;
+    background: #FFF;
+}
+#left-section{
+    width: 930px;
+    height: 949px;
+    flex-shrink: 0;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;   
+}
+.sound-list-box{
+    width: 683.575px;
+    height: 150px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.selected-box{
+    background: #E6EFDD;
+}
+.unselected-box{
+    background: #FFF;
+}
+#scroll-bar{
+    width: 16px;
+    height: 139px;
+    flex-shrink: 0;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+#body-section{
+    width: 1920px;
+    height: 1080px;
+    background: #F9F9F9;
+}
+#sound-play-screen {
+    width: 893px;
+    height: 762px;
+    flex-shrink: 0;
+    background-color: #FFF; /* 배경색을 하얀색으로 설정 */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35));
+    border-radius: 30px;
+}
+#landscape-photography{
+    width: 774px;
+    height: 389px;
+    flex-shrink: 0;
+}
+#sound-bar{
+    width: 784px;
+    height: 5px;
+    flex-shrink: 0;
+    background: #000;
+}
+#sound-volume-bar{
+    width: 105px;
+    height: 4px;
+    flex-shrink: 0;
+    background: #D9D9D9;
+}
+#timer-time-setting{
+    width: 188px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 2px solid #BAE291;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    justify-content: center;
+    text-align: center;
+}
+#button-timer-on-off{
+    width: 188px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 3px solid #BAE291;
+    background: #BAE291;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+#button-play, #button-next{
+    width: 38px;
+    height: 40px;
+    flex-shrink: 0;
+}
+#button-mute{
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+}
+/*position*/
+.sound-list-box {
+    position: relative;
+  }
+  
+.sound-list-box img {
+  position: absolute;
+  top: -6px;
+  left: -50px;
+}
+#adjust-sound-playback-point {
+    position: relative;
+  } 
+#sound-bar-button {
+  position: absolute;
+  top: -7px;
+  left: 00px;
+}
+#sound-volume {
+    position: relative;
+  } 
+#sound-volume-bar-button{
+  position: absolute;
+  top: -3px;
+  left: 10px;
+}
+.text-array, #sound-volume{
+    text-align: center;
+    align-items: center;
+}
+#adjust-sound-play, #sound-play-screen-header, #sound-time, #timer{
+    display: flex;
+}
+#adjust-sound-play, #sound-play-screen-header, #adjust-sound-playback-point{
+    align-items: center;
+}
+#sound-title{
+    margin-right: 20px;
+}
+.text-array{
+    margin-top: 18px;
+}
+.sound-information, .sound-list-titles{
+    margin: 0;
+}
+/*grid*/
+#grid{
+    display: grid;
+    grid-template-rows: 131px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "body-section"
+}
+#header{
+    display: grid;
+    grid-template-rows: 131px;
+    grid-template-columns: 1.3fr 2fr;
+    grid-template-areas:
+    "back-button page-title"
+}
+#body-section{
+    display: grid;
+    grid-template-rows: 0px 1fr 0px;
+    grid-template-columns: 0px 1fr 0px 1fr 0px;
+    grid-template-areas: 
+    ". . . . ."
+    ". left-section . right-section ."
+    ". . . . ."
+}
+#left-section{
+    display: grid;
+    grid-template-rows: 0px 1fr 0px;
+    grid-template-columns: 0px 1fr 16px 0px;
+    grid-template-areas: 
+    ". . . ."
+    ". sound-list scroll-bar ."
+    ". . . ."
+}
+#sound-list{
+    display: grid;
+    grid-template-rows: 85px 160px 52px 160px 52px 160px 52px 160px 84px;
+    grid-template-columns: 150.42px 1fr 80px;
+    grid-template-areas: 
+    ". . ."
+    ". sound-1 ."
+    ". . ."
+    ". sound-2 ."
+    ". . ."
+    ". sound-3 ."
+    ". . ."
+    ". sound-4 ."
+    ". . ."
+}
+#sound-information-1{
+    display: grid;
+    grid-template-rows: 31px 61px 36px 22px;
+    grid-template-columns: 156.68px 176px 221px 90px 68px;
+    grid-template-areas: 
+    ". . . . ."
+    ". sound-title-1 . . ."
+    ". sound-title-kr-1 . sound-length-1 ."
+    ". . . . ."
+}
+#sound-information-2{
+    display: grid;
+    grid-template-rows: 31px 61px 36px 22px;
+    grid-template-columns: 156.68px 176px 221px 90px 68px;
+    grid-template-areas: 
+    ". . . . ."
+    ". sound-title-2 . . ."
+    ". sound-title-kr-2 . sound-length-2 ."
+    ". . . . ."
+}
+#sound-information-3{
+    display: grid;
+    grid-template-rows: 31px 61px 36px 22px;
+    grid-template-columns: 156.68px 176px 221px 90px 68px;
+    grid-template-areas: 
+    ". . . . ."
+    ". sound-title-3 . . ."
+    ". sound-title-kr-3 . sound-length-3 ."
+    ". . . . ."
+}
+#sound-information-4{
+    display: grid;
+    grid-template-rows: 31px 61px 36px 22px;
+    grid-template-columns: 156.68px 176px 221px 90px 68px;
+    grid-template-areas: 
+    ". . . . ."
+    ". sound-title-4 . . ."
+    ". sound-title-kr-4 . sound-length-4 ."
+    ". . . . ."
+}
+#right-section{
+    display: grid;
+    grid-template-rows: 34px 762px 30px 84px 39px;
+    grid-template-columns: 36px 893px 61px;
+    grid-template-areas: 
+    ". . ."
+    ". sound-play-screen ."
+    ". . ."
+    ". timer ."
+    ". . ."
+}
+#sound-play-screen{
+    display: grid;
+    grid-template-rows: 24px 73px 17px 72px 25px 389px 38px 52px;
+    grid-template-columns: 62px 1fr 36px;
+    grid-template-areas: 
+    ". . ."
+    ". sound-play-screen-header ."
+    ". . ."
+    ". sound-explanation ."
+    ". . ."
+    ". landscape-photography ."
+    ". . ."
+    ". sound-playback-operations ."
+    ". . ."
+}
+#sound-playback-operations{
+    display: grid;
+    grid-template-rows: 20px 7px 45px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "adjust-sound-playback-point"
+    "."
+    "adjust-sound-play"
+}
+#adjust-sound-play{
+    display: grid;
+    grid-template-rows: 45px;
+    grid-template-columns: 0px 38px 12px 38px 12px 45px 6px 105px 368px 200px 0px;
+    grid-template-areas: 
+    ". button-play . button-next . button-mute . sound-volume . sound-time ."
+}
+#timer{
+    display: grid;
+    grid-template-rows: 84px;
+    grid-template-columns: 0px 140px 31px 188px 347px 188px 0px;
+    grid-template-areas: 
+    ". timer-title . timer-time-setting . button-timer-on-off ."
+}
+#header{
+    grid-area: header;
+}
+#back-button{
+    grid-area: back-button;
+}
+#page-title{
+    grid-area: page-title;
+}
+#body-section{
+    grid-area: body-section;
+}
+#left-section{
+    grid-area: left-section;
+}
+#sound-list{
+    grid-area: sound-list;
+}
+#sound-1{
+    grid-area: sound-1;
+}
+#sound-cover-1{
+    grid-area: sound-cover-1;
+}
+#sound-title-1{
+    grid-area: sound-title-1;
+}
+#sound-information-1{
+    grid-area: sound-information-1;
+}
+#sound-title-kr-1{
+    grid-area: sound-title-kr-1;
+}
+#sound-length-1{
+    grid-area: sound-length-1;
+}
+#sound-2{
+    grid-area: sound-2;
+}
+#sound-cover-2{
+    grid-area: sound-cover-2;
+}
+#sound-title-2{
+    grid-area: sound-title-2;
+}
+#sound-information-2{
+    grid-area: sound-information-2;
+}
+#sound-title-kr-2{
+    grid-area: sound-title-kr-2;
+}
+#sound-length-2{
+    grid-area: sound-length-2;
+}
+#sound-3{
+    grid-area: sound-3;
+}
+#sound-cover-3{
+    grid-area: sound-cover-3;
+}
+#sound-title-3{
+    grid-area: sound-title-3;
+}
+#sound-information-3{
+    grid-area: sound-information-3;
+}
+#sound-title-kr-3{
+    grid-area: sound-title-kr-3;
+}
+#sound-length-3{
+    grid-area: sound-length-3;
+}
+#sound-4{
+    grid-area: sound-4;
+}
+#sound-cover-4{
+    grid-area: sound-cover-4;
+}
+#sound-title-4{
+    grid-area: sound-title-4;
+}
+#sound-information-4{
+    grid-area: sound-information-4;
+}
+#sound-title-kr-4{
+    grid-area: sound-title-kr-4;
+}
+#sound-length-4{
+    grid-area: sound-length-4;
+}
+#scroll-bar{
+    grid-area: scroll-bar;
+}
+#right-section{
+    grid-area: right-section;
+}
+#sound-play-screen{
+    grid-area: sound-play-screen;
+}
+#sound-play-screen-header{
+    grid-area: sound-play-screen-header;
+}
+#sound-title{
+    grid-area: sound-title;
+}
+#sound-title-kr{
+    grid-area: sound-title-kr;
+}
+#sound-explanation{
+    grid-area: sound-explanation;
+}
+#landscape-photography{
+    grid-area: landscape-photography;
+}
+#sound-playback-operations{
+    grid-area: sound-playback-operations;
+}
+#adjust-sound-playback-point{
+    grid-area: adjust-sound-playback-point;
+}
+#sound-bar{
+    grid-area: sound-bar;
+}
+#sound-bar-button{
+    grid-area: sound-bar-button;
+}
+#adjust-sound-play{
+    grid-area: adjust-sound-play;
+}
+#button-play{
+    grid-area: button-play;
+}
+#button-next{
+    grid-area: button-next;
+}
+#button-mute{
+    grid-area: button-mute;
+}
+#sound-volume{
+    grid-area: sound-volume;
+}
+#sound-volume-bar{
+    grid-area: sound-volume-bar;
+}
+#sound-volume-bar-button{
+    grid-area: sound-volume-bar-button;
+}
+#sound-time{
+    grid-area: sound-time;
+}
+#play-point{
+    grid-area: play-point;
+}
+#play-time{
+    grid-area: play-time;
+}
+#timer{
+    grid-area: timer;
+}
+#timer-title{
+    grid-area: timer-title;
+}
+#timer-time-setting{
+    grid-area: timer-time-setting;
+}
+#button-timer-on-off{
+    grid-area: button-timer-on-off;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marigold Light Therapy</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./sound-therapy.styles.css">
+        <style>
+            body{
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="grid">
+            <div id="header">
+                <img id="back-button" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\light-therapy\button_back.png">
+                <h1 id="page-title">사운드 테라피</h1>
+            </div>
+            <div id="body-section">
+                <div id="left-section">
+                    <div id="sound-list">
+                        <div id="sound-1" class="sound-list-box selected-box">
+                            <img id="sound-cover-1" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\sound-cover-1.png" alt="커버 사진">
+                            <div id="sound-information-1">
+                                <p id="sound-title-1" class="sound-list-titles selected-font-color">delta</p>
+                                    <p id="sound-title-kr-1" class="sound-information">델타파</p>
+                                <p id="sound-length-1" class="sound-information">7:10</p>
+                                
+                            </div>
+                        </div>
+                        <div id="sound-2" class="sound-list-box unselected-box">
+                            <img id="sound-cover-2" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\sound-cover-2.svg" alt="커버 사진">
+                            <div id="sound-information-2">
+                                <p id="sound-title-2" class="sound-list-titles unselected-font-color">theta</p>
+                                <p id="sound-title-kr-2"  class="sound-information">세타파</p>
+                                <p id="sound-length-2"  class="sound-information">1:06</p>
+                            </div>
+                        </div>
+                        <div id="sound-3" class="sound-list-box unselected-box">
+                            <img id="sound-cover-3" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\sound-cover-3.svg" alt="커버 사진">
+                            <div id="sound-information-3">
+                                <p id="sound-title-3" class="sound-list-titles unselected-font-color">alpha</p>
+                                <p id="sound-title-kr-3" class="sound-information">알파파</p>
+                                <p id="sound-length-3" class="sound-information">8:29</p>
+                            </div>
+                        </div>
+                        <div id="sound-4" class="sound-list-box unselected-box">
+                            <img id="sound-cover-4" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\sound-cover-4.svg" alt="커버 사진">
+                            <div id="sound-information-4">
+                                <p id="sound-title-4" class="sound-list-titles unselected-font-color">beta</p>
+                                <p id="sound-title-kr-4" class="sound-information">베타파</p>
+                                <p id="sound-length-4" class="sound-information">5:13</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="scroll-bar"></div>
+                </div>
+                <div id="right-section">
+                    <div id="sound-play-screen">
+                        <div id="sound-play-screen-header">
+                            <div id="sound-title">delta</div>
+                            <div id="sound-title-kr">델타파</div>
+                        </div>
+                        <div id="sound-explanation">설명</div>
+                        <div id="landscape-photography"><img src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\landscape-photography.png"></div>
+                        <div id="sound-playback-operations">
+                            <div id="adjust-sound-playback-point">
+                                <div id="sound-bar"></div>
+                                <img id="sound-bar-button" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\sound-bar-button.svg">
+                            </div>
+                            <div id="adjust-sound-play">
+                                <img id="button-play" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\play.svg">
+                                <img id="button-next" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\play-next.svg">
+                                <img id="button-mute" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\mute.png">
+                                <div id="sound-volume">
+                                    <div id="sound-volume-bar"></div>
+                                    <img id="sound-volume-bar-button" src="C:\Users\82108\workspace\esc23-marigold\webos\app\assets\sound-therapy\sound-volume-bar-button.svg">
+                                </div>
+                                <div id="sound-time">
+                                    <p id="play-point">1:50</p>
+                                    <p id="piay-time">/7:10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="timer">
+                        <p id="timer-title" class="text-array">타이머</p>
+                        <div id="timer-time-setting"><p class="text-array">10:00</p></div>
+                        <div id="button-timer-on-off"><p class="text-array">ON</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script src="./sound-therapy.js"></script>
+    </body>
+</html>
