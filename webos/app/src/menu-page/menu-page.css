@@ -7,22 +7,16 @@ body {
 #outer-section {
     height: 100vh;
     display: grid;
-    grid-row: 100px 1fr 100px;
+    grid-template-rows: 120px 1fr 100px;
 }
 
 #my-section1 {
-    white-space: nowrap; /* 줄 바꿈 방지 */
-    overflow: hidden; /* 넘치는 부분 숨김 */
-    text-overflow: ellipsis; /* 넘치는 부분에 대한 점 표시 (...) */
     display: grid;
-    grid-template-rows: 31px 1fr 31px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-        ". . ."
-        "it1 it2 ."
-        ". . .";
-    height: 100px;
+    grid-template-areas: "it1 it2  .";
+    height: 80px;
     max-height: 133px;
+    padding: 20px;
     border-bottom: 0.5px solid #000;
 }
 
@@ -49,16 +43,14 @@ body {
 }
 
 #my-section2 {
+    padding: 20px;
     display: grid;
-    grid-template-rows: 20px 1fr 1fr 20px;
-    grid-template-columns: 1fr 4fr 4fr 4fr 1fr;
-    grid-template-areas: 
-        ". . . . ."
-        ". it4 it5 it6 ."
-        ". it7 it8 it9 ."
-        " . . . . .";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "it4 it5 it6"
+        "it7 it8 it9";
     grid-gap:40px;
-    max-height:833px;
 }
 .section-item2 {
     /* max-height: 280px; */
@@ -68,18 +60,20 @@ body {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: #000;
     font-family: Inter;
-    font-size: 40px;
+    font-size: 4vh;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    padding-left:30px;
-    padding-top:30px;
+    padding: 30px 30px 10px 30px;
 }
 
 #home-picture{
-    padding-top:80px;
-    text-align: right;
-    padding-right:20px;
+    margin-top: 30px;
+    /* text-align: right; */
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-end;
+    align-items: flex-end;
 }
 
 #it4 {

@@ -3,18 +3,20 @@ body {
     margin: 0; /* 기본 마진 제거 */
     padding: 0; /* 기본 패딩 제거 */
 }
-#my-section1 {
-    white-space: nowrap; /* 줄 바꿈 방지 */
-    overflow: hidden; /* 넘치는 부분 숨김 */
-    text-overflow: ellipsis; /* 넘치는 부분에 대한 점 표시 (...) */
+
+#profile-page {
+    height: 100vh;
     display: grid;
-    grid-template-rows: 31px 1fr 31px;
+    grid-template-rows: 120px 1fr 100px;
+}
+
+#my-section1 {
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-        ". . ."
-        "it1 it2 ."
-        ". . .";
+    grid-template-areas: "it1 it2  .";
+    height: 80px;
     max-height: 133px;
+    padding: 20px;
     border-bottom: 0.5px solid #000;
 }
 
@@ -42,112 +44,100 @@ body {
 
 #my-section2 {
     display: grid;
-    grid-template-rows:  4fr 4fr 0.3fr ;
-    grid-template-columns: 1fr;
+    grid-template-columns: 32vh 40px 1fr;
     grid-template-areas: 
-        "it4"
-        " it5 "
-        " it6 ";
-    max-height:800px;
+        "section2-left . section2-right";
+    
     border-radius: 30px;
-    border: 1px solid #000;
-    background: #FFF;
+    background: #f8f8f8;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-left:120px;
-    margin-right:120px;
-    margin-top:33px;
-    margin-bottom:33px;
-    padding:50px;
-    max-height: 730;
+    margin: 40px;
+    padding: 40px;
 }
-.section-item2{
-    max-height:50px;
+
+#section2-left {
+    grid-area: section2-left;
 }
-#profile-page-profile{
+
+#section2-left-picture {
     display: flex;
-    justify-content: space-between;
-    max-height:250px;
+    justify-content: center;
 }
-#profile-page-picture{
-    border-radius: 250px;
-    border: 1px solid #000;
-    background:white;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
-    white-space: nowrap; /* 줄 바꿈 방지 */
-    overflow: hidden; /* 넘치는 부분 숨김 */
-    text-overflow: ellipsis; /* 넘치는 부분에 대한 점 표시 (...) */
+
+#img-background {
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: #ffffff;
+    margin: 20px;
 }
-#profile-page-name{
+
+#img-profile-user {
+    width: 14vh;
+    height: 14vh;
+}
+
+#section2-left-name {
+    text-align: center;
     color: #000;
     font-family: Inter;
-    font-size: 100px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    white-space: nowrap; /* 줄 바꿈 방지 */
-    overflow: hidden; /* 넘치는 부분 숨김 */
-    text-overflow: ellipsis; /* 넘치는 부분에 대한 점 표시 (...) */
-    margin-top:50px;
-}
-#profile-page-birthday{
-    color: #000;
-    font-family: Inter;
-    font-size: 45px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin-top:110px;
-    margin-right:250px;
-}
-#profile-page-address,#profile-page-phone{
-    color: #000;
-    font-family: Inter;
-    font-size: 50px;
+    font-size: 3vh;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
 }
-#profile-page-address-detail,#profile-page-phone-detail{
-    color: #000;
+
+#section2-right {
+    grid-area: section2-right;
+    padding: 20px;
+    border-left: 2px solid #b2b2b2;
+}
+
+.section2-content {
+    margin-bottom: 40px;
+}
+
+.content-title {
+    font-size: 3vh;
     font-family: Inter;
-    font-size: 45px;
     font-style: normal;
+    line-height: normal;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.content-text {
+    font-size: 3vh;
+    font-family: Inter;
+    font-style: normal;
+    line-height: normal;
     font-weight: 100;
-    line-height: normal;
 }
-#profile-page-edit{
-    width: 320px;
-    height: 87px;
-    flex-shrink: 0;
+
+#section2-button {
+    display: flex;
+    justify-items: end;
+}
+
+.profile-edit-button {
+    width: 18vw;
+    height: 10vh;
     border-radius: 20px;
     background: #E6EFDD;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
     color: #000;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
     font-family: Inter;
-    font-size: 35px;
+    font-size: 24px;
     font-style: normal;
-    font-weight: 100;
+    font-weight: 500;
     line-height: normal;
     text-align: center;
-    padding-top:20px;
 }
-#it4 {
-    grid-area: it4;
-}
-#it5 {
-    grid-area: it5;
-    max-height:250px;
-    padding-left:50px;
-    padding-top:20px;
-}
-#it6 {
-    grid-area: it6;
-    display: flex;
-    justify-content: flex-end; /* 오른쪽으로 정렬 */
-    align-items: center; /* 세로 가운데 정렬 */
-}
-
 
 #my-section3 {
     display: grid;
