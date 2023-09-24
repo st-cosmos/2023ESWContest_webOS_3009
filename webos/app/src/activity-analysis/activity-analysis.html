@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marigold Activity Analysis</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./activity-analysis.styles.css">
+        <style>
+            body{
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="grid">
+            <div id="header">
+                <img id="back-button" src="../../assets/activity-analysis/back-button.png">
+                <h1 id="page-title">활동 분석</h1>
+            </div>
+            <div id="body-section">
+                <div id="left-section" class="section">
+                    <div id="menu-body-left" class="menu-body-box">
+                        <div id="menu-title-left" class="menu-title-box">
+                            <p class="menu-title-font">수면</p>
+                        </div>
+                        <div id="menu-body-left-array">
+                            <div id="graph-section">
+                                <img id="sleep-graph" src="../../assets/activity-analysis/sleep-graph.svg">
+                                <div id="graph-legend">
+                                    <div id="graph-legend-deep-sleep" class="graph-legend-array">
+                                        <img id="graph-legend-deep-sleep-img" src="../../assets/activity-analysis/graph-legend-deep-sleep.svg">
+                                        <div id="graph-legend-deep-sleep-contents">
+                                            <div id="graph-legend-deep-sleep-title">
+                                                <p class="graph-legend-title">깊은 수면</p>
+                                            </div>
+                                            <div id="graph-legend-deep-sleep-analysis-details">
+                                                <p class="graph-legend-analysis-details">65% - 4h 33m</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="graph-legend-shallow-sleep" class="graph-legend-array">
+                                        <img id="graph-legend-shallow-sleep-img" src="../../assets/activity-analysis/graph-legend-shallow-sleep.svg">
+                                        <div id="graph-legend-shallow-sleep-contents">
+                                            <div id="graph-legend-shallow-sleep-title">
+                                                <p class="graph-legend-title">얕은 수면</p>
+                                            </div>
+                                            <div id="graph-legend-shallow-sleep-analysis-details">
+                                                <p class="graph-legend-analysis-details">15% - 1h 03m</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="graph-legend-awake" class="graph-legend-array">
+                                        <img id="graph-legend-awake-img" src="../../assets/activity-analysis/graph-legend-awake-sleep.svg">
+                                        <div id="graph-legend-awake-contents">
+                                            <div id="graph-legend-awake-title">
+                                                <p class="graph-legend-title">깨어 있는 시간</p>
+                                            </div>
+                                            <div id="graph-legend-awake-analysis-details">
+                                                <p class="graph-legend-analysis-details">20% - 1h 24m</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div id="ment-left">
+                                <p class="contents-font">문구</p>
+                            </div>
+                            <div id="learn-more-left" class="learn-more">
+                                <p class="contents-font">자세히 보기 ></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="center-section" class="section">
+                    <div id="menu-body-center" class="menu-body-box">
+                        <div id="menu-title-center" class="menu-title-box">
+                            <p class="menu-title-font">활동</p>
+                        </div>
+                        <div id="menu-body-center-array">
+                            <div id="activity-graph">
+                                <div id="activity-bar">
+                                    <div id="activity-part"></div>
+                                    <div id="inactivity-part"></div>
+                                </div>
+                                <img id="activity-level" src="../../assets/activity-analysis/activity-level.svg">
+                            </div>
+                            <div id="ment-center">
+                                <p class="contents-font">문구</p>
+                            </div>
+                            <div id="learn-more-center" class="learn-more">
+                                <p class="contents-font">자세히 보기 ></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="right-section" class="section">
+                    <div id="menu-body-right" class="menu-body-box">
+                        <div id="menu-title-right" class="menu-title-box">
+                            <p class="menu-title-font">일기</p>
+                        </div>
+                        <div id="menu-body-right-array">
+                            <img id="depression-bar" src="../../assets/activity-analysis/depression-bar.png">
+                            <div id="ment-right">
+                                <p class="contents-font">문구</p>
+                            </div>
+                            <div id="learn-more-right">
+                                <p class="contents-font">일기 쓰러 가기 ></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script src="./sound-therapy.js"></script>
+    </body>
+</html>

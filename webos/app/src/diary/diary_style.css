@@ -1,0 +1,256 @@
+.wrapper{
+    min-height: 100vh;
+}
+/* 상단바 시작 */
+#NavBar{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 34px;
+    width: auto;
+    padding: 27px 0;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid #000;
+    background: #FFF;      
+}
+.NavInline{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+.ButtonBack{
+    width: 105px;
+    height: 77px;
+    justify-items: end;
+    margin-left: 15px;
+}
+.nav_title{
+    /* layout_setting */
+    text-align: center;
+    padding-right: 100px;
+    /* font_setting */
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+/* 상단바 종료 */
+/* 하단 서비스 영역 박스 시작 */
+    /* 글 작성도구 버튼, 날짜 시작 */
+#diary_box{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 1fr;
+    min-height: 100%;
+    
+}
+.button_and_date{
+    display: grid;
+    grid-template-columns: 93px 93px 93px 93px 93px 1fr;
+    gap: 48px;
+    margin-top: 48px;
+    margin-left: 102px;
+    margin-right: 85px;
+}
+.button_change_text_size{
+    /* layout_setting */
+    display: flex;
+    width: 93px;
+    height: 71px;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+    /* font_setting */
+    color: #000;
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.button_change_text_bond{
+    /* layout_setting */
+    display: flex;
+    width: 93px;
+    height: 71px;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+    /* font_setting */
+    color: #000;
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.button_change_text_underline{
+    /* layout_setting */
+    display: flex;
+    width: 93px;
+    height: 71px;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+    /* font_setting */
+    color: #000;
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.button_change_text_what{
+    /* layout_setting */
+    display: flex;
+    width: 93px;
+    height: 71px;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+    /* font_setting */
+    color: #000;
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.button_insert_image{
+    /* layout_setting */
+    display: flex;
+    width: 93px;
+    height: 71px;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+    /* font_setting */
+    color: #000;
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.date{
+    /* layout_setting */
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items:center;
+    /* font_setting */
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    
+}
+#currentDate{
+    /* layout_setting */
+    text-align: right;
+    margin: 0;
+    margin-bottom: 25px;
+    /* font_setting */
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    
+}
+    /* 글 작성도구 버튼, 날짜 종료 */
+
+    /* 하단 일기 작성 영역 시작 */
+.writing_box{
+    /* layout_setting */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 9fr 1fr;
+    margin-left: 102px;
+    margin-right: 85px;
+    margin-bottom: 67px;
+    width: auto;
+    height: auto;
+    min-height: 100%;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35),
+                0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+.textbox{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+     /* font_setting */
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.button_save{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: end;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    
+}
+.button_save_inline{
+    width: 196px;
+    height: 74px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid #BAE291;
+    background: #BAE291;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
+}
+.save_text{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 15px;
+    /* font_setting */
+    color: #FFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    align-items: center;
+}
+    /* 하단 일기 작성 영역 종료 */
+/* 하단 서비스 영역 박스 종료 */
+input[type="text_diary"]{
+    
+    margin-inline: 20px;
+    min-width: 98%;
+    min-height: 95%;
+    margin-top: 20px;
+    border: 0;
+    color: #000;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
