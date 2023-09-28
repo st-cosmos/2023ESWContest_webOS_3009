@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marigold Routine</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./routine.styles.css">
+        <style>
+            p{
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="grid">
+            <div id="header">
+                <img id="back-button" src="../../assets/routine/back-button.png">
+                <h1 id="page-title">루틴</h1>
+            </div>
+            <div id="body-section">
+                <div id="left-section">
+                    <div id="list">
+                        <div id="list-header" class="flex-center">
+                            <p id="list-title" class="font-65">루틴 목록</p>
+                            <p id="plus" class="font-75">+</p>
+                        </div>
+                        <div id="list-contents">
+                            <div id="list-1" class="list-box flex-center">
+                                <img class="icons" src="../../assets/routine/medicine.png">
+                                <p class="font-50 am-pm">오전</p>
+                                <p class="font-50 time">08:00</p>
+                                <p class="font-50 to-do">아침 약 먹기</p>
+                                <p class="font-repeat repeat">매일</p>
+                                <div class="on-off-button">
+                                    <div class="on-off-button-bar on-off-button-bar-on-color"></div>
+                                    <div class="on-off-button-sw on-off-button-sw-on"></div>
+                                </div>
+                            </div>
+                            <div id="list-2" class="list-box flex-center">
+                                <img class="icons" src="../../assets/routine/alarm.png">
+                                <p class="font-50 am-pm">오전</p>
+                                <p class="font-50 time">10:00</p>
+                                <p class="font-50 to-do">치과 가기</p>
+                                <p class="font-repeat repeat"></p>
+                                <div class="on-off-button">
+                                    <div class="on-off-button-bar on-off-button-bar-off-color"></div>
+                                    <div class="on-off-button-sw on-off-button-sw-off"></div>
+                                </div>
+                            </div>
+                            <div id="list-3" class="list-box flex-center">
+                                <img class="icons" src="../../assets/routine/book.png">
+                                <p class="font-50 am-pm">오후</p>
+                                <p class="font-50 time">07:00</p>
+                                <p class="font-50 to-do">일기 쓰기</p>
+                                <p class="font-repeat repeat">매일</p>
+                                <div class="on-off-button">
+                                    <div class="on-off-button-bar on-off-button-bar-on-color"></div>
+                                    <div class="on-off-button-sw on-off-button-sw-on"></div>
+                                </div>
+                            </div>
+                            <div id="list-4" class="list-box flex-center">
+                                <img class="icons" src="../../assets/routine/book.png">
+                                <p class="font-50 am-pm">오후</p>
+                                <p class="font-50 time">09:00</p>
+                                <p class="font-50 to-do">책 읽기</p>
+                                <p class="font-repeat repeat">매일</p>
+                                <div class="on-off-button">
+                                    <div class="on-off-button-bar on-off-button-bar-on-color"></div>
+                                    <div class="on-off-button-sw on-off-button-sw-on"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="right-section">
+                    <div id="routine-setting-screen">
+                        <div id="routine-setting-screen-header">
+                            <div id="icon-setting"></div>
+                            <div id="name"></div>
+                        </div>
+                        <p id="time-setting" class="font-60">오전 08:00</p>
+                        <div id="day-of-the-week" class="flex-center">
+                            <p class="font-60 day-selected-color">일</P>
+                            <P class="font-60 day-unselected-color">월</P>
+                            <P class="font-60 day-unselected-color">화</P>
+                            <P class="font-60 day-unselected-color">수</P>
+                            <P class="font-60 day-unselected-color">목</P>
+                            <P class="font-60 day-unselected-color">금</P>
+                            <P class="font-60 day-selected-color">토</P>
+                        </div>
+                        <div id="routine-setting-button" class="flex-center">
+                            <div id="cancellation" class="setting-button-box flex-center"><p class="setting-button-font">취소</p></div>
+                            <div id="save" class="setting-button-box flex-center"><p class="setting-button-font">저장</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script src="./sound-therapy.js"></script>
+    </body>
+</html>
