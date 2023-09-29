@@ -55,7 +55,7 @@ body {
     place-items: center end;
 }
 
-.material-icons.icon-bell-style {
+.material-symbols-outlined.icon-style {
     font-size: 48px;
 }
 
@@ -66,6 +66,81 @@ body {
     display: grid;
     grid-template-columns: 2fr 20px 1fr;
     grid-template-areas: "chat-history . quote-card";
+}
+
+#chat-history {
+    grid-area: chat-history;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    padding: 20px;
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+}
+
+.chat {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    padding-bottom: 20px;
+}
+
+.chat-content {
+    padding-left: 20px;
+}
+
+.chat-box {
+    padding: 10px;
+    background-color: #E6EFDD;
+    border-radius: 10px;
+
+    font-family: Inria Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#quote-card {
+    grid-area: quote-card;
+    border-radius: 20px;
+    background-color: #FFFFFF;    
+    background-image: url('../../assets/quote-background/0.svg'); /* Specify the image URL */
+    background-size: cover; /* Cover the entire div with the background image */
+    background-position: center; /* Center the background image horizontally and vertically */
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    padding: 20px;
+    display: grid;
+    grid-template-rows: 40px 20px 1fr;
+    grid-template-areas: "quote-card-title" "." "quote-card-content";
+    
+    max-height: calc(100vh - 240px);
+}
+
+#quote-card-title {
+    grid-area: quote-card-title;
+    display: flex; /* Use flexbox to center the text vertically */
+    justify-content: center; /* Center the text horizontally */
+    align-items: center; /* Center the text vertically */
+}
+
+.font-quote-card-title {
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#quote-card-content {
+    grid-area: quote-card-content;
+    overflow-y: auto;
+}
+
+.font-quote-content-text {
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
 }
 
 .body-bottom {

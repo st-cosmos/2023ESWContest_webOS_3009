@@ -1,77 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Marigold Main Page</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="main-page.styles.css">
-    </head>
-    <body>
-        <div id="my-section1">
-            <div class="section-item1" id="it1">안녕하세요,홍길동님</div>
-            <div class="section-item1" id="it2"></div>
-        </div>
-
-        <div id="my-section2">
-            <div class="section-item2" id="left-section">
-                <div id="left-box">
-                    <div class="left-section-item" id="it3-1">오늘의 한줄</div>
-                    <div class="left-section-item" id="it3-2"></div>
-                    <div class="left-section-item" id="it3-3">
-                        어떤 사람들은<br>
-                        그저 평범하기 위해<br>
-                        엄청난 에너지를<br>
-                        소비한다는 사실을 <br>
-                        아무도 깨닫지 못합니다.<br>
-                    </div>
-                    <div class="left-section-item" id="it3-4">-알베르 카뮈</div>
-                    <div class="left-secion-item" id="it3-5"><img src="../../assets/main-page/flower.png"></div>
-                </div>
+<head>
+    <title>Marigold</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+</head>
+<body>
+    <div class="marigold-page-template-1">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <!-- <img src="../../assets/leaf-filled.svg" class="leaf-title"> -->
+                <!-- <span class="font-content-title">marigold</span> -->
             </div>
-            <div class="section-item2" id="right-section">
-                <div id="right-box">
-                    <div class="right-section-item" id="it4-1">
-                        <img src="../../assets/main-page/leaf.png" style="width:75px; height:75px;">
-                    </div>
-                    <div class="right-section-item" id="it4-2"></div>
-                    <div class="right-section-item" id="it4-3">
-                        <div class="mainpage-font">
-                            좋은 아침이에요.🤗<br>
-                            오늘은 날씨가 좋은데,  산책을 나가보는 건 어떨까요?☀️
-                        </div>
-                        오전 8:00
-                    </div>
-                    <div class="right-section-item" id="it4-4">
-                        <img src="../../assets/main-page/leaf.png" style="width:75px; height:75px;">
-                    </div>
-                    <div class="right-section-item" id="it4-5"></div>
-                    <div class="right-section-item" id="it4-6">
-                        <div class="mainpage-font">
-                            저녁식사 꼭 챙겨먹고 약도 잊지말고 먹어요💊
-                        </div>
-                        오후 5:00
-                    </div>
-                    <div class="right-section-item" id="it4-7">
-                        <img src="../../assets/main-page/leaf.png" style="width:75px; height:75px;">
-                    </div>
-                    <div class="right-section-item" id="it4-8"></div>
-                    <div class="right-section-item" id="it4-9">
-                        <div class="mainpage-font">
-                            어제보다 수면시간이 줄었어요.<br>
-                            오늘은 취침 전 사운드테라피를 해보는 건 어떨까요? 😴
-                        </div>
-                        오후 10:00
-                    </div>
+            <div id="body-top-c">
+                <span id="content-title" class="font-content-title">홈</span>
+            </div>
+            <div id="body-top-r">
+                <!-- <span class="material-symbols-outlined icon-style">notifications</span> -->
+            </div>
+        </div>
+        <div class="body-mid">
+            <div id="chat-history">
+            </div>
+            <div id="quote-card">
+                <div id="quote-card-title">
+                    <p class="font-quote-card-title">오늘의 한 줄</p>
+                </div>
+                <div id="quote-card-content">
+                    <p class="font-quote-content-text">오늘의 한 줄</p>
                 </div>
             </div>
         </div>
-
-        <div id="my-section3">
-            <div class="section-item3" id="it10"><img src="../../assets/profile-page/white-circle.png"></div>
-            <div class="section-item3" id="it11"><img src="../../assets/profile-page/green-circle.png"></div>
-            <div class="section-item3" id="it12"><img src="../../assets/profile-page/white-circle.png"></div>
+        <div class="body-bottom">
+            <div id="nc-l" class="nav-circle-unchecked"></div>
+            <div id="nc-c" class="nav-circle-checked"></div>
+            <div id="nc-r" class="nav-circle-unchecked"></div>
         </div>
-
-        <!-- Javascript -->
-        <script src="./main-page.js"></script>
-    </body>
+    </div>
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
 </html>
