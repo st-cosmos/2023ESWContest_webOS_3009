@@ -1,0 +1,87 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.marigold-page-template-2 {
+    height: 100vh;
+    background-color: #F2F2F2;
+
+    display: grid;
+    grid-template-rows: 100px calc(100vh - 100px);
+    grid-template-areas: "body-top"  "body-mid";
+}
+
+.body-top {
+    background-color: #FFFFFF;
+    grid-area: body-top;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 0.8fr;
+    grid-template-areas: "body-top-l body-top-c body-top-r";
+}
+
+#body-top-l {
+    grid-area: body-top-l;
+
+    display: grid;
+    place-items: center start;
+}
+
+.leaf-title {
+    width:48px;
+    height:48px;
+}
+
+.font-content-title {
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#body-top-c {
+    grid-area: body-top-c;
+
+    display: grid;
+    place-items: center center;
+}
+
+#body-top-r {
+    grid-area: body-top-r;
+
+    display: flex;
+    align-items: center end;
+    justify-content: flex-end;
+}
+
+.material-icons.icon-bell-style {
+    font-size: 48px;
+}
+
+.body-mid {
+    grid-area: body-mid;
+    padding: 20px 20px 20px 20px;
+
+    display: grid;
+    grid-template-rows: 1fr 100px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "play-list play-card"
+        "play-list play-timer";
+}
+
+#play-list {
+    grid-area: play-list;
+}
+
+#play-card {
+    grid-area: play-card;
+
+}
+
+#play-timer {
+    grid-area: play-timer;
+
+}
