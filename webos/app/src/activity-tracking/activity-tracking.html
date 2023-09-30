@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marigold Activity Tracking</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./activity-tracking.style.css">
+        <style>
+            body{
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="grid">
+            <div id="header">
+                <img id="back-button" src="../../assets/activity-tracking/back-button.png">
+                <h1 id="page-title">활동 추적</h1>
+            </div>
+            <div id="body-section">
+                <div id="left-section">
+                    <p id="left-section-title" class="title-font">걸음 수 통계</p>
+                    <img id="chart" src="../../assets/activity-tracking/chart.svg">
+                    <p id="left-section-contents-1" class="contents-font-25">평균 걸음 수는 4578걸음으로</p>
+                    <p id="left-section-contents-2" class="contents-font-25">지난 달에 비패 17%증가하였습니다.</p>
+                </div>
+                <div id="center-section">
+                    <p id="center-section-title" class="title-font">걸음 수</p>
+                    <p id="today-goal" class="contents-font-35">오늘의 목표: 10,000보</p>
+                    <p id="today-activities" class="contents-font-35">오늘의 활동량: 2,500보</p>
+                    <div id="pie-chart-set">
+                        <img id="pie-chart" src="../../assets/activity-tracking/pie-chart.svg">
+                        <p id="activity-level" class="contents-font-25">25%</p>
+                    </div>
+                    <p id="center-section-achievement-rate" class="contents-font-35">오늘의 목표 25% 달성!</p>
+                </div>
+                <div id="right-section">
+                    <div id="topside">
+                        <div id="topside-header">
+                            <p id="topside-title" class="title-font">활동 추천</p>
+                            <div id="topside-contets">
+                                <p id="topside-contets-1" class="contents-font-semibold">날씨도 좋은데 이런 활동을 해보는 건</p>
+                                <p id="topside-contets-2" class="contents-font-semibold">어때요?</p>
+                            </div>
+                        </div>
+                        <div id="topside-body">
+                            <img id="man" class="reconmmendation-img" src="../../assets/activity-tracking/man.png">
+                            <div id="activity-recommendation-1" class="activity-recommendation">
+                                <p class="contents-font-25">6km를 더 걸으면 목표를</p>
+                                <p class="contents-font-25">달성할 수 있어요!</p>
+                                <p class="contents-font-25">근처 공원 한 바퀴</p>
+                                <p class="contents-font-25">산책해볼까요?</p>
+                            </div>
+                            <img id="bicycle" class="reconmmendation-img" src="../../assets/activity-tracking/bicycle.png">
+                            <div id="activity-recommendation-2" class="activity-recommendation">
+                                <p class="contents-font-25">상쾌한 바람을 맞으며</p>
+                                <P class="contents-font-25">자전거를 타는 건</P>
+                                <p class="contents-font-25">어때요?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="bottom">
+                        <div id="bottom-header">
+                            <p id="bottom-title" class="title-font">활동 추천</p>
+                            <p id="bottom-contets-1" class="contents-font-semibold">오늘 나가기가</p>
+                            <p id="bottom-contets-2" class="contents-font-semibold">귀찮다면...</p>
+                        </div>
+                        <div id="bottom-body">
+                            <img id="reconmmendation-1-img" class="reconmmendation-img" src="../../assets/activity-tracking/cleaner.png">
+                            <div id="activity-recommendation-3" class="activity-recommendation">
+                                <p class="contents-font-30">거실 청소기를</p>
+                                <p class="contents-font-30">돌려볼까요?</p>
+                            </div>
+                            <img id="reconmmendation-2-img" class="reconmmendation-img" src="../../assets/activity-tracking/dish-wash.png">
+                            <div id="activity-recommendation-4" class="activity-recommendation">
+                                <p class="contents-font-30">밀린 설거지를</p>
+                                <p class="contents-font-30">끝내보는 건</p>
+                                <p class="contents-font-30">어떤가요?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Javascript -->
+        <script src="./sound-therapy.js"></script>
+    </body>
+</html>

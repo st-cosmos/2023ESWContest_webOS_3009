@@ -1,43 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Marigold Profile Page</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="profile-page.style.css">
-    </head>
-    <body>
-        <div id="my-section1">
-            <div class="section-item1" id="it1"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\leaf-filled.svg" style="width:50px; height:50px";>marigold</div>
-            <div class="section-item1" id="it2"> 마이페이지 </div>
+<head>
+    <title>Marigold</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+</head>
+<body>
+    <div class="marigold-page-template-1">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <img src="../../assets/leaf-filled.svg" class="leaf-title">
+                <span class="font-content-title">marigold</span>
+            </div>
+            <div id="body-top-c">
+                <span id="content-title" class="font-content-title">마이 페이지</span>
+            </div>
+            <div id="body-top-r">
+                <span class="material-symbols-outlined icon-style">notifications</span>
+            </div>
         </div>
-
-        <div id="my-section2">
-                <div class="section-item2" id="it4">
-                    <div id="profile-page-profile">
-                        <div id="profile-page-picture"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\profile-page\user.png" style="width:250px; height:250px;"></div>
-                        <div id="profile-page-name">홍길동 님</div>
-                        <div id="profile-page-birthday">2023.08.19</div>
+        <div class="body-mid">
+            <div id="profile-card-view-mode">
+                <div class="profile-card-left">
+                    <div class="profile-card-left-picture">
+                        <div class="img-background">
+                            <img id="img-profile-user" src="../../assets/profile-image.svg">
                         </div>
+                    </div>
+                    <div class="pc-name">이름 가져오는 중...</div>
                 </div>
-                <div class="section-item2" id="it5">
-                    <div id="profile-page-address">주소</div>
-                    <div id="profile-page-address-detail">서울특별시 노원구 공릉로232</div>
-                    <br>
-                    <div id="profile-page-phone">휴대전화</div>
-                    <div id="profile-page-phone-detail">010-1234-5678</div>
+                <div class="profile-card-right">
+                    <div id="pc-birthday" class="pc-content">
+                        <p class="content-title">생년월일</p>
+                        <p class="content-text">2023. 08. 19.</p>
+                    </div>
+                    <div id="pc-address" class="pc-content">
+                        <p class="content-title">주소</p>
+                        <p class="content-text">서울특별시 노원구 공릉로 232 1층</p>
+                    </div>
+                    <div id="pc-phone" class="pc-content">
+                        <p class="content-title">연락처</p>
+                        <p class="content-text">010-1234-5679</p>
+                    </div>
+                    <div id="pc-button">
+                        <button class="profile-edit-button">회원정보 수정</button>
+                    </div>
                 </div>
-                <div class="section-item2" id="it6">
-                    <div id="profile-page-edit">회원정보 수정</div>
-                </div>
+            </div>
         </div>
-
-        <div id="my-section3">
-            <div class="section-item3" id="it10"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\profile-page\green-circle.png"></div>
-            <div class="section-item3" id="it11"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\profile-page\white-circle.png"></div>
-            <div class="section-item3" id="it12"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\profile-page\white-circle.png"></div>
+        <div class="body-bottom">
+            <div id="nc-l" class="nav-circle-checked"></div>
+            <div id="nc-c" class="nav-circle-unchecked"></div>
+            <div id="nc-r" class="nav-circle-unchecked"></div>
         </div>
-
-        <!-- Javascript -->
-        <script src="./main-page.js"></script>
-    </body>
+    </div>
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
 </html>

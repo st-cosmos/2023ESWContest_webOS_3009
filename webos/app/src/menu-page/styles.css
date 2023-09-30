@@ -1,0 +1,161 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.marigold-page-template-1 {
+    height: 100vh;
+    background-color: #E6EFDD;
+
+    display: grid;
+    grid-template-rows: 100px calc(100vh - 200px) 100px;
+    grid-template-areas: "body-top"  "body-mid" "body-bottom";
+}
+
+.body-top {
+    /* background-color: #FFFFFF; */
+    grid-area: body-top;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 0.8fr;
+    grid-template-areas: "body-top-l body-top-c body-top-r";
+}
+
+#body-top-l {
+    grid-area: body-top-l;
+
+    display: flex;
+    align-items: center;
+}
+
+.leaf-title {
+    width:48px;
+    height:48px;
+}
+
+.font-content-title {
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#body-top-c {
+    grid-area: body-top-c;
+
+    display: grid;
+    place-items: center center;
+}
+
+#body-top-r {
+    grid-area: body-top-r;
+
+    display: grid;
+    place-items: center end;
+}
+
+.material-symbols-outlined.icon-style {
+    font-size: 48px;
+}
+
+.body-mid {
+    grid-area: body-mid;
+    padding: 20px 100px 20px 100px;
+
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+}
+
+.menu-button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 40px;
+    margin-bottom: 40px;
+}
+
+.menu-button {
+    height: 140px;
+    /* border-color: #000000;
+    border-style: solid;
+    border-width: 2px; */
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    padding: 20px;
+
+    display: grid;
+    grid-template-rows: 48px 1fr;
+}
+
+.menu-button:hover {
+    box-shadow: 0px 8px 8px 0px #00000040;
+}
+
+.menu-button:active {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    background-color: #EFF4EF;
+}
+
+.mb-title {
+    display: flex;
+    align-items: center;
+}
+
+.font-mb-title {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.link-to-app {
+    display: none;
+}
+
+.mb-icon {
+    display: grid;
+    place-items: end end;
+}
+
+.body-bottom {
+    /* background-color: #FFFFFF; */
+    grid-area: body-bottom;
+
+    display: grid;
+    grid-template-columns: 1fr 36px 72px 36px 72px 36px 1fr;
+    grid-template-rows: 1fr 36px 1fr;
+    grid-template-areas: 
+        ". . . . . . . "
+        ". nc-l . nc-c . nc-r ."
+        ". . . . . . . ";
+}
+
+#nc-l {
+    grid-area: nc-l;
+}
+
+#nc-c {
+    grid-area: nc-c;
+}
+
+#nc-r {
+    grid-area: nc-r;
+}
+
+.nav-circle-unchecked {
+    width: 36px;
+    height: 36px;
+    background-color: #FFFFFF; /* Choose your desired background color */
+    border-radius: 50%; /* This makes the div circular */
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.nav-circle-checked {
+    width: 36px;
+    height: 36px;
+    background-color: #BAE291; /* Choose your desired background color */
+    border-radius: 50%; /* This makes the div circular */
+    box-shadow: 0px 4px 4px 0px #00000040;
+}

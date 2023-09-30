@@ -1,0 +1,216 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.marigold-page-template-1 {
+    height: 100vh;
+    background-color: #E6EFDD;
+
+    display: grid;
+    grid-template-rows: 100px calc(100vh - 200px) 100px;
+    grid-template-areas: "body-top"  "body-mid" "body-bottom";
+}
+
+.body-top {
+    /* background-color: #FFFFFF; */
+    grid-area: body-top;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 0.8fr;
+    grid-template-areas: "body-top-l body-top-c body-top-r";
+}
+
+#body-top-l {
+    grid-area: body-top-l;
+
+    display: flex;
+    align-items: center;
+}
+
+.leaf-title {
+    width:48px;
+    height:48px;
+}
+
+.font-content-title {
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#body-top-c {
+    grid-area: body-top-c;
+
+    display: grid;
+    place-items: center center;
+}
+
+#body-top-r {
+    grid-area: body-top-r;
+
+    display: grid;
+    place-items: center end;
+}
+
+.material-symbols-outlined.icon-style {
+    font-size: 48px;
+}
+
+.body-mid {
+    padding: 20px 100px 20px 100px;
+}
+
+#profile-card-view-mode {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    height: calc(100% - 40px);
+
+    display: grid;
+    grid-template-columns: 32vh 40px 1fr;
+    grid-template-areas: 
+        "profile-card-left . profile-card-right";
+}
+
+.profile-card-left {
+    grid-area: profile-card-left;
+}
+
+.profile-card-left-picture {
+    display: flex;
+    justify-content: center;
+}
+
+.img-background {
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: #ffffff;
+    margin: 20px;
+}
+
+#img-profile-user {
+    width: 14vh;
+    height: 14vh;
+}
+
+.pc-name {
+    text-align: center;
+    color: #000;
+    font-family: Inter;
+    font-size: 3vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.profile-card-right {
+    grid-area: profile-card-right;
+    padding-left: 20px;
+    border-left: 2px solid #b2b2b2;
+    position: relative;
+}
+
+.pc-content {
+    margin-bottom: 40px;
+}
+
+.content-title {
+    font-size: 3vh;
+    font-family: Inter;
+    font-style: normal;
+    line-height: normal;
+    font-weight: 700;
+    margin: 0px 0px 10px 0px;
+    /* margin-bottom: 10px; */
+}
+
+.content-text {
+    font-size: 3vh;
+    font-family: Inter;
+    font-style: normal;
+    line-height: normal;
+    font-weight: 100;
+    margin: 0px;
+}
+
+#pc-button {
+    display: grid;
+    place-items: end;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.profile-edit-button {
+    width: 200px;
+    height: 64px;
+    border-width: 0px;
+    border-radius: 10px;
+    background-color: #E6EFDD;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+    
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+}
+
+.profile-edit-button:hover {
+    box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.35);
+}
+
+.profile-edit-button:active {
+    background-color: #cfd7c7;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+}
+
+.body-bottom {
+    /* background-color: #FFFFFF; */
+    grid-area: body-bottom;
+
+    display: grid;
+    grid-template-columns: 1fr 36px 72px 36px 72px 36px 1fr;
+    grid-template-rows: 1fr 36px 1fr;
+    grid-template-areas: 
+        ". . . . . . . "
+        ". nc-l . nc-c . nc-r ."
+        ". . . . . . . ";
+}
+
+#nc-l {
+    grid-area: nc-l;
+}
+
+#nc-c {
+    grid-area: nc-c;
+}
+
+#nc-r {
+    grid-area: nc-r;
+}
+
+.nav-circle-unchecked {
+    width: 36px;
+    height: 36px;
+    background-color: #FFFFFF; /* Choose your desired background color */
+    border-radius: 50%; /* This makes the div circular */
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.nav-circle-checked {
+    width: 36px;
+    height: 36px;
+    background-color: #BAE291; /* Choose your desired background color */
+    border-radius: 50%; /* This makes the div circular */
+    box-shadow: 0px 4px 4px 0px #00000040;
+}

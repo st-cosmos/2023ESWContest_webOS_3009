@@ -1,34 +1,92 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Marigold Main Page</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="C:\Users\rne11\workspace\esc23-marigold\webos\app\src\menu-page\menu-page.css">
-    </head>
-    <body>
-        <div id="outer-section">            
-            <div id="my-section1">
-                <div class="section-item1" id="it1"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\leaf-filled.svg" style="width:50px; height:50px";>marigold</div>
-                <div class="section-item1" id="it2"> 홈 </div>
+<head>
+    <title>Marigold</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+</head>
+<body>
+    <div class="marigold-page-template-1">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <img src="../../assets/leaf-filled.svg" class="leaf-title">
+                <span class="font-content-title">marigold</span>
             </div>
-    
-            <div id="my-section2">
-                <div class="section-item2" id="it4">원격 상담<div id="home-picture"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\menu-page\consultation.png" style="width:100px; height:100px;"></div></div>
-                <div class="section-item2" id="it5">조명 테라피<div id="home-picture"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\menu-page\light-therapy.png" style="width:100px; height:100px;"></div></div>
-                <div class="section-item2" id="it6">사운드 테라피<div id="home-picture"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\menu-page\sound-therapy.png" style="width:100px; height:100px;"></div></div>
-                <div class="section-item2" id="it7">일기<div id="home-picture"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\menu-page\diary.png" style="width:100px; height:100px;"></div></div>
-                <div class="section-item2" id="it8">활동분석<div id="home-picture"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\menu-page\activity-analysis.png" style="width:100px; height:100px;"></div></div>
-                <div class="section-item2" id="it9">루틴<div id="home-picture"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\menu-page\routine.png" style="width:100px; height:100px;"></div></div>
+            <div id="body-top-c">
+                <span id="content-title" class="font-content-title">홈</span>
             </div>
-    
-            <div id="my-section3">
-                <div class="section-item3" id="it10"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\menu-page\white-circle.png"></div>
-                <div class="section-item3" id="it11"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\menu-page\white-circle.png"></div>
-                <div class="section-item3" id="it12"><img src="C:\Users\rne11\workspace\esc23-marigold\webos\app\assets\menu-page\green-circle.png"></div>
+            <div id="body-top-r">
+                <span class="material-symbols-outlined icon-style">notifications</span>
             </div>
         </div>
-
-        <!-- Javascript -->
-        <script src="./main-page.js"></script>
-    </body>
+        <div class="body-mid">
+            <div class="menu-button-group">
+                <div class="menu-button" onclick="onClinckMenuButton(this)">
+                    <div class="mb-title">
+                        <p class="font-mb-title">원격 상담</p>
+                    </div>
+                    <div class="mb-icon">
+                        <span class="material-symbols-outlined icon-style">support_agent</span>
+                    </div>
+                    <p class="link-to-app">../remote-consultation/remote-consultation.html</p>
+                </div>
+                <div class="menu-button" onclick="onClinckMenuButton(this)">
+                    <div class="mb-title">
+                        <p class="font-mb-title">조명 테라피</p>
+                    </div>
+                    <div class="mb-icon">
+                        <span class="material-symbols-outlined icon-style">backlight_high</span>
+                    </div>
+                    <p class="link-to-app">../light-therapy/light-therapy.html</p>
+                </div>
+                <div class="menu-button" onclick="onClinckMenuButton(this)">
+                    <div class="mb-title">
+                        <p class="font-mb-title">사운드 테라피</p>
+                    </div>
+                    <div class="mb-icon">
+                        <span class="material-symbols-outlined icon-style">music_note</span>
+                    </div>
+                    <p class="link-to-app">../sound-therapy/sound-therapy.html</p>
+                </div>
+            </div>
+            <div class="menu-button-group">
+                <div class="menu-button" onclick="onClinckMenuButton(this)">
+                    <div class="mb-title">
+                        <p class="font-mb-title">일기 쓰기</p>
+                    </div>
+                    <div class="mb-icon">
+                        <span class="material-symbols-outlined icon-style">book_5</span>
+                    </div>
+                    <p class="link-to-app">../diary/diary.html</p>
+                </div>
+                <div class="menu-button" onclick="onClinckMenuButton(this)">
+                    <div class="mb-title">
+                        <p class="font-mb-title">활동 분석</p>
+                    </div>
+                    <div class="mb-icon">
+                        <span class="material-symbols-outlined icon-style">monitoring</span>
+                    </div>
+                    <p class="link-to-app">../activity/activity.html</p>
+                </div>
+                <div class="menu-button" onclick="onClinckMenuButton(this)">
+                    <div class="mb-title">
+                        <p class="font-mb-title">루틴 관리</p>
+                    </div>
+                    <div class="mb-icon">
+                        <span class="material-symbols-outlined icon-style">checklist</span>
+                    </div>
+                    <p class="link-to-app">../routine/routine.html</p>
+                </div>
+            </div>
+        </div>
+        <div class="body-bottom">
+            <div id="nc-l" class="nav-circle-unchecked"></div>
+            <div id="nc-c" class="nav-circle-unchecked"></div>
+            <div id="nc-r" class="nav-circle-checked"></div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
 </html>

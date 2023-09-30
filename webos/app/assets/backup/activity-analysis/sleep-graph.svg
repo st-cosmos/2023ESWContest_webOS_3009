@@ -1,0 +1,21 @@
+<svg width="237" height="235" viewBox="0 0 237 235" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Pie Chart">
+<path id="Ellipse 2" d="M118.5 4C139.633 4 160.351 9.79736 178.363 20.7476C196.374 31.6977 210.974 47.3723 220.552 66.0335C230.129 84.6943 234.312 105.616 232.641 126.485C230.969 147.354 223.507 167.36 211.077 184.29C198.646 201.22 181.731 214.414 162.2 222.408C142.668 230.403 121.285 232.884 100.418 229.576C79.5511 226.268 60.0173 217.3 43.9775 203.67C27.938 190.039 16.0181 172.278 9.5324 152.354" stroke="url(#paint0_linear_17_61)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Ellipse 3" d="M118.5 18.6875C134.535 18.6875 150.331 22.5214 164.55 29.8624C178.769 37.2034 190.99 47.834 200.178 60.8501" stroke="url(#paint1_linear_17_61)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Ellipse 4" d="M118.5 33.375C141.021 33.375 162.613 42.2463 178.528 58.0266" stroke="url(#paint2_linear_17_61)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_17_61" x1="49.375" y1="17.1354" x2="186.026" y2="220.165" gradientUnits="userSpaceOnUse">
+<stop stop-color="#A07AF0"/>
+<stop offset="1" stop-color="#8653F2"/>
+</linearGradient>
+<linearGradient id="paint1_linear_17_61" x1="58.0156" y1="29.681" x2="177.585" y2="207.332" gradientUnits="userSpaceOnUse">
+<stop stop-color="#B0F07A"/>
+<stop offset="1" stop-color="#7AF0A9"/>
+</linearGradient>
+<linearGradient id="paint2_linear_17_61" x1="66.6562" y1="42.2266" x2="169.144" y2="194.499" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F28F7A"/>
+<stop offset="1" stop-color="#F27A88"/>
+</linearGradient>
+</defs>
+</svg>
