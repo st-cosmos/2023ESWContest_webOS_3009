@@ -1,0 +1,48 @@
+
+#grid {
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    gap: 20px;
+    grid-template-areas: 
+    "head"
+    "body"
+  }
+
+/*head*/
+#header {
+    display: grid;
+    grid-area: head;
+    grid-template-columns: 20px 1fr 1fr 1fr 20px;
+    align-items: center;
+    grid-template-areas: 
+    " . back_button page_title . ."
+}
+
+#back_button {
+    grid-area: back_button;
+    background-color: white;
+    border: none;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+#page_title{
+    display: grid;
+    grid-area: page_title;
+    place-items: center;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/*body*/
+#body_section{
+    display: grid;
+    grid-area: body;
+    grid-template-columns: 20px 1fr 20px 1fr 20px;
+    align-items: center;
+    grid-template-areas: 
+    " . left_section .  right_section . "
+}
