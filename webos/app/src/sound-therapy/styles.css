@@ -60,6 +60,14 @@ body {
     font-size: 48px;
 }
 
+.material-icons.icon-bell-style:hover {
+    background-color: #EEEEEE;
+}
+
+.material-icons.icon-bell-style:active {
+    background-color: #F2F2F2;
+}
+
 .body-mid {
     grid-area: body-mid;
     padding: 20px 20px 20px 20px;
