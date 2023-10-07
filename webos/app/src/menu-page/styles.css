@@ -75,7 +75,8 @@ body {
 }
 
 .menu-button {
-    height: 140px;
+    /* box-sizing: border-box; */
+    height: 160px;
     /* border-color: #000000;
     border-style: solid;
     border-width: 2px; */
