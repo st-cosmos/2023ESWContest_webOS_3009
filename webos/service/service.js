@@ -4,13 +4,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+const pkgInfo = require('./package.json');
+const Service = require('webos-service');
+
 const express = require("express");
 const cors = require('cors');
 const http = require("http");
 const socketio = require("socket.io");
-
-const pkgInfo = require('./package.json');
-const Service = require('webos-service');
 
 const service = new Service(pkgInfo.name); // Create service by service name on package.json
 const logHeader = `[${pkgInfo.name}]`;
@@ -43,9 +43,9 @@ const setLed = (r, g, b) => {
     io.emit("setLed", cmd);
 };
 
-const socketHandler = (socket) => {
+// const socketHandler = (socket) => {
 
-};
+// };
 
 service.register("setLed", (message)=>{
     const color = message.payload;
@@ -58,42 +58,47 @@ service.register("setLed", (message)=>{
 });
 
 service.register("startServer", (message) => {
-    let res;
-    try {
-        io.sockets.on("connection", socketHandler);
-        server.listen(PORT, HOSTNAME, () => console.log(`Server is running on port http://${HOSTNAME}:${PORT}`));
+    // let res;
+    // try {
+    //     io.sockets.on("connection", socketHandler);
+    //     server.listen(PORT, HOSTNAME, () => console.log(`Server is running on port http://${HOSTNAME}:${PORT}`));
 
-        // ==== heartbeat 구독
-        const sub = service.subscribe(`luna://${pkgInfo.name}/heartbeat`, {subscribe: true});
-        const max = 500;
-        let count = 0;
-        sub.addListener("response", (msg) => {
-            console.log(JSON.stringify(msg.payload));
-            if (++count >= max) {
-                sub.cancel();
-                setTimeout(()=>{
-                    console.log(max+" responses received, exiting...");
-                    process.exit(0);
-                }, 1000);
-            }
-        });
+    //     // ==== heartbeat 구독
+    //     const sub = service.subscribe(`luna://${pkgInfo.name}/heartbeat`, {subscribe: true});
+    //     const max = 500;
+    //     let count = 0;
+    //     sub.addListener("response", (msg) => {
+    //         console.log(JSON.stringify(msg.payload));
+    //         if (++count >= max) {
+    //             sub.cancel();
+    //             setTimeout(()=>{
+    //                 console.log(max+" responses received, exiting...");
+    //                 process.exit(0);
+    //             }, 1000);
+    //         }
+    //     });
 
-        // === 서비스 응답
-        res = {
-            returnValue: true,
-            Response: "Server Open",
-        };
-    }
-    catch(error) {
-        res = {
-            returnValue: true,
-            Response: `[Start Server error]${error}`,
-        };
-    }
-    finally {
-        // === 서비스 응답
-        message.respond(res);
-    }    
+    //     // === 서비스 응답
+    //     res = {
+    //         returnValue: true,
+    //         Response: "Server Open",
+    //     };
+    // }
+    // catch(error) {
+    //     res = {
+    //         returnValue: false,
+    //         Response: `[Start Server error]${error}`,
+    //     };
+    // }
+    // finally {
+    //     // === 서비스 응답
+    //     message.respond(res);
+    // }
+    console.log("Start server"); 
+    message.respond({
+        returnValue: false,
+        Response: `[Start Server error]${error}`,
+    });   
 });
 
 // === setup hearbeat
