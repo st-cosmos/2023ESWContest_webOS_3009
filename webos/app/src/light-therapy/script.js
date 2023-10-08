@@ -24,6 +24,21 @@ const navClick = (element) => {
     }
 };
 
+// ===
+const bridge = new WebOSServiceBridge();
+
+const setLed = (r, g, b) => {
+    const url = "luna://com.marigold.app.service/setLed";
+    const params = JSON.stringify({
+        "r" : r,
+        "g" : g,
+        "b" : b,
+    });
+
+    console.log('[LS Call]', url, params);
+    bridge.call(url, params);
+};
+
 let hslState = {
     h: 180,
     s: 100,
@@ -64,52 +79,39 @@ const cvtRGBToHSL = (rVal, gVal, bVal) => {
         s: Math.round(s * 100),
         l: Math.round(l * 100)
     };
-}
+};
 
 const cvtHSLtoRGB = (hVal, sVal, lVal) => {
-    // Normalize HSL values
-    let h = (hVal % 360 + 360) % 360; // Ensure h is between 0 and 359
-    let s = Math.min(100, Math.max(0, sVal)); // Ensure s is between 0 and 100
-    let l = Math.min(100, Math.max(0, lVal)); // Ensure l is between 0 and 100
-  
-    // Convert HSL to RGB
-    const c = (1 - Math.abs(2 * l - 1)) * s / 100;
-    const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-    const m = l / 100 - c / 2;
-  
     let r, g, b;
-  
-    if (h >= 0 && h < 60) {
-        r = c;
-        g = x;
-        b = 0;
-    } else if (h >= 60 && h < 120) {
-        r = x;
-        g = c;
-        b = 0;
-    } else if (h >= 120 && h < 180) {
-        r = 0;
-        g = c;
-        b = x;
-    } else if (h >= 180 && h < 240) {
-        r = 0;
-        g = x;
-        b = c;
-    } else if (h >= 240 && h < 300) {
-        r = x;
-        g = 0;
-        b = c;
-    } else {
-        r = c;
-        g = 0;
-        b = x;
-    }
-  
-    r = Math.round((r + m) * 255);
-    g = Math.round((g + m) * 255);
-    b = Math.round((b + m) * 255);
-  
-    return { r, g, b };
+    let h = hVal / 360;
+    let s = sVal / 100;
+    let l = lVal / 100;
+
+    if (s == 0) {
+        r = g = b = l; // achromatic
+      } else {
+        function hue2rgb(p, q, t) {
+          if (t < 0) t += 1;
+          if (t > 1) t -= 1;
+          if (t < 1/6) return p + (q - p) * 6 * t;
+          if (t < 1/2) return q;
+          if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+          return p;
+        }
+    
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+    
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
+      }
+
+      return {
+        "r": r * 255,
+        "g": g * 255,
+        "b": b * 255,
+      };
 };
 
 const rgbStringToValue = (rgbString) => {
@@ -142,6 +144,9 @@ const getLightnessValue = () => {
 const updatePreview = () => {
     const previewCircle = document.getElementById("preview-circle");
     previewCircle.style.backgroundColor = `hsl(${hslState.h}, ${hslState.s}%, ${hslState.l}%)`;
+
+    const colorRGB = cvtHSLtoRGB(hslState.h, hslState.s, hslState.l);
+    setLed(colorRGB.r, colorRGB.g, colorRGB.b);
 };
 
 const setHueSlider = () => {

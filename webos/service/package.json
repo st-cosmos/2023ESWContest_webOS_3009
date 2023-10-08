@@ -1,11 +1,16 @@
 {
   "name": "com.marigold.app.service",
   "version": "1.0.0",
-  "description": "Helloworld service",
-  "main": "helloworld_webos_service.js",
+  "description": "Marigold service",
+  "main": "service.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  }
 }

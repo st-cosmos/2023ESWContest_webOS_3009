@@ -118,7 +118,7 @@ body {
 }
 
 #main-section-passive {
-    /* display: none; */
+    display: none;
 }
 
 .main-section-inner {
