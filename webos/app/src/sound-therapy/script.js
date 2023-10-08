@@ -93,6 +93,7 @@ const createPlayerInnerHtml = (playItem) => {
     `;
 };
 
+
 const playMusic = (playItem) => {
     const container = document.getElementById('play-card');
 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marigold</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./n-styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+</head>
+<body>
+    <div class="marigold-page-template-2">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i>
+            </div>
+            <div id="body-top-c">
+                <span class="font-content-title">원격의료</span>
+            </div>
+            <div id="body-top-r">
+                <img src="../../assets/leaf-filled.svg" class="leaf-title">
+                <span class="font-content-title">marigold</span>
+            </div>
+        </div>
+
+        <div class="body-mid">
+            <nav id = navbar>
+                <ul>
+                    <li class="nav-item"><a onclick="showContent('mylist')">예약내역</a></li>
+                    <li class="nav-item"><a onclick="showContent('find')">상담사 찾기</a></li>
+                </ul>
+            </nav>
+
+        <div class="contents active" id="'mylist">
+            <div class="contents-list">
+                <div class="mid-name">예약 목록</div>
+
+                <div id="reservation-list"></div>
+                
+            </div>
+
+            <div class="contents-card">
+                <div class="mid-name">예약내역 상세</div>
+
+                <div id="reservation-card">
+                    <div class="card-place-holder">
+                        <p class="font-pc-place-holder">예약 내역을 클릭하세요</p>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <div class="contents" id="find">
+            <div class="contents-list">
+                <div class = "mid-top">
+                    <div class="mid-name">상담사 찾기</div>
+                </div>
+
+                <div id="counselor-list"></div>
+                
+            </div>
+
+            <div class="contents-card">
+                <div class="mid-name">프로필 상세</div>
+
+                <div id="profile-card">
+                    <div class="counselor-card-place-holder">
+                        <p class="font-pc-place-holder">상담사를 클릭하세요</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="./n-script.js"></script>
+</body>
+</html>
