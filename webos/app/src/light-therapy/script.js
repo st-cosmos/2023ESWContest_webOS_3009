@@ -377,3 +377,125 @@ window.onload = () => {
     updatePreview();
     updateDescription();
 };
+
+// === timer
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let timerInterval;
+
+const timerStart = () => {
+    const startButton = document.getElementById("timer-start-button");
+    startButton.style.display = 'none';
+
+    const resetButton = document.getElementById("timer-reset-button");
+    resetButton.style.display = 'inline-block';
+
+    hours = parseInt(document.getElementById('timer-hours').value);
+    minutes = parseInt(document.getElementById('timer-minutes').value);
+    seconds = parseInt(document.getElementById('timer-seconds').value);
+    if(!hours) hours = 0;
+    if(!minutes) minutes = 0;
+    if(!seconds) seconds = 0;
+    
+    setTimerInput(false);
+    updateTimerDisplay();
+
+    timerInterval = setInterval(updateTimer, 1000);
+};
+
+const timerReset = (isFinished) => {
+    if(isFinished) {
+        alert('타이머가 종료되었습니다.');
+    }
+
+    const startButton = document.getElementById("timer-start-button");
+    startButton.style.display = 'inline-block';
+
+    const resetButton = document.getElementById("timer-reset-button");
+    resetButton.style.display = 'none';
+
+    clearInterval(timerInterval);
+    seconds = 0;
+    minutes = 10;
+    hours = 0;
+    updateTimerDisplay();
+    setTimerInput(true);
+};
+
+const setTimerInput = (isAble) => {
+    document.getElementById("timer-hours").disabled = !isAble;
+    document.getElementById("timer-minutes").disabled = !isAble;
+    document.getElementById("timer-seconds").disabled = !isAble;
+};
+
+const updateTimer = () => {
+    seconds--;
+    if (seconds < 0) {
+        seconds = 59;
+        minutes--;
+        
+        if (minutes < 0) {
+            minutes = 59;
+            hours--;
+            if (hours < 0) {
+                timerReset(true);
+                return;
+            }
+        }
+    }
+    updateTimerDisplay();
+}
+
+//창바꾸기//
+const items = document.querySelectorAll('.preview-item');
+const resultTitle = document.getElementById('lightsettings-title');
+const switchInput = document.getElementById('switch2');
+const sliderInput = document.getElementById('slider2');
+
+const itemContents = [
+    { title: '아침 조명 설정' },
+    { title: '점심 조명 설정' },
+    { title: '저녁 조명 설정' },
+    { title: '취침 조명 설정' }
+];
+
+// 클릭 이벤트 핸들러를 모듈화하여 재사용
+function onItemClick(index) {
+    resultTitle.innerHTML = itemContents[index].title;
+
+    // 스위치와 슬라이더 초기값 설정
+    const itemSettings = JSON.parse(localStorage.getItem(`itemSettings_${index}`)) || {
+        switch: false,
+        sliderValue: 50
+    };
+
+    switchInput.checked = itemSettings.switch;
+    sliderInput.value = itemSettings.sliderValue;
+}
+
+let selectedIndex = -1; // 선택한 항목의 인덱스
+
+items.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        selectedIndex = index;
+        onItemClick(index); // 항목 클릭 시 초기 설정 적용
+    });
+});
+
+switchInput.addEventListener('change', () => {
+    if (selectedIndex !== -1) {
+        const itemSettings = {
+            switch: switchInput.checked,
+            sliderValue: sliderInput.value
+        };
+        localStorage.setItem(`itemSettings_${selectedIndex}`, JSON.stringify(itemSettings));
+    }
+});
+
+// 페이지 로드 시 선택된 항목에 대한 초기 설정 적용
+window.addEventListener('load', () => {
+    if (selectedIndex !== -1) {
+        onItemClick(selectedIndex);
+    }
+});

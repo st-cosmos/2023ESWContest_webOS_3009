@@ -35,10 +35,65 @@
             </div>
             <div class="main-section">
                 <div id="main-section-auto">
-                    <div class="main-section-inner">
+                    <div class="main-section-inner-auto">
                         <div class="msi-left auto">
+                            <div class="card-bg  msi-auto-timepicker">
+                                <div id="preview1" class="preview-item">
+                                    <p class="font-tb-title preview-item-title">아침</p>
+                                    <div id="preview-circle1" class="preview-circle preview-circle-arr"></div>
+                                </div>
+                                <div id="preview2" class="preview-item">
+                                    <p class="font-tb-title preview-item-title">점심</p>
+                                    <div id="preview-circle2" class="preview-circle preview-circle-arr"></div>
+                                </div>
+                                <div id="preview3" class="preview-item">
+                                    <p class="font-tb-title preview-item-title">저녁</p>
+                                    <div id="preview-circle3" class="preview-circle preview-circle-arr"></div>
+                                </div>
+                                <div id="preview4" class="preview-item">
+                                    <p class="font-tb-title preview-item-title">취침</p>
+                                    <div id="preview-circle4" class="preview-circle preview-circle-arr"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="msi-right auto">2</div>
+                        <div class="msi-right auto">
+                            <div class="card-bg msi-auto-lightsettings">
+                                <p id="lightsettings-title" class="font-tb-title">아침 조명 설정</p>
+                                <div id="onoff">
+                                    <p class="font-tb-title">On/Off</p>
+                                </div>
+                                <div id="pt-switch-2">
+                                    <label class="switch">
+                                        <input type="checkbox" id="switch2">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="tbt-hue">
+                                    <p class="font-tb-title">색상</p>
+                                </div>
+                                <div class="tbc-hue">
+                                    <div id="slider-hue-active" class="slider-ui slider-color-hue">
+                                        <input type="range" min="0" max="360" step="1">
+                                        <div class="bar"></div>
+                                        <div class="track">
+                                            <div class="value"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tbt-lightness">
+                                    <p class="font-tb-title">밝기</p>
+                                </div>
+                                <div class="tbc-lightness">
+                                    <div id="slider-lightness-active" class="slider-ui slider-color-lightness">
+                                        <input type="range" min="0" max="100" step="1">
+                                        <div class="bar"></div>
+                                        <div class="track">
+                                            <div class="value"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="main-section-passive">
@@ -87,14 +142,33 @@
                         </div>
                         <div class="msi-right passive">
                             <div class="card-bg msi-passive-timer">
-                                <p class="font-tb-title">조명 제어</p>
-                                <span class="material-symbols-outlined icon-style">dark_mode</span>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                </label>
-                                <span class="material-symbols-outlined icon-style">light_mode</span>
-                                <p class="font-tb-title">타이머</p>
+                                <div id="tbt-lightcontrol">
+                                    <p class="font-tb-title">조명 제어</p>
+                                </div>
+                                <div id="pt-switch">
+                                    <span class="material-symbols-outlined icon-style">dark_mode</span>
+                                    <label class="switch sw-margin">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span class="material-symbols-outlined icon-style">light_mode</span>
+                                </div>
+                                <div id="tbt-timer">
+                                    <p class="font-tb-title">타이머</p>
+                                </div>
+                                <div id="play-timer">
+                                    <div class="pt-counter">
+                                        <input type="number" class="timer-input" id="timer-hours" value="0" min="0" max="99">
+                                        <span class="timer-text">:</span>
+                                        <input type="number" class="timer-input" id="timer-minutes" value="10" min="0" max="59">
+                                        <span class="timer-text">:</span>
+                                        <input type="number" class="timer-input" id="timer-seconds" value="0" min="0" max="59">
+                                    </div>
+                                    <div class="pt-button">
+                                        <button class="style-start-button" id="timer-start-button" onclick="timerStart()">Start</button>
+                                        <button class="style-reset-button" id="timer-reset-button" onclick="timerReset()">Reset</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -104,5 +178,6 @@
     </div>
     <!-- Javascript -->
     <script src="./script.js"></script>
+    <script src="./script2.js"></script>
 </body>
 </html>
