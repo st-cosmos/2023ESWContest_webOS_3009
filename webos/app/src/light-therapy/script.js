@@ -641,6 +641,12 @@ const updateTimer = () => {
     updateTimerDisplay();
 };
 
+const updateTimerDisplay = () => {
+    document.getElementById("timer-hours").value = hours;
+    document.getElementById("timer-minutes").value = minutes;
+    document.getElementById("timer-seconds").value = seconds;
+}
+
 window.onload = () => {
     setHueSliderActive();
     setLightnessSliderActive();
