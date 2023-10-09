@@ -8,7 +8,6 @@ const routineItems = [
         "type": "Medicine",
         "title" : "아침 약 먹기",
         "time" : "오전 08:00",
-        "everyday" : true,
         "day" : ["월", "화", "수","목","금","토","일"],
         "isOnOff" : true,
     },
@@ -17,7 +16,6 @@ const routineItems = [
         "type": "어쩌구",
         "title" : "어쩌구 ",
         "time" : "오전 08:00",
-        "everyday" : false,
         "day" : ["월", "화", "수"],
         "isOnOff" : true,
     },
@@ -26,7 +24,6 @@ const routineItems = [
         "type": "Medicine",
         "title" : "저쩌구",
         "time" : "오전 08:00",
-        "everyday" : false,
         "day" : ["월", "화", "수"],
         "isOnOff" : true,
     },
@@ -35,7 +32,6 @@ const routineItems = [
         "type": "Medicine",
         "title" : "어쩌구 저쩌구",
         "time" : "오전 08:00",
-        "everyday" : false,
         "day" : ["월", "화", "수"],
         "isOnOff" : true,
     }
@@ -102,7 +98,7 @@ const createRoutineBlockInnerHtml = (routineItem) => {
         <div id="routine-picture">${routineItem.type}</div>
         <div id="routine-time">${routineItem.time}</div>
         <div id="routine-to-do">${routineItem.title}</div>
-        <div id="routine-everyday">${routineItem.everyday}</div>
+        <div id="routine-everyday">${routineItem.day}</div>
         <div id="routine-button">ON</div>
     </div>
     `;
@@ -125,3 +121,20 @@ window.onload = () => {
     clearRoutineBlocks();
     loadRoutineBlocks();
 };
+
+
+//입력창 설정
+const onClinckPlusButton = (element) => {
+    // + 버튼 클릭 시 입력창을 표시
+    document.getElementById('input-container').style.display = 'block';
+};
+
+const submitInput = () => {
+    // 입력창에 입력된 값을 가져와서 사용하거나 다른 처리 수행
+    const inputValue = document.getElementById('input-field').value;
+    console.log('Submitted input:', inputValue);
+
+    // 입력 완료 후 입력창 감추기
+    document.getElementById('input-container').style.display = 'none';
+};
+

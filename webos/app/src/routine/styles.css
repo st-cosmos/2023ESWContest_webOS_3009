@@ -115,7 +115,7 @@ body {
 }
 .routine-block{
     display:grid;
-    grid-template-columns: 1fr 2fr 3fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 3fr 3fr 1fr;
     grid-template-areas:
         "picture time to-do everyday button";
     border-radius: 40px;
@@ -149,7 +149,7 @@ body {
     grid-area: everyday;
     color: rgba(0, 0, 0, 0.59);
     font-family: Inter;
-    font-size: 35px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -197,7 +197,7 @@ body {
     grid-area: name;
 
     display:grid;
-    grid-template-columns: 4fr 1fr 8fr;
+    grid-template-columns: 4fr 0.2fr 8fr;
     grid-template-areas: 
         "a . b";
 }
@@ -211,7 +211,7 @@ body {
     grid-area: b;
     color: #000;
     font-family: Inter;
-    font-size: 32px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -256,7 +256,7 @@ body {
 #del-button,#save-button{
     border-radius: 20px;
     background: #E6EFDD;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
+
     color: #000;
     font-family: Inter;
     font-size: 30px;
@@ -265,4 +265,57 @@ body {
     line-height: normal;
     text-align: center;
     padding:5px;
+}
+
+
+/*입력창 css*/
+#input-container {
+    display: none;
+}
+.input-field{
+    border: 2px solid #333;
+    border-top: 0;
+    border-left:0;
+    border-right:0;
+    color: #000;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    width:100%;
+}
+
+.day-options {
+    display: flex;
+}
+
+.day-option {
+    margin-right: 10px;
+}
+
+/* 선택되지 않은 요일의 스타일 */
+.day-option input[type="checkbox"]:not(:checked) + label {
+    color: #888;
+    cursor: pointer;
+}
+
+/* 선택된 요일의 스타일 */
+.day-option input[type="checkbox"]:checked + label {
+    color: #000;
+    font-weight: bold;
+}
+
+/* 숨겨진 체크박스 버튼의 스타일 */
+.day-option input[type="checkbox"] {
+    position: absolute;
+    left: -9999px;
+}
+
+/* 스타일이 적용된 레이블에 대한 마우스 호버 효과 */
+.day-option label:hover {
+    text-decoration: underline;
+}
+
+button{
+    border:none;
 }
