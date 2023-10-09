@@ -4,16 +4,14 @@
     <title>Marigold</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./styles.css">
-    <link rel="stylesheet" type="text/css" href="./color-picker.css">
-    <link rel="stylesheet" type="text/css" href="./toggle-switch.css">
+    <link rel="stylesheet" type="text/css" href="./color-picker.style.css">
+    <link rel="stylesheet" type="text/css" href="./toggle-switch.stylse..css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" /> -->
 </head>
 <body>
     <div class="marigold-page-template-2">
         <div class="body-top">
-            <div id="body-top-l">                
-                <!-- <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i> -->
+            <div id="body-top-l">
                 <span class="material-symbols-outlined icon-back-style" onclick="goToMenuPage()">arrow_back_ios</span>
             </div>
             <div id="body-top-c">
@@ -33,14 +31,73 @@
                     <p class="text-nav-item">수동 모드</p>
                 </div>
             </div>
+
             <div class="main-section">
+                <!-- 자동 모드 설정 -->
                 <div id="main-section-auto">
-                    <div class="main-section-inner">
+                    <div class="main-section-inner-auto">
                         <div class="msi-left auto">
+                            <div class="card-bg  msi-auto-timepicker">
+                                <div id="atp01" class="preview-item" onclick="clickAutoSetItem(this)">
+                                    <p class="font-tb-title preview-item-title">아침</p>
+                                    <div id="pc-atp01" class="preview-circle preview-circle-arr"></div>
+                                </div>
+                                <div id="atp02" class="preview-item" onclick="clickAutoSetItem(this)">
+                                    <p class="font-tb-title preview-item-title">점심</p>
+                                    <div id="pc-atp02" class="preview-circle preview-circle-arr"></div>
+                                </div>
+                                <div id="atp03" class="preview-item" onclick="clickAutoSetItem(this)">
+                                    <p class="font-tb-title preview-item-title">저녁</p>
+                                    <div id="pc-atp03" class="preview-circle preview-circle-arr"></div>
+                                </div>
+                                <div id="atp04" class="preview-item" onclick="clickAutoSetItem(this)">
+                                    <p class="font-tb-title preview-item-title">취침</p>
+                                    <div id="pc-atp04" class="preview-circle preview-circle-arr"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="msi-right auto">2</div>
+                        <div class="msi-right auto">
+                            <div class="card-bg msi-auto-lightsettings">
+                                <p id="lightsettings-title" class="font-tb-title">아침 조명 설정</p>
+                                <div id="onoff">
+                                    <p class="font-tb-title">On/Off</p>
+                                </div>
+                                <div id="pt-switch-active">
+                                    <label class="switch">
+                                        <input type="checkbox" id="switch-active" onchange="toggleActiveSwitch(this)">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="tbt-hue">
+                                    <p class="font-tb-title">색상</p>
+                                </div>
+                                <div class="tbc-hue">
+                                    <div id="slider-hue-active" class="slider-ui slider-color-hue">
+                                        <input type="range" min="0" max="360" step="1">
+                                        <div class="bar"></div>
+                                        <div class="track">
+                                            <div class="value"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tbt-lightness">
+                                    <p class="font-tb-title">밝기</p>
+                                </div>
+                                <div class="tbc-lightness">
+                                    <div id="slider-lightness-active" class="slider-ui slider-color-lightness">
+                                        <input type="range" min="0" max="100" step="1">
+                                        <div class="bar"></div>
+                                        <div class="track">
+                                            <div class="value"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- 수동 모드 -->
                 <div id="main-section-passive">
                     <div class="main-section-inner">
                         <div class="msi-left passive">
@@ -87,21 +144,42 @@
                         </div>
                         <div class="msi-right passive">
                             <div class="card-bg msi-passive-timer">
-                                <p class="font-tb-title">조명 제어</p>
-                                <span class="material-symbols-outlined icon-style">dark_mode</span>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                </label>
-                                <span class="material-symbols-outlined icon-style">light_mode</span>
-                                <p class="font-tb-title">타이머</p>
+                                <div id="tbt-lightcontrol">
+                                    <p class="font-tb-title">조명 제어</p>
+                                </div>
+                                <div id="pt-switch">
+                                    <span class="material-symbols-outlined icon-style">dark_mode</span>
+                                    <label class="switch sw-margin">
+                                        <input type="checkbox">
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span class="material-symbols-outlined icon-style">light_mode</span>
+                                </div>
+                                <div id="tbt-timer">
+                                    <p class="font-tb-title">타이머</p>
+                                </div>
+                                <div id="play-timer">
+                                    <div class="pt-counter">
+                                        <input type="number" class="timer-input" id="timer-hours" value="0" min="0" max="99">
+                                        <span class="timer-text">:</span>
+                                        <input type="number" class="timer-input" id="timer-minutes" value="10" min="0" max="59">
+                                        <span class="timer-text">:</span>
+                                        <input type="number" class="timer-input" id="timer-seconds" value="0" min="0" max="59">
+                                    </div>
+                                    <div class="pt-button">
+                                        <button class="style-start-button" id="timer-start-button" onclick="timerStart()">Start</button>
+                                        <button class="style-reset-button" id="timer-reset-button" onclick="timerReset()">Reset</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- 자동/수동 모드 끝 -->
             </div>
         </div>
     </div>
+
     <!-- Javascript -->
     <script src="./script.js"></script>
 </body>

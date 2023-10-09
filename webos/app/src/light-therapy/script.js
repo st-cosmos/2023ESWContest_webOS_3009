@@ -1,8 +1,103 @@
+let selectedNavId;
+let selectedAutoSettingId = "atp01";
+let selectedPresetItem;
+
+let hslState = {
+    h: 180,
+    s: 100,
+    l: 50,
+};
+
+let hslStateActive = {
+    h: 180,
+    s: 100,
+    l: 50,
+};
+
+const colorDescriptions = {
+    red : {
+        title: '붉은 계열',
+        text: '붉은 색은 어쩌구 저쩌구',
+    },
+    yellow : {
+        title: '노랑 계열',
+        text: '노란 색은 어쩌구 저쩌구',
+    },
+    green : {
+        title: '초록 계열',
+        text: '초록 색은 어쩌구 저쩌구',
+    },
+    blue : {
+        title: '푸른 계열',
+        text: '푸른 색은 어쩌구 저쩌구',
+    },
+    white : {
+        title: '백색 계열',
+        text: '백색은 어쩌구 저쩌구',
+    },
+};
+
+const colorPresetList = [
+    {
+        id: 'cp0',
+        hslString: `hsl(53, 100%, 87%)`,
+    },
+    {
+        id: 'cp1',
+        hslString: `hsl(103, 100%, 79%)`,
+    },
+    {
+        id: 'cp2',
+        hslString: `hsl(169, 100%, 79%)`,
+    },
+    {
+        id: 'cp3',
+        hslString: `hsl(237, 100%, 66%)`,
+    },
+    {
+        id: 'cp4',
+        hslString: `hsl(55, 100%, 94%)`,
+    },
+];
+
+const autoSettingItems = [
+    {
+        id: "atp01",
+        timeDescription: "아침",
+        h: 180,
+        s: 100,
+        l: 50,
+        isOnOff: false,
+    },
+    {
+        id: "atp02",
+        timeDescription: "점심",
+        h: 10,
+        s: 100,
+        l: 50,
+        isOnOff: true,
+    },
+    {
+        id: "atp03",
+        timeDescription: "저녁",
+        h: 200,
+        s: 100,
+        l: 50,
+        isOnOff: true,
+    },
+    {
+        id: "atp04",
+        timeDescription: "취침",
+        h: 180,
+        s: 100,
+        l: 50,
+        isOnOff: false,
+    },
+];
+
 const goToMenuPage = () => {
     window.location.href = "../menu-page/menu-page.html";
 };
-
-let selectedNavId;
 
 const navClick = (element) => {
     if(selectedNavId) {
@@ -22,12 +117,6 @@ const navClick = (element) => {
         document.getElementById("main-section-auto").style.display = "none";
         document.getElementById("main-section-passive").style.display = "block";
     }
-};
-
-let hslState = {
-    h: 180,
-    s: 100,
-    l: 50,
 };
 
 const cvtRGBToHSL = (rVal, gVal, bVal) => {
@@ -64,7 +153,7 @@ const cvtRGBToHSL = (rVal, gVal, bVal) => {
         s: Math.round(s * 100),
         l: Math.round(l * 100)
     };
-}
+};
 
 const cvtHSLtoRGB = (hVal, sVal, lVal) => {
     // Normalize HSL values
@@ -125,7 +214,7 @@ const rgbStringToValue = (rgbString) => {
     } else {
         throw new Error("Invalid RGB string format");
     }
-}
+};
 
 const getHueValue = () => {
     const hueSlider = document.getElementById("slider-hue");
@@ -227,8 +316,6 @@ const setLightnessSlider = () => {
 	});
 };
 
-let selectedPresetItem;
-
 const updateHueSlider = () => {
     const hueSlider = document.getElementById("slider-hue");
 	const input = hueSlider.querySelector("input[type=range]");
@@ -284,29 +371,6 @@ const presetClick = (element) => {
     }
 }
 
-const colorPresetList = [
-    {
-        id: 'cp0',
-        hslString: `hsl(53, 100%, 87%)`,
-    },
-    {
-        id: 'cp1',
-        hslString: `hsl(103, 100%, 79%)`,
-    },
-    {
-        id: 'cp2',
-        hslString: `hsl(169, 100%, 79%)`,
-    },
-    {
-        id: 'cp3',
-        hslString: `hsl(237, 100%, 66%)`,
-    },
-    {
-        id: 'cp4',
-        hslString: `hsl(55, 100%, 94%)`,
-    },
-];
-
 const getColorPresetItemInnerHtml = (colorPreset) => {
     return `
     <div id="${colorPreset.id}" class="color-preset-item" onclick="presetClick(this)"></div>
@@ -320,29 +384,6 @@ const setColorPreset = () => {
         container.innerHTML += getColorPresetItemInnerHtml(colorPreset);
         document.getElementById(colorPreset.id).style.backgroundColor = colorPreset.hslString;
     });
-};
-
-const colorDescriptions = {
-    red : {
-        title: '붉은 계열',
-        text: '붉은 색은 어쩌구 저쩌구',
-    },
-    yellow : {
-        title: '노랑 계열',
-        text: '노란 색은 어쩌구 저쩌구',
-    },
-    green : {
-        title: '초록 계열',
-        text: '초록 색은 어쩌구 저쩌구',
-    },
-    blue : {
-        title: '푸른 계열',
-        text: '푸른 색은 어쩌구 저쩌구',
-    },
-    white : {
-        title: '백색 계열',
-        text: '백색은 어쩌구 저쩌구',
-    },
 };
 
 const setColorDescription = (des) => {
@@ -370,7 +411,240 @@ const updateDescription = () => {
     }
 };
 
+const initAutoSettings = () => {
+    document.getElementById(selectedAutoSettingId).classList.toggle("active");
+    autoSettingItems.forEach(setting => {
+        document.getElementById(`pc-${setting.id}`).style.backgroundColor = `hsl(${setting.h}, ${setting.s}%, ${setting.l}%)`;
+    });
+};
+
+const clickAutoSetItem = (element) => {
+    document.getElementById(selectedAutoSettingId).classList.toggle("active");
+    selectedAutoSettingId = element.id;
+    document.getElementById(selectedAutoSettingId).classList.toggle("active");
+
+    let setting = autoSettingItems.find(item => item.id == element.id);
+    document.getElementById("lightsettings-title").innerText = `${setting.timeDescription} 조명 설정`;
+
+    hslStateActive.h = setting.h;
+    hslStateActive.s = setting.s;
+    hslStateActive.l = setting.l;
+    updateSwitchActive(setting.isOnOff);
+    updateHueSliderActive(hslStateActive.h);
+    updateLightnessSliderActive(hslStateActive.l);
+};
+
+const getHueValueActive = () => {
+    const hueSlider = document.getElementById("slider-hue-active");
+    const input = hueSlider.querySelector("input[type=range]");
+    return parseInt(input.value);
+};
+
+const getLightnessValueActive = () => {
+    const lightnessSlider = document.getElementById("slider-lightness-active");
+    const input = lightnessSlider.querySelector("input[type=range]");
+    return parseInt(input.value);
+};
+
+const updatePreviewActive = (id, h, s, l) => {
+    const previewCircle = document.getElementById(id);
+    previewCircle.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+};
+
+const setHueSliderActive = () => {
+    const hueSlider = document.getElementById("slider-hue-active");
+	const input = hueSlider.querySelector("input[type=range]");
+	const min = input.getAttribute("min");
+	const max = input.getAttribute("max");
+	const valueElem = hueSlider.querySelector(".value");
+
+	const setValueElem = () => {
+        let h = parseInt(input.value);
+        valueElem.style.backgroundColor = `hsl(${h}, 100%, 50%)`;
+		
+        let percent = (input.value - min) / (max - min) * 100;
+		valueElem.style.left = percent + "%";
+	}
+	setValueElem();
+
+	input.addEventListener("input", setValueElem);
+	input.addEventListener("mousedown", () => {
+		valueElem.classList.add("up");
+	});
+    input.addEventListener("touchstart", () => {
+        valueElem.classList.add("up");
+	});
+    input.addEventListener("mouseup", () => {
+        valueElem.classList.remove("up");
+        // console.log(getHueValue());
+        hslStateActive.h = getHueValueActive();
+        updatePreviewActive(`pc-${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
+        // updateDescription();
+        // presetClick();
+    });
+	input.addEventListener("touchend", () => {
+		valueElem.classList.remove("up");
+        // console.log(getHueValue());
+        hslStateActive.h = getHueValueActive();
+        updatePreviewActive(`pc-${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
+        // updateDescription();
+        // presetClick();
+	});
+};
+
+const setLightnessSliderActive = () => {
+    const lightnessSlider = document.getElementById("slider-lightness-active");
+	const input = lightnessSlider.querySelector("input[type=range]");
+	const min = input.getAttribute("min");
+	const max = input.getAttribute("max");
+	const valueElem = lightnessSlider.querySelector(".value");
+
+	const setValueElem = () => {
+        let value = parseInt(input.value);
+        valueElem.innerText = value;
+        // valueElem.style.backgroundColor = `rgb(${value}, ${value}, ${value})`;
+		
+        let percent = (input.value - min) / (max - min) * 100;
+		valueElem.style.left = percent + "%";
+	}
+	setValueElem();
+
+	input.addEventListener("input", setValueElem);
+	input.addEventListener("mousedown", () => {
+		valueElem.classList.add("up");
+	});
+    input.addEventListener("touchstart", () => {
+		valueElem.classList.add("up");
+	});
+	input.addEventListener("mouseup", () => {
+		valueElem.classList.remove("up");
+        // console.log(getLightnessValue());
+        hslStateActive.l = getLightnessValueActive();
+        updatePreviewActive(`pc-${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
+        // updateDescription();
+        // presetClick();
+	});
+    input.addEventListener("touchend", () => {
+		valueElem.classList.remove("up");
+        // console.log(getLightnessValue());
+        hslStateActive.l = getLightnessValueActive();
+        updatePreviewActive(`pc-${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
+        // updateDescription();
+        // presetClick();
+	});
+};
+
+const updateSwitchActive = (isOnOff) => {
+    // console.log(document.getElementById("switch-active").checked);
+    document.getElementById("switch-active").checked = isOnOff;
+};
+
+const updateHueSliderActive = (value) => {
+    const hueSlider = document.getElementById("slider-hue-active");
+	const input = hueSlider.querySelector("input[type=range]");
+	const min = input.getAttribute("min");
+	const max = input.getAttribute("max");
+	const valueElem = hueSlider.querySelector(".value");
+    input.value = value;
+    // let percent = (input.value - min) / (max - min) * 100;
+    // valueElem.style.left = percent + "%";
+    const event = new Event("input", {});
+    input.dispatchEvent(event);
+};
+
+const updateLightnessSliderActive = (value) => {
+    const lightnessSlider = document.getElementById("slider-lightness-active");
+	const input = lightnessSlider.querySelector("input[type=range]");
+    const min = input.getAttribute("min");
+	const max = input.getAttribute("max");
+    const valueElem = lightnessSlider.querySelector(".value");
+    input.value = value;
+    // let percent = (input.value - min) / (max - min) * 100;
+    // valueElem.style.left = percent + "%";
+    const event = new Event("input", {});
+    input.dispatchEvent(event);
+};
+
+const toggleActiveSwitch = (element) => {
+    // console.log(document.getElementById(element.id).checked);
+    let isOnOff = document.getElementById(element.id).checked;
+    let setting = autoSettingItems.find(item => item.id == selectedAutoSettingId);
+    setting.isOnOff = isOnOff;
+};
+
+// === timer ===
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let timerInterval;
+
+const timerStart = () => {
+    const startButton = document.getElementById("timer-start-button");
+    startButton.style.display = 'none';
+
+    const resetButton = document.getElementById("timer-reset-button");
+    resetButton.style.display = 'inline-block';
+
+    hours = parseInt(document.getElementById('timer-hours').value);
+    minutes = parseInt(document.getElementById('timer-minutes').value);
+    seconds = parseInt(document.getElementById('timer-seconds').value);
+    if(!hours) hours = 0;
+    if(!minutes) minutes = 0;
+    if(!seconds) seconds = 0;
+    
+    setTimerInput(false);
+    updateTimerDisplay();
+
+    timerInterval = setInterval(updateTimer, 1000);
+};
+
+const timerReset = (isFinished) => {
+    if(isFinished) {
+        alert('타이머가 종료되었습니다.');
+    }
+
+    const startButton = document.getElementById("timer-start-button");
+    startButton.style.display = 'inline-block';
+
+    const resetButton = document.getElementById("timer-reset-button");
+    resetButton.style.display = 'none';
+
+    clearInterval(timerInterval);
+    seconds = 0;
+    minutes = 10;
+    hours = 0;
+    updateTimerDisplay();
+    setTimerInput(true);
+};
+
+const setTimerInput = (isAble) => {
+    document.getElementById("timer-hours").disabled = !isAble;
+    document.getElementById("timer-minutes").disabled = !isAble;
+    document.getElementById("timer-seconds").disabled = !isAble;
+};
+
+const updateTimer = () => {
+    seconds--;
+    if (seconds < 0) {
+        seconds = 59;
+        minutes--;
+        
+        if (minutes < 0) {
+            minutes = 59;
+            hours--;
+            if (hours < 0) {
+                timerReset(true);
+                return;
+            }
+        }
+    }
+    updateTimerDisplay();
+};
+
 window.onload = () => {
+    setHueSliderActive();
+    setLightnessSliderActive();
+    initAutoSettings();
     setColorPreset();
     setHueSlider();
     setLightnessSlider();

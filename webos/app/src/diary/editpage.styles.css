@@ -1,0 +1,153 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.marigold-page-template-2 {
+    height: 100vh;
+    background-color: #F2F2F2;
+
+    display: grid;
+    grid-template-rows: 100px calc(100vh - 100px);
+    grid-template-areas: "body-top"  "body-mid";
+}
+
+.body-top {
+    background-color: #FFFFFF;
+    grid-area: body-top;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 0.8fr;
+    grid-template-areas: "body-top-l body-top-c body-top-r";
+}
+
+#body-top-l {
+    grid-area: body-top-l;
+
+    display: grid;
+    place-items: center start;
+}
+
+.leaf-title {
+    width:48px;
+    height:48px;
+}
+
+.font-content-title {
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#body-top-c {
+    grid-area: body-top-c;
+
+    display: grid;
+    place-items: center center;
+}
+
+#body-top-r {
+    grid-area: body-top-r;
+
+    display: flex;
+    align-items: center end;
+    justify-content: flex-end;
+}
+
+.material-icons.icon-bell-style {
+    font-size: 48px;
+}
+
+.material-icons.icon-bell-style:hover {
+    background-color: #EEEEEE;
+}
+
+.material-icons.icon-bell-style:active {
+    background-color: #F2F2F2;
+}
+
+.body-mid {
+    grid-area: body-mid;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr 320px;
+    grid-template-areas:
+        "text-date-box button-group"
+        "diary-input-box diary-input-box";
+}
+
+#text-date-box {
+    grid-area: text-date-box;
+    display: grid;
+    place-items: center start;
+}
+
+.font-date {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0px;
+}
+
+.action-button {
+    width: 80px;
+    height: 40px;
+    border-width: 0px;
+    border-radius: 2px;
+    font-weight: 700;
+    box-shadow: 0px 4px 4px #00000040;
+}
+
+.action-button:hover {
+    box-shadow: 0px 8px 8px #00000040;
+}
+
+.cancle-button {
+    margin-right: 20px;
+    background-color: rgb(214, 214, 214);
+}
+
+.cancle-button:active {
+    background-color: rgb(190, 190, 190);
+}
+
+.save-button {
+    background-color: #cfe2be;
+}
+
+.save-button:active {
+    background-color: #b2c79e;
+}
+
+#button-group {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+#diary-input-box {
+    grid-area: diary-input-box;
+    background-color: #FFFFFF;
+    border-radius: 40px;
+    box-shadow: 0px 4px 4px #00000040;
+    display: grid;
+    place-items: center;
+}
+
+.diary-input {
+    border-width: 0px;
+    width: 92%;
+    height: 90%;
+    vertical-align: top;
+    line-height: normal;
+    padding-top: 0;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+}

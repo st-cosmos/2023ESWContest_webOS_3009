@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marigold</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./editpage.styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div class="marigold-page-template-2">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <!-- <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i> -->
+            </div>
+            <div id="body-top-c">
+                <span class="font-content-title">일기 작성 화면</span>
+            </div>
+            <div id="body-top-r">
+                <img src="../../assets/leaf-filled.svg" class="leaf-title">
+                <span class="font-content-title">marigold</span>
+            </div>
+        </div>
+        <div class="body-mid">
+            <div id="text-date-box">
+                <span class="font-date" id="text-date"></span>
+            </div>
+            <div id="button-group">
+                <button class="action-button cancle-button" onclick="clickCancle()">취소</button>
+                <button class="action-button save-button" onclick="clickSave()">저장</button>
+            </div>
+            <div id="diary-input-box">
+                <textarea class="diary-input" id="diary-input"></textarea>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="./editpage.sript.js"></script>
+</body>
+</html>
