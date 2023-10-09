@@ -4,16 +4,14 @@
     <title>Marigold</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./styles.css">
-    <link rel="stylesheet" type="text/css" href="./color-picker.css">
-    <link rel="stylesheet" type="text/css" href="./toggle-switch.css">
+    <link rel="stylesheet" type="text/css" href="./color-picker.style.css">
+    <link rel="stylesheet" type="text/css" href="./toggle-switch.stylse..css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" /> -->
 </head>
 <body>
     <div class="marigold-page-template-2">
         <div class="body-top">
-            <div id="body-top-l">                
-                <!-- <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i> -->
+            <div id="body-top-l">
                 <span class="material-symbols-outlined icon-back-style" onclick="goToMenuPage()">arrow_back_ios</span>
             </div>
             <div id="body-top-c">
@@ -33,26 +31,28 @@
                     <p class="text-nav-item">수동 모드</p>
                 </div>
             </div>
+
             <div class="main-section">
+                <!-- 자동 모드 설정 -->
                 <div id="main-section-auto">
                     <div class="main-section-inner-auto">
                         <div class="msi-left auto">
                             <div class="card-bg  msi-auto-timepicker">
-                                <div id="preview1" class="preview-item">
+                                <div id="atp01" class="preview-item" onclick="clickAutoSetItem(this)">
                                     <p class="font-tb-title preview-item-title">아침</p>
-                                    <div id="preview-circle1" class="preview-circle preview-circle-arr"></div>
+                                    <div id="pc-atp01" class="preview-circle preview-circle-arr"></div>
                                 </div>
-                                <div id="preview2" class="preview-item">
+                                <div id="atp02" class="preview-item" onclick="clickAutoSetItem(this)">
                                     <p class="font-tb-title preview-item-title">점심</p>
-                                    <div id="preview-circle2" class="preview-circle preview-circle-arr"></div>
+                                    <div id="pc-atp02" class="preview-circle preview-circle-arr"></div>
                                 </div>
-                                <div id="preview3" class="preview-item">
+                                <div id="atp03" class="preview-item" onclick="clickAutoSetItem(this)">
                                     <p class="font-tb-title preview-item-title">저녁</p>
-                                    <div id="preview-circle3" class="preview-circle preview-circle-arr"></div>
+                                    <div id="pc-atp03" class="preview-circle preview-circle-arr"></div>
                                 </div>
-                                <div id="preview4" class="preview-item">
+                                <div id="atp04" class="preview-item" onclick="clickAutoSetItem(this)">
                                     <p class="font-tb-title preview-item-title">취침</p>
-                                    <div id="preview-circle4" class="preview-circle preview-circle-arr"></div>
+                                    <div id="pc-atp04" class="preview-circle preview-circle-arr"></div>
                                 </div>
                             </div>
                         </div>
@@ -62,9 +62,9 @@
                                 <div id="onoff">
                                     <p class="font-tb-title">On/Off</p>
                                 </div>
-                                <div id="pt-switch-2">
+                                <div id="pt-switch-active">
                                     <label class="switch">
-                                        <input type="checkbox" id="switch2">
+                                        <input type="checkbox" id="switch-active" onchange="toggleActiveSwitch(this)">
                                         <span class="slider round"></span>
                                     </label>
                                 </div>
@@ -96,6 +96,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 수동 모드 -->
                 <div id="main-section-passive">
                     <div class="main-section-inner">
                         <div class="msi-left passive">
@@ -173,11 +175,12 @@
                         </div>
                     </div>
                 </div>
+                <!-- 자동/수동 모드 끝 -->
             </div>
         </div>
     </div>
+
     <!-- Javascript -->
     <script src="./script.js"></script>
-    <script src="./script2.js"></script>
 </body>
 </html>

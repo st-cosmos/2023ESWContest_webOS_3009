@@ -399,8 +399,8 @@ body {
     justify-content: center;
     align-items: center;
 }
-#pt-switch-2 {
-    grid-area: pt-switch-2;
+#pt-switch-active {
+    grid-area: pt-switch-active;
 }
 
 .sw-margin{
@@ -467,7 +467,7 @@ body {
     grid-template-areas: 
         "lightsettings-title ."
         ". ."
-        "onoff pt-switch-2"
+        "onoff pt-switch-active"
         ". ."
         "tbt-hue tbc-hue"
         ". ."
@@ -484,8 +484,8 @@ body {
     display: grid;
     place-items: center start;
 }
-#pt-switch-2{
-    grid-area: pt-switch-2;
+#pt-switch-active{
+    grid-area: pt-switch-active;
     display: grid;
     place-items: center start;
 }
