@@ -1,0 +1,156 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+}
+  
+.container {
+    height: 100vh;
+    color: white;
+    display: grid;
+    grid-template-rows: 100px calc(100vh - 200px) 100px;
+    grid-template-areas: "body-top"  "body-mid" "body-bottom";
+}
+
+.body-top {
+    grid-area: body-top;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 0.8fr;
+    grid-template-areas: "body-top-l body-top-c .";
+}
+
+
+#body-top-l {
+    grid-area: body-top-l;
+
+    display: flex;
+    align-items: center;
+}
+
+.font-content-title {
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#body-top-c {
+    grid-area: body-top-c;
+
+    display: grid;
+    place-items: center center;
+}
+
+.body-mid {
+    grid-area: body-mid;
+    padding: 20px 20px 20px 20px;
+
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 40px 1fr;
+    grid-template-areas: "video1 . video2";
+}
+
+#section-video1 {
+    grid-area: video1;
+    place-items: center;
+    background-color: rgb(30, 30, 30);
+}
+
+#section-video2 {
+    grid-area: video2;
+    place-items: center;
+    background-color: rgb(30, 30, 30);
+}
+
+#video-left {
+    width: 640px;
+    height: 480px;
+    transform: scaleX(-1);
+}
+
+#video-right {
+    width: 640px;
+    height: 480px;
+    transform: scaleX(-1);
+}
+
+.body-bottom {
+    grid-area: body-bottom;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-columns: 80px 15px 80px 1fr 160px;
+    grid-template-rows: 1fr 45px 1fr;
+    grid-template-areas: 
+        ". . . . ."
+        "bt1 . bt2 . bt3"
+        ". . . . .";
+}
+
+#bt1 {
+    grid-area: bt1;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+}
+  
+#bt2 {
+    grid-area: bt2;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+}
+
+#bt1:hover {
+    background-color: #595959;
+    color: rgb(300, 300, 300);
+    border-radius: 20px;
+    border: none;
+}
+
+#bt1:active {
+    background-color: #363636;
+    border-radius: 20px;
+    border: none;
+}
+
+#bt2:hover {
+    background-color: #595959;
+    color: rgb(300, 300, 300);
+    border-radius: 20px;
+    border: none;
+}
+
+#bt2:active {
+    background-color: #363636;
+    border-radius: 20px;
+    border: none;
+}
+
+#bt3 {
+    grid-area: bt3;
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+    color: black;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#bt3:hover {
+    background-color: #595959;
+    color: white;
+}
+
+#bt3:active {
+    background-color: #363636;
+}
