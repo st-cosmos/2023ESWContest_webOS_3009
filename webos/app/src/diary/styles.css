@@ -70,14 +70,27 @@ body {
 
 .body-mid {
     grid-area: body-mid;
+    
+}
+
+.main-section-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
+   
+    height: calc(100vh - 140px);
 }
 
 #left-section{
     /* grid-area:it3; */
     background: #FFF;
     padding:40px;
+
+    display: grid;
+    grid-template-rows: 1fr 20px 50px;
+    grid-template-areas: 
+    "calendar"
+    "."
+    "write-button";
 }
 #right-section{
     /* grid-area:it4; */
@@ -141,6 +154,8 @@ body {
 }
 
 .calendar {
+    grid-area: calendar;
+
     background-color: #fff;
     border-radius: 8px;
     margin: 10px auto;
@@ -195,4 +210,29 @@ body {
 .next-month:hover {
     color: #000;
     cursor: pointer;
+}
+.selected-day {
+    background-color: #BAE291; 
+    color: #fff; 
+}
+#writeButton {
+    grid-area: writeButton;
+}
+
+.write-button {
+    display: none; /* 초기에는 숨김 처리 */
+    position: absolute;
+    bottom: 60px;
+    right: calc(50vw + 20px);
+    background-color: #BAE291;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.write-button:hover {
+    background-color: #a2c57f;
 }
