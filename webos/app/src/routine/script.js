@@ -127,11 +127,38 @@ const createRoutineBlockInnerHtml = (routineItem) => {
         <div id="routine-to-do">${routineItem.title}</div>
         <div id="routine-everyday">${routineItem.day}</div>
         <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" ${routineItem.isOnOff ? 'checked' : ''} onchange="toggleSwitch('${routineItem.id}')">
             <span class="slider round"></span>
         </label>
     </div>
     `;
+};
+// 루틴 블록의 UI 업데이트 함수
+const updateRoutineBlockUI = (itemId, isOnOff) => {
+    const blockElement = document.getElementById(itemId);
+
+    if (blockElement) {
+        // 필요에 따라 배경 색상 및 글씨 색상 조절
+        blockElement.style.backgroundColor = isOnOff ? '#FFF' : '#F5F5F5';
+        blockElement.style.color = isOnOff ? '#000' : '#F8F8F8';
+
+        // 그림자 제거
+        blockElement.style.boxShadow = isOnOff ? '' : 'none';
+    }
+};
+
+// 체크박스 상태 토글 함수
+const toggleSwitch = (itemId) => {
+    const item = routineItems.find(routineItem => itemId === routineItem.id);
+
+    if (item) {
+        // routineItem.isOnOff 값을 토글
+        item.isOnOff = !item.isOnOff;
+
+        // 여기서 필요에 따라 추가적인 로직 수행 가능
+        //console.log(`Switch toggled for item with ID ${itemId}. New state: ${item.isOnOff}`);
+        updateRoutineBlockUI(itemId, item.isOnOff);
+    }
 };
 
 const loadRoutineBlocks = () => {
