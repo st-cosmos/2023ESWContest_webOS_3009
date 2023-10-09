@@ -14,12 +14,12 @@ const videoList = [
         title: "[Alpha] Alpha Waves Music",
         detailedInfo: "알파파란 어쩌구 저쩌구",
     },
-    {
-        id: "vid03",
-        videoId: "ws8ofAF0Gxk",
-        title: "[Alpha] Alpha Waves Music",
-        detailedInfo: "알파파란 어쩌구 저쩌구",
-    },
+    // {
+    //     id: "vid03",
+    //     videoId: "ws8ofAF0Gxk",
+    //     title: "[Alpha] Alpha Waves Music",
+    //     detailedInfo: "알파파란 어쩌구 저쩌구",
+    // },
 ];
 
 const playList = [];
