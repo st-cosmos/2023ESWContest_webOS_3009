@@ -1,101 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Marigold Activity Analysis</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="./sleep-analysis.styles.css">
-        <style>
-            body{
-                margin: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="grid">
-            <div id="header">
-                <img id="back-button" src="../../assets/sleep-analysis/button_back.png">
-                <h1 id="page-title">수면 분석</h1>
+<head>
+    <title>수면분석</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body onload="fetchData()">
+    <div class="marigold-page-template-2">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i>
             </div>
-            <div id="body-section">
-                <div id="left-section">
-                    <p id="left-section-title" class="title-font">수면 시간</p>
-                    <div id="sleep-graph-section">
-                        <img id="sleep-graph" src="../../assets/sleep-analysis/sleep-gragh.svg">
-                        <div id="graph-legend">
-                            <div id="graph-legend-deep-sleep" class="graph-legend-array">
-                                <img id="graph-legend-deep-sleep-img" src="../../assets/sleep-analysis/graph-legend-deep-sleep.svg">
-                                <div id="graph-legend-deep-sleep-contents">
-                                    <div id="graph-legend-deep-sleep-title">
-                                        <p class="graph-legend-title">깊은 수면</p>
-                                    </div>
-                                    <div id="graph-legend-deep-sleep-analysis/-details">
-                                        <p class="graph-legend-analysis-details">65% - 4h 33m</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="graph-legend-shallow-sleep" class="graph-legend-array">
-                                <img id="graph-legend-shallow-sleep-img" src="../../assets/sleep-analysis/graph-legend-shallow-sleep.svg">
-                                <div id="graph-legend-shallow-sleep-contents">
-                                    <div id="graph-legend-shallow-sleep-title">
-                                        <p class="graph-legend-title">얕은 수면</p>
-                                    </div>
-                                    <div id="graph-legend-shallow-sleep-analysis/-details">
-                                        <p class="graph-legend-analysis-details">15% - 1h 03m</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="graph-legend-awake" class="graph-legend-array">
-                                <img id="graph-legend-awake-img" src="../../assets/sleep-analysis/graph-legend-awake-sleep.svg">
-                                <div id="graph-legend-awake-contents">
-                                    <div id="graph-legend-awake-title">
-                                        <p class="graph-legend-title">깨어 있는 시간</p>
-                                    </div>
-                                    <div id="graph-legend-awake-analysis-details">
-                                        <p class="graph-legend-analysis-details">20% - 1h 24m</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="sleep-graph-content">
-                        <p id="sleep-graph-content1" class="sleep-graph-content-font">User님의 총 수면 시간은 <span id="total-sleep-time">7h 00m</span>입니다</p>
-                        <p id="sleep-graph-content2" class="sleep-graph-content-font">잠든 시간: <span id="time-to-sleep">23시 32분</span></p>
-                        <p id="sleep-graph-content3" class="sleep-graph-content-font">일어난 시간: <span id="time-of-waking-up">06시 32분</span></p>
-                        <p id="sleep-graph-content4" class="sleep-graph-content-font">잠드는 데 걸린 시간: <span id="time-taken-to-fall-asleep">15분</span></p>
-                        <p id="sleep-graph-content5" class="sleep-graph-content-font">수면의 질: <span id="quality-of-sleep">90%</span></p>
-                    </div>
-                </div>
-                <div id="right-section">
-                    <div id="topside">
-                        <p id="topside-title" class="title-font">수면 시간 계산</p>
-                        <p id="time-setting-ment" class="content-font">일어나야하는 시간을 입력해 주세요.</p>
-                        <div id="time-setting">
-                            <div id="time-setting-am-pm">
-                                <p id="am-pm" class="time-setting-font">AM</p>
-                                <img id="nav-arrow-down-1" src="../../assets/sleep-analysis/nav-arrow-down.svg">
-                            </div>
-                            <div id="time-setting-hour" class="time-setting-font">
-                                <p id="hour">07시</p>
-                                <img id="nav-arrow-down-2" src="../../assets/sleep-analysis/nav-arrow-down.svg">
-                            </div>
-                            <div id="time-setting-min" class="time-setting-font">
-                                <p id="min">00분</p>
-                                <img id="nav-arrow-down-3" src="../../assets/sleep-analysis/nav-arrow-down.svg">
-                            </div>
-                        </div>
-                        <p id="sleep-quality-recomendation-1" class="content-font">수면의 질을 위하여</p>
-                        <p id="sleep-quality-recomendation-2" class="content-font">PM 10시 45분에 주무시는 것을 추천드립니다.</p>
-                    </div>
-                    <div id="bottom">
-                        <p id="bottom-title" class="title-font">수면의 질</p>
-                        <img id="sleep-quality-chart" src="../../assets/sleep-analysis/sleep-quality-chart.svg">
-                        <p id="sleep-quality-analysis-1" class="content-font">이번 달 수면의 질은 82%이며</p>
-                        <p id="sleep-quality-analysis-2" class="content-font">지난 달에 비해 6% 증가하였습니다.</p>
-                    </div>
-                </div>
+            <div id="body-top-c">
+                <span class="font-content-title">수면분석</span>
+            </div>
+            <div id="body-top-r">
+                <img src="../../assets/leaf-filled.svg" class="leaf-title">
+                <span class="font-content-title">marigold</span>
             </div>
         </div>
-        <!-- Javascript -->
-        <script src="./sound-therapy.js"></script>
-    </body>
+        <div class="body-mid">
+            <div id="left-section">
+                <p id="left-section-title" class="title-font">수면 시간</p>
+                <canvas id="sleepCircle" class="sleepCircle"></canvas>
+                <div id="result-sleep" class="resultSleep"></div>
+            </div>
+            <div id="right-section">
+                <div id="topside">
+                    <p id="topside-title" class="title-font">수면 시간 계산</p>
+                    <div id="cal-set" class="cal-set">
+                        <div id="Q-sleep" class="Q-sleep">일어나야하는 시간을 입력해 주세요.
+                        </div>
+                        <input id="cal-Sleep-Time" class="cal-Sleep-Time" type="time" placeholder="시간 선택">
+                        <div id="cal-func" class="cal-func">일어나야하는 시간을 입력하시면 취침시간을 추천해 드립니다.</div>
+                    </div>
+                </div>
+                <div id="bottom">
+                    <div id="bottom-title" class="title-font">수면의 질</div>
+                    <canvas id="sleepChart" ></canvas>
+                </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
 </html>

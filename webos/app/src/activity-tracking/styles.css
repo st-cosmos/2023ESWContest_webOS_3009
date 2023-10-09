@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;700&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.marigold-page-template-2 {
+    height: 100vh;
+    background-color: #F2F2F2;
+
+    display: grid;
+    grid-template-rows: 100px calc(100vh - 100px);
+    grid-template-areas: "body-top"  "body-mid";
+}
+
+.body-top {
+    background-color: #FFFFFF;
+    grid-area: body-top;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 0.8fr;
+    grid-template-areas: "body-top-l body-top-c body-top-r";
+}
+
+#body-top-l {
+    grid-area: body-top-l;
+
+    display: grid;
+    place-items: center start;
+}
+
+.leaf-title {
+    width:48px;
+    height:48px;
+}
+
+.font-content-title {
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#body-top-c {
+    grid-area: body-top-c;
+
+    display: grid;
+    place-items: center center;
+}
+
+#body-top-r {
+    grid-area: body-top-r;
+
+    display: flex;
+    align-items: center end;
+    justify-content: flex-end;
+}
+
+.material-icons.icon-bell-style {
+    font-size: 48px;
+}
+
+.material-icons.icon-bell-style:hover {
+    background-color: #EEEEEE;
+}
+
+.material-icons.icon-bell-style:active {
+    background-color: #F2F2F2;
+}
+
+.body-mid {
+    grid-area: body-mid;
+    padding: 20px 20px 20px 20px;
+
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0px 1fr 20px 1fr 20px 1fr;
+    grid-template-areas:
+        ".left-section .center-section .right-section";
+}
+.title-font{
+    color: #000;
+    text-align: justify;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+#left-section{
+    grid-area: left-section;
+}
+#center-section{
+    grid-area: center-section;
+}
+#right-section{
+    grid-area: right-section;
+}
+
+#left-section {
+    display: grid;
+    grid-template-rows: 20px 0.5fr 20px 2fr 20px 1fr 20px;
+    grid-template-columns: 20px 290px 20px;
+    max-height: 588px;
+    grid-template-areas:
+        ". . ."
+        ". left-section-title ."
+        ". . ."
+        ". StepChart ."
+        ". . ."
+        ". left-section-contents-1 ."
+        
+        ". . .";
+}
+#left-section, #center-section {
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+#left-section-title{
+    grid-area: left-section-title;
+}
+#StepChart{
+    grid-area: StepChart;
+}
+.StepChart{
+    width: 200px;
+    height: 300px;
+    padding-right: 47px;
+}
+#left-section-contents-1{
+    grid-area: left-section-contents-1;
+}
+#left-section-contents-2{
+    grid-area: left-section-contents-2;
+}
+
+#center-section {
+    display: grid;
+    grid-template-rows: 65px 0.5fr 0px 2fr 0px 1fr 20px;
+    grid-template-columns: 20px 1fr 20px;
+    max-height: 588px;
+    grid-template-areas:
+        ". . ."
+        ". center-section-title ."
+        ". . ."
+        ". StepCircle ."
+        ". . ."
+        ". result-step ."
+        ". . .";
+}
+#result-step{
+    grid-area: result-step;
+}
+#StepCircle{
+    grid-area: StepCircle;
+}
+.StepCircle{
+    max-width: 300px;
+    max-height: 300px;
+}
+#center-section-title{
+    grid-area: center-section-title;
+}
+.resultStep{
+    margin-top: 30px;
+    font-size: 25px;
+}
+#right-section {
+    display: grid;
+    grid-template-rows: 1fr 20px 1fr;
+    max-height: 588px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "topside"
+        "."
+        "bottom";
+}
+#right-section {
+    grid-area: right-section;
+}
+
+#topside {
+    grid-area: topside;
+}
+#topside {
+    display: grid;
+    max-height: 280px;
+    grid-template-rows: 10px 1fr 10px 1fr;
+    grid-template-columns: 40px 1fr 0px;
+    grid-template-areas:
+        ". . ."
+        ". topside-header ."
+        ". . ."
+        ". topside-body ."
+        ". . .";
+}
+
+#bottom {
+    grid-area: bottom;
+}
+#bottom {
+    display: grid;
+    max-height: 280px;
+    grid-template-rows: 1px 1fr 10px 1fr 1px;
+    grid-template-columns: 40px 1fr 0px;
+    grid-template-areas:
+        ". . ."
+        ". bottom-header ."
+        ". . ."
+        ". bottom-body ."
+        ". . .";
+}
+#topside, #bottom {
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+#topside-header{
+    grid-area: topside-header;
+}
+#topside-body{
+    grid-area: topside-body;
+}
+#bottom-header{
+    grid-area: bottom-header;
+}
+#bottom-body{
+    grid-area: bottom-body;
+}
+.contents-font-25{
+    font-size: 23px;
+}
