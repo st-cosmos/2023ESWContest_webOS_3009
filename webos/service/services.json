@@ -1,6 +1,6 @@
 {
   "id": "com.marigold.app.service",
-  "description": "HelloWorld Service",
+  "description": "Marigold Service",
   "services": [
     {
       "name": "com.marigold.app.service"

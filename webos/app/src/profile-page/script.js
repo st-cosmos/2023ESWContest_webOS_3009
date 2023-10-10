@@ -36,3 +36,30 @@ const goToMainPage = () => {
 const goToMenuPage = () => {
     window.location.href = "../menu-page/menu-page.html";
 };
+
+// === webOS service call
+const bridge = new WebOSServiceBridge();
+const marigoldServiceUrl = "luna://com.marigold.app.service";
+
+const getUserInfo = () => {
+    const url = `${marigoldServiceUrl}/getUserInfo`;
+    const params = JSON.stringify({
+        "id":"test.db-api:1",
+        "owner":"APP_ID"
+    });
+    
+    bridge.call(url, params);
+};
+
+const applyUserInfo = (userInfo) => {
+    document.getElementById("text-name").innerText = userInfo.name
+    document.getElementById("text-birthdate").innerText = userInfo.birthdate
+    document.getElementById("text-address").innerText = userInfo.address
+    document.getElementById("text-phonenumber").innerText = userInfo.phonenumber
+};
+
+window.onload = () => {
+    const userInfo = getUserInfo();
+    console.log(userInfo);
+    applyUserInfo(userInfo);
+};
