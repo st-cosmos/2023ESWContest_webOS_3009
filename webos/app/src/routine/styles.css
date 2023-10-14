@@ -74,31 +74,57 @@ body {
     background-color: #F2F2F2;
 }
 
+.material-symbols-outlined.icon-style {
+    font-size: 36px;
+}
+
+.material-symbols-outlined.icon-style2 {
+    font-size: 72px;
+}
+
 .body-mid {
     grid-area: body-mid;
 
     display: grid;
-    grid-template-rows: 1fr;
     grid-template-columns: 5fr 2fr;
     grid-template-areas:
         "left right";
-    max-height: 700px;
 }
 
 #left-section{
     grid-area:left;
-
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
-
-    display:grid;
+    /* box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset; */
+    
+    /* display:grid;
     grid-template-rows: 1fr 5fr;
     grid-template-areas:
-        "title"
-        "list";
-    padding:30px;
-    overflow-y: auto;
+    "title"
+    "list"; */
+    padding:40px;
 }
+
+.section-bg {
+    border-radius: 20px;
+    height: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+}
+
+.section-bg.right {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#rt-viewmode {
+    display: none;
+}
+
+#rt-editmode {
+    display: none;
+}
+
 #routine-title{
+    /* margin: 20px 0px 0px 20px; */
     grid-area: title;
     color: #000;
     font-family: Inter;
@@ -111,7 +137,9 @@ body {
     grid-template-columns: 10fr 1fr;
 }
 #routine-list{
-    grid-area: list;
+    /* grid-area: list; */
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
 }
 .routine-block{
     display:grid;
@@ -173,7 +201,9 @@ body {
 
 #right-section{
     grid-area:right;
+    padding: 40px 40px 40px 0px;
 }
+
 .right-box{
     display: grid;
     grid-template-rows: 1fr 0.7fr 1fr 1fr 5fr 1fr;
@@ -190,8 +220,8 @@ body {
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
-    margin:30px;
-    padding:30px;
+    /* margin:30px; */
+    /* padding:30px; */
 }
 #routine-name{
     grid-area: name;
@@ -203,9 +233,11 @@ body {
 }
 #routine-name-a{
     grid-area: a;
-    background-color: #D9D9D9;
+    /* background-color: #D9D9D9; */
     width: 80%; /* 예시로 50%로 설정, 필요에 따라 조절 가능 */
     aspect-ratio: 1 / 1; /* 1:1 비율, 즉, 높이와 너비가 같음 */
+    display: grid;
+    place-items: center;
 }
 #routine-name-b{
     grid-area: b;
@@ -217,7 +249,9 @@ body {
     line-height: normal;
     text-decoration: underline;
     text-underline-offset: 9px;
-    padding-top:15px;
+    /* padding-top:15px; */
+    display: grid;
+    place-items: center start;
 }
 #routine-time-detail{
     grid-area: time2;
@@ -227,6 +261,7 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-top: 20px;
 }
 #routine-day{
     grid-area: day;
@@ -236,6 +271,18 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-top: 20px;
+}
+
+#routine-day-picker{
+    grid-area: day;
+    color: #CCC;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 20px;
 }
 
 #save-del-button{
@@ -270,13 +317,17 @@ body {
 #del-button2{
     margin:30px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
-    display:none;
+    /* display:none; */
 }
 
 /*입력창 css*/
 #input-container {
-    display: none;
+    /* display: none; */
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
 }
+
 .input-field{
     border: 2px solid #333;
     border-top: 0;
