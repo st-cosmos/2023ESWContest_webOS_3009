@@ -8,11 +8,11 @@
   "icon": "icon.png",
   "allowVideoCapture": true,
   "allowAudioCapture": true,
-  "enableWebOSVDA": true,
+  "enableWebOSVDA": true,  
   "requiredPermissions": [
     "time.query",
     "activity.operation",
-    "cosmos.find.hometraining.app.service.group",
+    "com.marigold.app.service.group",
     "tts.operation"
   ]
 }

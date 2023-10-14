@@ -2,18 +2,19 @@ const goToMenuPage = () => {
     window.location.href = "../menu-page/menu-page.html";
 };
 
-const diaryList = [
-    {
-        createdAt: "2023-01-12T07:01:46.687Z",
-        text: "나는 오늘 끝내주게 숨을 쉬었다."
-    },
-    {
-        createdAt: "2023-01-20T07:01:46.687Z",
-        text: "나는 오늘 멋지게 숨을 쉬었다."
-    },
-];
+let diaryList;
+// const diaryList = [
+//     {
+//         createdAt: "2023-10-12T07:01:46.687Z",
+//         text: "나는 오늘 끝내주게 숨을 쉬었다."
+//     },
+//     {
+//         createdAt: "2023-10-20T07:01:46.687Z",
+//         text: "나는 오늘 멋지게 숨을 쉬었다."
+//     },
+// ];
 
-let currentMonth = 1; // 현재 월
+let currentMonth = 10; // 현재 월
 const calendar = document.querySelector('.calendar');
 const monthsContainer = document.querySelector('.months');
 const prevMonthButton = document.getElementById('prevMonth');
@@ -45,14 +46,10 @@ const createDiaryPreviewInnerHtml = (diary) => {
     
         return `
         <div class="right-section-item" id="it5">
-            <span id="day">${dateString}</span>
-            <span id="friday">${dayString}</span>
+            <span class="font-preview-date">${dateString} ${dayString}</span>
         </div>
-        <div class="right-section-item" id="it6"></div>
         <div class="right-section-item" id="it7">
-            ${diary.text}
-        </div>
-        <div class="right-section-item" id="it8">
+            <span class="font-preview-text">${diary.text}</span>
         </div>
         `;
     }
@@ -86,9 +83,7 @@ const showDiary = (datetime) => {
         container.removeChild(container.firstChild);
     }
 
-    const subitem = document.createElement('div');
-    subitem.innerHTML = createDiaryPreviewInnerHtml(diary);
-    container.appendChild(subitem);
+    container.innerHTML = createDiaryPreviewInnerHtml(diary);
 };
 
 // 달력을 생성하고 화면에 표시하는 함수
@@ -146,12 +141,18 @@ function renderCalendar(year, month) {
             selectedDate = new Date(year, month - 1, i);
             showDiary(selectedDate);
 
-            // 글쓰기 버튼을 보이게 합니다.
-            writeButton.style.display = 'block';
+            // 글쓰기 버튼을 보이게 합니다. + 오늘 일 때만
+            console.log(">>>", selectedDate.getDate(), (new Date()).getDate());
+            if(selectedDate.getDate() == (new Date()).getDate()) {
+                writeButton.style.display = 'block';
+            }
+            else {
+                writeButton.style.display = 'none';
+            }
 
-            // 선택된 날짜를 이용하여 글쓰기 버튼의 링크를 생성합니다.
-            const writingPageLink = `글쓰기페이지의_경로.html?date=${selectedDate.toISOString()}`;
-            writeButton.setAttribute('href', writingPageLink);
+            // // 선택된 날짜를 이용하여 글쓰기 버튼의 링크를 생성합니다.
+            // const writingPageLink = `글쓰기페이지의_경로.html?date=${selectedDate.toISOString()}`;
+            // writeButton.setAttribute('href', writingPageLink);
         });
 
         if (i === lastDay.getDate()) {
@@ -184,7 +185,30 @@ nextMonthButton.addEventListener('click', goToNextMonth);
 const writeButton = document.getElementById('writeButton');
 writeButton.addEventListener('click', () => {
     // const selectedDate = new Date();
-    const writingPageLink = `./editpage.html?date=${selectedDate.toISOString()}`;
+    const writingPageLink = `./editpage.html?date=${selectedDate.toLocaleDateString()}`;
     window.location.href = writingPageLink;
 });
 writeButton.style.display = 'none'; // 초기에는 숨김 처리
+
+// === webOS service call
+const bridge = new WebOSServiceBridge();
+const marigoldServiceUrl = "luna://com.marigold.app.service";
+
+const getDiary = () => {
+    const url = `${marigoldServiceUrl}/getDiaryList`;
+    const params = JSON.stringify({
+        "currentMonth": currentMonth,
+    });
+    
+    const callback = (msg) => {
+        console.log(msg);
+        diaryList = JSON.parse(JSON.parse(msg).Response);
+    };
+
+    bridge.onservicecallback = callback;
+    bridge.call(url, params);
+};
+
+window.onload = () => {
+    getDiary();
+};

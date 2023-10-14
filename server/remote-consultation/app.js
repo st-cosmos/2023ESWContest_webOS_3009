@@ -15,17 +15,17 @@ app.use(express.static(__dirname + "/public")); // load files below /public
 app.use(express.static(__dirname + "/counselorMainPage")); // load files below /public
 app.use(express.static(__dirname + '/node_modules'));
 
-// const http = require("http");
-// const options = {};
-// const server = http.createServer(options, app);
+const http = require("http");
+const options = {};
+const server = http.createServer(options, app);
 
-const https = require("https");
-const options = {
-    key: fs.readFileSync('cert-files/key.pem'),
-    cert: fs.readFileSync('cert-files/cert.pem'),
-    // ca: fs.readFileSync('C:/Windows/System32/server.csr'),
-};
-const server = https.createServer(options, app);
+// const https = require("https");
+// const options = {
+//     key: fs.readFileSync('cert-files/key.pem'),
+//     cert: fs.readFileSync('cert-files/cert.pem'),
+//     // ca: fs.readFileSync('C:/Windows/System32/server.csr'),
+// };
+// const server = https.createServer(options, app);
 
 const io = socketIo(server);
 
@@ -89,4 +89,4 @@ io.sockets.on("connection", socket => {
     });
 });
 
-server.listen(PORT, '0.0.0.0', () => console.log(`Server is running...\n[client] https://${IP_ADDRESS}:${PORT}/client\n[counselor] https://${IP_ADDRESS}:${PORT}/counselor\n[main] https://${IP_ADDRESS}:${PORT}/main`));
+server.listen(PORT, '0.0.0.0', () => console.log(`Server is running...\n[client] http://${IP_ADDRESS}:${PORT}/client\n[counselor] http://${IP_ADDRESS}:${PORT}/counselor\n[main] http://${IP_ADDRESS}:${PORT}/main`));

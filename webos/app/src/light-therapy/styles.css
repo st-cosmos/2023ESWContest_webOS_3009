@@ -119,7 +119,7 @@ body {
 }
 
 #main-section-auto {
-    /* display: none; */
+    display: none;
 }
 
 #main-section-passive {

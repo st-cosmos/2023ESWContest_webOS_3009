@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Page</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js" integrity="sha512-zoJXRvW2gC8Z0Xo3lBbao5+AS3g6YWr5ztKqaicua11xHo+AvE1b0lT9ODgrHTmNUxeCw0Ry4BGRYZfXu70weg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="container">
+        
+      <div class="body-top">
+        <div id="body-top-l">                
+           <span class="font-content-title">marigold</span>
+        </div>
+        <div id="body-top-c">
+            <span id="content-title" class="font-content-title">원격상담</span>
+        </div>
+      </div>
+
+     <div class="body-mid">
+         <div id="section-video1">
+             <video id="video-left" playsinline autoplay muted></video>
+         </div>
+         <div id="section-video2">
+             <video id="video-right" playsinline autoplay></video>
+         </div>
+     </div>
+
+     <div class="body-bottom">
+        <span class="material-symbols-outlined" id="bt1" onclick="toggleMicrophone()">mic</span>
+        <span class="material-symbols-outlined" id="bt2" onclick="toggleCamera()">video_camera_front</span>
+        <button type="button" class="end_button" id="bt3" onclick="endCounseling()">상담 종료</button>
+     </div>
+
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

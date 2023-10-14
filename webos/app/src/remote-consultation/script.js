@@ -366,7 +366,9 @@ const goToMenuPage = () => {
 };
 
 const start = () => {
-    window.location.href = "https://10.50.8.198:9000/client/";
+    // console.log("http://192.168.206.126:9000/client/");
+    // window.location.href = "http://192.168.206.126:9000/client/";
+    window.location.href = "./public/index.html";
 };
 
 let selectedNavId;

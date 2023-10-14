@@ -82,10 +82,10 @@ body {
 
 #left-section{
     /* grid-area:it3; */
-    background: #FFF;
+    /* background: #FFF; */
     padding:40px;
 
-    display: grid;
+    /* display: grid; */
     grid-template-rows: 1fr 20px 50px;
     grid-template-areas: 
     "calendar"
@@ -94,18 +94,28 @@ body {
 }
 #right-section{
     /* grid-area:it4; */
-    background: #F9F9F9;
+    /* background: #F9F9F9; */
     padding:40px;
 }
-
 
 #right-box{
     background-color: #E6EFDD;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35));
     padding:20px;
+    height: calc(100% - 40px);
 }
-#day{
+
+.rs-placeholder {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    color: #717171;
+    font-weight: 500;
+}
+
+/* #day{
     color: #000;
     font-family: Inter;
     font-size: 50px;
@@ -121,36 +131,25 @@ body {
     font-weight: 700;
     line-height: normal;
     margin-left:30px;
-    }
+    } */
 
-#right-box{
-    display: grid;
-    grid-template-rows: 1fr 0.05fr 1fr 6fr;
-    grid-template-areas: 
-        "it5"
-        "it6"
-        "it7"
-        "it8";
-    grid-gap:10px;
+.card-background {
+    padding: 20px;
+    background-color: #F2F2F2;
 }
-#it5{
-    grid-area: it5;
+
+#it5 {
+    margin-bottom: 20px;
 }
-#it6{
-    grid-area: it6;
-    background: #000;
-}
-#it7{
-    grid-area: it7;
-    color: #000;
-    font-family: Inter;
-    font-size: 30px;
-    font-style: normal;
+
+.font-preview-date {
+    font-size: 24px;
     font-weight: 700;
-    line-height: normal;
 }
-#it8{
-    grid-area: it8;
+
+.font-preview-text {
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .calendar {
@@ -197,8 +196,19 @@ body {
 }
 
 .today {
-    background-color: #BAE291;
-    color: #fff;
+    background-color: #d6e9c3;
+    color: #fff; 
+    /* border-color: #8fae70; */
+    /* border-width: 2px; */
+    /* border-style: solid; */
+}
+
+.actionButton {
+    height: 40px;
+    width: 120px;
+    border-width: 0px;
+    background-color: #d5e8c2;
+    font-weight: 700;
 }
 
 .prev-month,
@@ -231,6 +241,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    font-weight: 700;
 }
 
 .write-button:hover {

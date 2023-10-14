@@ -1,6 +1,7 @@
 let selectedNavId;
 let selectedAutoSettingId = "atp01";
 let selectedPresetItem;
+let ledButtonStatus = false;
 
 let hslState = {
     h: 180,
@@ -17,23 +18,23 @@ let hslStateActive = {
 const colorDescriptions = {
     red : {
         title: '붉은 계열',
-        text: '붉은 색은 어쩌구 저쩌구',
+        text: '붉은 계열의 색은 따뜻한 느낌을 주어 긴장을 완화하는 효과가 있습니다. 다만 너무 채도가 높은 붉은 색을 오래 보는 것은 좋지 않으니 주의해 주세요!',
     },
     yellow : {
         title: '노랑 계열',
-        text: '노란 색은 어쩌구 저쩌구',
+        text: '노란 색 계열의 빛들은 따뜻하면서도 경쾌하고 발랄한 느낌을 줍니다.',
     },
     green : {
         title: '초록 계열',
-        text: '초록 색은 어쩌구 저쩌구',
+        text: '초록 색은 마음을 차분하고 편안하게 해줍니다.',
     },
     blue : {
         title: '푸른 계열',
-        text: '푸른 색은 어쩌구 저쩌구',
+        text: '푸른 색 계열의 빛들은 상쾌하고 신선한 느낌을 줄 수 있습니다.',
     },
     white : {
         title: '백색 계열',
-        text: '백색은 어쩌구 저쩌구',
+        text: '백색 빛을 자주 보는 것은 햇빛은 보는 것과 같은 효과를 줄 수 있습니다.',
     },
 };
 
@@ -156,49 +157,83 @@ const cvtRGBToHSL = (rVal, gVal, bVal) => {
 };
 
 const cvtHSLtoRGB = (hVal, sVal, lVal) => {
-    // Normalize HSL values
-    let h = (hVal % 360 + 360) % 360; // Ensure h is between 0 and 359
-    let s = Math.min(100, Math.max(0, sVal)); // Ensure s is between 0 and 100
-    let l = Math.min(100, Math.max(0, lVal)); // Ensure l is between 0 and 100
+    // Ensure h is within the range [0, 360]
+  h = (hVal % 360 + 360) % 360;
   
-    // Convert HSL to RGB
-    const c = (1 - Math.abs(2 * l - 1)) * s / 100;
-    const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-    const m = l / 100 - c / 2;
-  
-    let r, g, b;
-  
-    if (h >= 0 && h < 60) {
-        r = c;
-        g = x;
-        b = 0;
-    } else if (h >= 60 && h < 120) {
-        r = x;
-        g = c;
-        b = 0;
-    } else if (h >= 120 && h < 180) {
-        r = 0;
-        g = c;
-        b = x;
-    } else if (h >= 180 && h < 240) {
-        r = 0;
-        g = x;
-        b = c;
-    } else if (h >= 240 && h < 300) {
-        r = x;
-        g = 0;
-        b = c;
-    } else {
-        r = c;
-        g = 0;
-        b = x;
+  // Normalize s and l to the range [0, 1]
+  s = Math.max(0, Math.min(1, sVal/100));
+  l = Math.max(0, Math.min(1, lVal/100));
+
+  // Calculate chroma (the "color")
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+  const m = l - c / 2;
+
+  let r, g, b;
+
+  if (h >= 0 && h < 60) {
+    r = c;
+    g = x;
+    b = 0;
+  } else if (h >= 60 && h < 120) {
+    r = x;
+    g = c;
+    b = 0;
+  } else if (h >= 120 && h < 180) {
+    r = 0;
+    g = c;
+    b = x;
+  } else if (h >= 180 && h < 240) {
+    r = 0;
+    g = x;
+    b = c;
+  } else if (h >= 240 && h < 300) {
+    r = x;
+    g = 0;
+    b = c;
+  } else {
+    r = c;
+    g = 0;
+    b = x;
+  }
+
+  // Adjust the RGB values and convert to 8-bit integers
+  r = Math.round((r + m) * 255);
+  g = Math.round((g + m) * 255);
+  b = Math.round((b + m) * 255);
+
+  return { r, g, b };
+};
+
+// === webOS service call
+const bridge = new WebOSServiceBridge();
+const marigoldServiceUrl = "luna://com.marigold.app.service";
+
+const setLedStatus = (color) => {
+    const url = `${marigoldServiceUrl}/light/setStatus`;
+
+    let data;
+    if(ledButtonStatus) {
+        data = color;
     }
-  
-    r = Math.round((r + m) * 255);
-    g = Math.round((g + m) * 255);
-    b = Math.round((b + m) * 255);
-  
-    return { r, g, b };
+    else {
+        data = {
+            "r" : 0,
+            "g" : 0,
+            "b" : 0
+        };
+    }
+
+    const params = JSON.stringify({
+        "data" : data
+    });
+    
+    const callback = (msg) => {
+        console.log(msg);
+    };
+
+    bridge.onservicecallback = callback;
+    bridge.call(url, params);
 };
 
 const rgbStringToValue = (rgbString) => {
@@ -231,6 +266,9 @@ const getLightnessValue = () => {
 const updatePreview = () => {
     const previewCircle = document.getElementById("preview-circle");
     previewCircle.style.backgroundColor = `hsl(${hslState.h}, ${hslState.s}%, ${hslState.l}%)`;
+    // console.log(hslState.h, hslState.s, hslState.l);
+    // console.log(cvtHSLtoRGB(hslState.h, hslState.s, hslState.l));
+    setLedStatus(cvtHSLtoRGB(hslState.h, hslState.s, hslState.l));
 };
 
 const setHueSlider = () => {
@@ -572,6 +610,12 @@ const toggleActiveSwitch = (element) => {
     setting.isOnOff = isOnOff;
 };
 
+const onSwitchToggle = () => {
+    ledButtonStatus = document.getElementById("tgs").checked;
+    console.log(ledButtonStatus);
+    updatePreview();
+};
+
 // === timer ===
 let seconds = 0;
 let minutes = 0;
@@ -600,7 +644,10 @@ const timerStart = () => {
 
 const timerReset = (isFinished) => {
     if(isFinished) {
-        alert('타이머가 종료되었습니다.');
+        // alert('타이머가 종료되었습니다.');
+        ledButtonStatus = false;
+        document.getElementById("tgs").checked = ledButtonStatus;
+        updatePreview();
     }
 
     const startButton = document.getElementById("timer-start-button");
