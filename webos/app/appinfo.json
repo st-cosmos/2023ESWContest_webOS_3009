@@ -6,8 +6,13 @@
   "main": "index.html",
   "title": "Marigold",
   "icon": "icon.png",
+  "allowVideoCapture": true,
+  "allowAudioCapture": true,
+  "enableWebOSVDA": true,
   "requiredPermissions": [
     "time.query",
-    "activity.operation"
+    "activity.operation",
+    "cosmos.find.hometraining.app.service.group",
+    "tts.operation"
   ]
 }

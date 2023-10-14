@@ -1,5 +1,22 @@
+// === webOS service call
+const bridge = new WebOSServiceBridge();
+const marigoldServiceUrl = "luna://com.marigold.app.service";
+
 const getUsername = () => {
-    return '골댕이';
+    const url = `${marigoldServiceUrl}/getUserInfo`;
+    const params = JSON.stringify({
+        "id":"User001",
+    });
+    
+    const callback = (msg) => {
+        let res = JSON.parse(msg);
+        let userInfo = JSON.parse(res.Response);
+        console.log(userInfo);
+        applyUsernameToUi(userInfo.name);
+        greetUserTTS(userInfo.name);
+    };
+    bridge.onservicecallback = callback;
+    bridge.call(url, params);
 };
 
 const getChatHistory = () => {
@@ -50,6 +67,21 @@ const getQuote = () => {
 const applyUsernameToUi = (username) => {
     const contentTitle = document.getElementById('content-title');
     contentTitle.textContent = `안녕하세요, ${username} 님!`;
+};
+
+const greetUserTTS = (username) => {
+    const url = "luna://com.webos.service.tts/speak";
+    const params = JSON.stringify({
+        "text":`반가워요, ${username}님!`,
+        "language":"ko-KR",
+        "clear":true
+    });
+    
+    const callback = (msg) => {
+        console.log(msg);
+    };
+    bridge.onservicecallback = callback;
+    bridge.call(url, params);
 };
 
 // chat histoy
@@ -117,8 +149,7 @@ const applyQuoteToUi = (quote) => {
 };
 
 window.onload = () => {
-    let username = getUsername();
-    applyQuoteToUi(username);
+    getUsername();
 
     let chatHistory = getChatHistory();
     applyChatHistory(chatHistory);

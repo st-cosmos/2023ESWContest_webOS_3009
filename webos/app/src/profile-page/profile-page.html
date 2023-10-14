@@ -28,23 +28,31 @@
                             <img id="img-profile-user" src="../../assets/profile-image.svg">
                         </div>
                     </div>
-                    <div id="text-name" class="pc-name">-</div>
+                    <div class="pc-name">
+                        <p id="text-name" class="content-text">-</p>
+                        <input id="input-name" type="text" class="text-input">
+                    </div>
                 </div>
                 <div class="profile-card-right">
                     <div id="pc-birthday" class="pc-content">
                         <p class="content-title">생년월일</p>
-                        <p id="text-brithdate" class="content-text">-</p>
+                        <p id="text-birthdate" class="content-text">-</p>
+                        <input id="input-birthdate" type="text" class="text-input content">
                     </div>
                     <div id="pc-address" class="pc-content">
                         <p class="content-title">주소</p>
                         <p id="text-address" class="content-text">-</p>
+                        <input id="input-address" type="text" class="text-input content">
                     </div>
                     <div id="pc-phone" class="pc-content">
                         <p class="content-title">연락처</p>
                         <p id="text-phonenumber" class="content-text">-</p>
+                        <input id="input-phonenumber" type="text" class="text-input content">
                     </div>
                     <div id="pc-button">
-                        <button class="profile-edit-button">회원정보 수정</button>
+                        <button id="button-edit" class="profile-edit-button" onclick="editMode()">회원정보 수정</button>
+                        <button id="button-cancle" class="profile-cancle-button" onclick="editCancle()">취소</button>
+                        <button id="button-save" class="profile-edit-button" onclick="viewMode()">저장하기</button>
                     </div>
                 </div>
             </div>

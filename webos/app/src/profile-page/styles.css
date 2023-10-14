@@ -143,9 +143,14 @@ body {
 }
 
 #pc-button {
-    display: grid;
+    /* display: grid;
     place-items: end;
+    position: absolute; */
     position: absolute;
+    display: flex;
+    display: flex;
+    align-items: center end;
+    justify-content: flex-end;
     right: 20px;
     bottom: 20px;
 }
@@ -173,6 +178,49 @@ body {
     background-color: #cfd7c7;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
 }
+
+.profile-cancle-button {
+    margin-right: 20px;
+    width: 200px;
+    height: 64px;
+    border-width: 0px;
+    border-radius: 10px;
+    background-color: #e2e2e2;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+    
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+}
+
+.profile-cancle-button:hover {
+    box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.35);
+}
+
+.profile-cancle-button:active {
+    background-color: #bababa;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
+}
+
+#button-save {
+    display: none;
+}
+
+#button-cancle {
+    display: none;
+}
+
+.text-input {
+    height: 32px;
+    display: none;
+}
+
+.text-input.content {
+    width: 400px;
+}
+
 
 .body-bottom {
     /* background-color: #FFFFFF; */
