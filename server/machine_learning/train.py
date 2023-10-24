@@ -2,7 +2,7 @@
 #데이터 불러오기
 import pandas as pd
 
-df = pd.read_csv('.\server\dev\machine_learning\sentiment_tweets3.csv')
+df = pd.read_csv('./sentiment_tweets3.csv')
 df = df.drop(10313)
 df.rename(columns={'message to examine': 'text', 'label (depression result)': 'label'}, inplace=True)
 

@@ -226,7 +226,7 @@ const goToBackPage = () => {
 };
 
 const start = () => {
-    window.location.href = "https://10.50.8.198:9000/client/";
+    window.location.href = "http://localhost:9000/client/";
 };
 
 goToMain
