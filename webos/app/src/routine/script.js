@@ -82,7 +82,8 @@ const loadRoutineBlocksRight = (rightRoutineItems) =>{
 let deleteItem;
 const deleteRoutineItem = () => {
      // 경고창 표시
-     const isConfirmed = window.confirm('삭제할 것입니까?');
+    //  const isConfirmed = window.confirm('삭제할 것입니까?');
+    const isConfirmed = true;
 
      if (isConfirmed) {
          // 확인 버튼이 눌렸을 때의 동작

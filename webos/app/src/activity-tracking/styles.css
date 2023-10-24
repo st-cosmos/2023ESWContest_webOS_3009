@@ -101,23 +101,24 @@ body {
 
 #left-section {
     display: grid;
-    grid-template-rows: 20px 0.5fr 20px 2fr 20px 1fr 20px;
-    grid-template-columns: 20px 290px 20px;
-    max-height: 588px;
+    grid-template-rows: 0.5fr 20px 2fr 20px 1fr;
+    grid-template-columns: 1fr;
+    box-sizing: border-box;
     grid-template-areas:
-        ". . ."
-        ". left-section-title ."
-        ". . ."
-        ". StepChart ."
-        ". . ."
-        ". left-section-contents-1 ."
         
-        ". . .";
+        "left-section-title"
+        "."
+        "StepChart"
+        "."
+        "left-section-contents-1"
+        
+        ;
 }
 #left-section, #center-section {
     width: auto;
     height: auto;
     flex-shrink: 0;
+    padding: 20px;
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
@@ -129,8 +130,7 @@ body {
     grid-area: StepChart;
 }
 .StepChart{
-    width: 200px;
-    height: 300px;
+    box-sizing: border-box;
     padding-right: 47px;
 }
 #left-section-contents-1{
@@ -142,17 +142,18 @@ body {
 
 #center-section {
     display: grid;
-    grid-template-rows: 65px 0.5fr 0px 2fr 0px 1fr 20px;
-    grid-template-columns: 20px 1fr 20px;
-    max-height: 588px;
+    grid-template-rows: 0.5fr 0px 2fr 0px 1fr ;
+    grid-template-columns: 1fr;
+    padding: 20px;
+    box-sizing: border-box;
     grid-template-areas:
-        ". . ."
-        ". center-section-title ."
-        ". . ."
-        ". StepCircle ."
-        ". . ."
-        ". result-step ."
-        ". . .";
+        
+        "center-section-title"
+        "."
+        "StepCircle"
+        "."
+        "result-step"
+        ;
 }
 #result-step{
     grid-area: result-step;
@@ -174,7 +175,7 @@ body {
 #right-section {
     display: grid;
     grid-template-rows: 1fr 20px 1fr;
-    max-height: 588px;
+    
     grid-template-columns: 1fr;
     grid-template-areas:
         "topside"
@@ -190,15 +191,16 @@ body {
 }
 #topside {
     display: grid;
-    max-height: 280px;
-    grid-template-rows: 10px 1fr 10px 1fr;
-    grid-template-columns: 40px 1fr 0px;
+    
+    grid-template-rows: 3fr 10px 1fr;
+    grid-template-columns: 1fr;
+    padding: 20px;
     grid-template-areas:
-        ". . ."
-        ". topside-header ."
-        ". . ."
-        ". topside-body ."
-        ". . .";
+        
+        "topside-header"
+        "."
+        "topside-body"
+        ;
 }
 
 #bottom {
@@ -206,15 +208,16 @@ body {
 }
 #bottom {
     display: grid;
-    max-height: 280px;
-    grid-template-rows: 1px 1fr 10px 1fr 1px;
-    grid-template-columns: 40px 1fr 0px;
+    
+    grid-template-rows: 3fr 10px 1fr;
+    grid-template-columns: 1fr;
+    padding: 20px;
     grid-template-areas:
-        ". . ."
-        ". bottom-header ."
-        ". . ."
-        ". bottom-body ."
-        ". . .";
+        
+        "bottom-header"
+        "."
+        "bottom-body"
+        ;
 }
 #topside, #bottom {
     width: auto;

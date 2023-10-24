@@ -114,6 +114,7 @@ body {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    margin: 0px;
 }
 
 .menu-title-font{
@@ -126,18 +127,21 @@ body {
     margin-left: 30px;
 }
 
+.section {
+    height: 100%;
+}
 .menu-body-box{
-    width: auto;
-    height: auto;
+    /* width: auto; */
+    height: 100%;
     flex-shrink: 0;
     border-radius: 20px;
     background: #FFF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
 }
 
 #menu-body-left{
     display: grid;
-    max-height: 773px;
+    /* max-height: 773px; */
     grid-template-rows: 1fr 6fr;
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -208,7 +212,7 @@ body {
 
 #menu-body-center{
     display: grid;
-    max-height: 773px;
+    /* max-height: 773px; */
     grid-template-rows: 0.5fr 4fr;
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -217,18 +221,21 @@ body {
 }
 
 #menu-body-center-array{
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
     display: grid;
-    max-height: 773px;
-    grid-template-rows: 20px 3fr 20px 2fr 20px 0.5fr 20px;
-    grid-template-columns: 20px 1fr 20px;
+    /* max-height: 773px; */
+    padding: 20px;
+    grid-template-rows: 1fr 20px 200px 20px 200px;
+    /* grid-template-rows: 20px 3fr 20px 2fr 20px 0.5fr 20px; */
+    /* grid-template-columns: 20px 1fr 20px; */
     grid-template-areas: 
-    ". . ."
-    ". activity-graph ."
-    ". . ."
-    ". ment-center ."
-    ". . ."
-    ". learn-more-center ."
-    ". . ."
+    "activity-graph"
+    "."
+    "ment-center"
+    "."
+    "learn-more-center"
 }
 
 #menu-body-center-array{
@@ -255,25 +262,23 @@ body {
     grid-area: learn-more-center;
 }
 
-#menu-body-right{
-    grid-area: menu-body-right;
-}
-
 #menu-body-right-array{
+    box-sizing: border-box;
+    height: 100%;
+    padding: 20px;
     display: grid;
-    grid-template-rows: 20px 1fr 20px 100px 20px 100px 20px;
-    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 1fr 20px 200px 20px 200px;
     grid-template-areas: 
-    ". . ."
-    ". depression-bar ."
-    ". . ."
-    ". ment-right ."
-    ". . ."
-    ". learn-more-right ."
-    ". . ."
+    "depression-bar"
+    "."
+    "ment-right"
+    "."
+    "learn-more-right"
 }
 #depression-bar{
     grid-area: depression-bar;
+    display: grid;
+    place-items: center center;
 }
 #ment-right{
     grid-area: ment-right;
@@ -283,8 +288,9 @@ body {
 }
 
 #menu-body-right{
+    grid-area: menu-body-right;
     display: grid;
-    max-height: 773px;
+    /* max-height: 773px; */
     grid-template-rows: 0.5fr 4fr;
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -304,6 +310,6 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
 }
 .resultStep{
-    margin-top: 30px;
+    /* margin-top: 30px; */
     font-size: 25px;
 }

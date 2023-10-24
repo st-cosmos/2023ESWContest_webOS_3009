@@ -4,7 +4,7 @@ const goToMenuPage = () => {
 //sleep_chart
 async function fetchDataSleepCircle() {
     try {
-        const response = await fetch('http://10.50.10.182:9002/api/sleepdata'); 
+        const response = await fetch('http://192.168.206.37:9002/api/sleepdata'); 
         const data = await response.json();
         const sleepData = data; 
         console.log("server input data: ", sleepData)
@@ -166,7 +166,7 @@ const dataFromServer = [
 // 서버에서 데이터를 가져와서 저장
 async function fetchDataStepCircle() {
     try {
-        const response = await fetch('http://10.50.10.182:9002/api/walkdata'); 
+        const response = await fetch('http://192.168.206.37:9002/api/walkdata'); 
         const data = await response.json();
         
         // 가져온 데이터를 배열로 저장
@@ -250,6 +250,8 @@ async function fetchDataStepCircle() {
 
         //html 텍스트 표시
         const resultStepElement = document.getElementById('result-step');
+        const subitem = document.createElement("p");
+        subitem.className = "contents-font";
         let resultWalkText;
         if (stepsToday > goalSteps) {
             resultWalkText = `오늘은 목표한 ${goalSteps}보 대비 ${stepsToday}보 만큼 걸었습니다. \n
@@ -258,7 +260,9 @@ async function fetchDataStepCircle() {
             resultWalkText = `오늘은 목표한 ${goalSteps}보 대비 ${stepsToday}보 만큼 걸었습니다. \n
             산책을 나가보는건 어때요?`;
         }
-        resultStepElement.textContent =resultWalkText; 
+        // resultStepElement.textContent =resultWalkText; 
+        subitem.innerText = resultWalkText;
+        resultStepElement.append(subitem);
 
 
         // 그래프 그리기

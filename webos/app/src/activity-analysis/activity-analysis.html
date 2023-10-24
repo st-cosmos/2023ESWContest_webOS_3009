@@ -14,7 +14,7 @@
                 <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i>
             </div>
             <div id="body-top-c">
-                <span class="font-content-title" onclick="fetchData()">활동분석</span>
+                <span class="font-content-title" onclick="fetchData()">건강분석</span>
             </div>
             <div id="body-top-r">
                 <img src="../../assets/leaf-filled.svg" class="leaf-title">
@@ -24,9 +24,7 @@
         <div class="body-mid">
             <div id="left-section" class="section">
                 <div id="menu-body-left" class="menu-body-box">
-                    <div id="menu-title-left" class="menu-title-box">
-                        <p class="menu-title-font">수면</p>
-                    </div>
+                    <p class="menu-title-font">수면</p>
                     <div id="menu-body-left-array">
                         <div id="graph-section">
                             <canvas id="sleppCircle" class="sleppCircle"></canvas>
@@ -43,9 +41,7 @@
             </div>
             <div id="center-section" class="section">
                 <div id="menu-body-center" class="menu-body-box">
-                    <div id="menu-title-center" class="menu-title-box">
-                        <p class="menu-title-font">활동</p>
-                    </div>
+                    <p class="menu-title-font">활동</p>
                     <div id="menu-body-center-array">
                         <div id="activity-graph">
                             <canvas id="stepCircle"></canvas> 
@@ -59,15 +55,15 @@
                     </div>
                 </div>
             </div>
-            <div id="right-section" class="section">
-                <div id="menu-body-right" class="menu-body-box">
-                    <div id="menu-title-right" class="menu-title-box">
-                        <p class="menu-title-font">일기</p>
-                    </div>
+            <div class="section" id="right-section">
+                <div class="menu-body-box" id="menu-body-right">
+                    <p class="menu-title-font">일기 분석</p>
                     <div id="menu-body-right-array">
-                        <img id="depression-bar" src="../../assets/activity-analysis/depression-bar.png">
+                        <div id="depression-bar">
+                            <img src="../../assets/temp/depression-bar.png">
+                        </div>
                         <div id="ment-right">
-                            <p class="contents-font">문구</p>
+                            <p class="contents-font">최근 일기에 우울한 일이 많은 거 같아요. 😥 기분 전환 할겸 운동하러 가보는 건 어떨까요?</p>
                         </div>
                         <div id="learn-more-right">
                             <p class="contents-font"><a href="../diary/diary.html">일기 쓰러 가기 ></a></p>
