@@ -37,7 +37,7 @@ app.get('/client', (req, res)=>{
     res.sendFile(path.join(__dirname, 'public/client/index.html'));
 });
 
-app.get('/main', (req, res)=>{
+app.get('/reserve', (req, res)=>{
     res.sendFile(path.join(__dirname, 'public/counselor/index.html'));
 });
 
@@ -151,4 +151,4 @@ io.sockets.on("connection", socket => {
     });
 });
 
-server.listen(PORT, '0.0.0.0', () => console.log(`Server is running...\n[client] http://${IP_ADDRESS}:${PORT}/client\n[main] http://${IP_ADDRESS}:${PORT}/main`));
+server.listen(PORT, '0.0.0.0', () => console.log(`Server is running...\n[client] http://${IP_ADDRESS}:${PORT}/client\n[reserve] http://${IP_ADDRESS}:${PORT}/reserve`));
