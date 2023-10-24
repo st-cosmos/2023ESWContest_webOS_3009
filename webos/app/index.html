@@ -1,0 +1,92 @@
+<!--
+Copyright (c) 2023 COSMOS Danbi, Seoultech.
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marigold</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 0px;
+            background-color: #BAE291;
+        }
+
+        #img-leaf-outline {
+            position: absolute;
+            right: 0px;
+        }
+        
+        #index-main {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            grid-template-rows: 1fr 1.2fr 1fr;
+            grid-template-areas: 
+                ". . ."
+                ". section-title ."
+                ". section-corner section-corner";
+        }
+
+        #section-title {
+            grid-area: section-title;
+        }
+
+        #section-corner {
+            grid-area: section-corner;
+            padding: 40px;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: flex-end; /* Align items to the bottom */
+        }
+
+        .title-core {
+            color: #F5F5F5;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.50);
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .title-main {
+            font-size: 150px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title-sub-1 {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .title-sub-2 {
+            font-size: 50px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <img id="img-leaf-outline" src="./assets/leaf-outline.svg">
+    <div id="index-main">
+        <div id="section-title">
+            <span class="title-core title-main">marigold</span>
+            <div class="title-core title-sub-1">마리골드</div>
+        </div>
+        <div id="section-corner">
+            <div class="title-core title-sub-2">created by 단비</div>
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script type="text/javascript">
+        const openMainPage = () => {
+            window.location.href = './src/main-page/main-page.html';
+        };
+        let timer = setTimeout(openMainPage, 2000);
+    </script>
+</body>
+</html>

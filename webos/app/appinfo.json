@@ -1,0 +1,18 @@
+{
+  "id": "com.marigold.app",
+  "version": "1.0.0",
+  "vendor": "My Company",
+  "type": "web",
+  "main": "index.html",
+  "title": "Marigold",
+  "icon": "icon.png",
+  "allowVideoCapture": true,
+  "allowAudioCapture": true,
+  "enableWebOSVDA": true,  
+  "requiredPermissions": [
+    "time.query",
+    "activity.operation",
+    "com.marigold.app.service.group",
+    "tts.operation"
+  ]
+}

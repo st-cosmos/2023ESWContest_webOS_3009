@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Slider</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+<body>
+    <div id="color-picker">
+        <div id="color-picker-bar"></div>
+        <div id="color-picker-thumb"></div>
+    </div>
+
+    <script>
+        const sliderBar = document.getElementById('color-picker-bar');
+        const sliderThumb = document.getElementById('color-picker-thumb');
+
+        let isDragging = false;
+
+        sliderThumb.addEventListener('mousedown', () => {
+            isDragging = true;
+        });
+
+        sliderThumb.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            console.log(e.clientX);
+
+            // const containerRect = sliderBar.getBoundingClientRect();
+            // const offsetX = e.clientX - containerRect.left;
+            // const percent = Math.max(0, Math.min(1, offsetX / containerRect.width));
+
+            // sliderBar.style.width = `${percent * 100}%`;
+        });
+
+        sliderThumb.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+</html>

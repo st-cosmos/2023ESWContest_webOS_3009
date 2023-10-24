@@ -1,0 +1,344 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.marigold-page-template-2 {
+    height: 100vh;
+    background-color: #d6e3cea5;
+
+    display: grid;
+    grid-template-rows: 100px calc(100vh - 100px);
+    grid-template-areas: "body-top"  "body-mid";
+}
+
+.body-top {
+    background-color: #bcd5a2;
+    grid-area: body-top;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-columns: 50px 1fr; 
+    grid-template-areas:
+        "logo title"
+}
+
+.leaf-title {
+    grid-area: logo;
+    padding-left: 10px;
+    width:48px;
+    height:48px;
+}
+
+.font-content-title {
+    grid-area: title;
+    display: grid;
+    place-items: center start;
+    padding-left: 15px;
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* body *//* body *//* body *//* body *//* body */
+
+.body-mid {
+    grid-area: body-mid;
+    padding: 40px 30px 40px 30px;
+
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    grid-template-areas:
+        "cons-list . cons-card";
+}
+
+/* 예약리스트 *//* 예약리스트 *//* 예약리스트 */
+
+#cons-list {
+    grid-area: cons-list;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 40px;
+
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    grid-template-areas:
+        "mid-top" 
+        "list";
+}
+
+#mid-top {
+    grid-area: mid-top;
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-areas: ". mid-name plus"
+
+}
+
+.mid-name {
+    grid-area: mid-name;
+
+    display: grid;
+    place-items: start center;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#counselor-list {
+    grid-area: list;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    max-height: calc(78vh - 120px);
+    overflow-y: auto;
+}
+
+.list-item {
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    margin-bottom: 20px;
+
+    height: 100px;
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: 100px 100px 1fr;
+    grid-template-rows: 55px 45px;
+    grid-template-areas: 
+        "list-img list-name list-depart"
+        "list-img list-time list-time";
+}
+
+.list-img {
+    grid-area: list-img;
+}
+
+#list-img {
+    font-size: 100px;
+}
+
+.list-name {
+    grid-area: list-name;
+    padding-left: 20px;
+
+    display: grid;
+    place-content: center start;
+    
+    margin: 0px;
+
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.list-depart {
+    grid-area: list-depart;
+    padding-left: 5px;
+
+    display: grid;
+    place-content: center start;
+    
+    margin: 0px;
+
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.list-time {
+    grid-area: list-time;
+    padding-left: 20px;
+
+    display: grid;
+    place-content: center start;
+    
+    margin: 0px;
+
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.list-item:hover {
+    background-color: #F2F2F2;
+    box-shadow: 0px 8px 8px 0px #00000040;
+}
+
+.list-item.active {
+    background-color: #E6EFDD;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+/* 예약상세 *//* 예약상세 *//* 예약상세 */
+#cons-card {
+    grid-area: cons-card;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 40px;
+
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    grid-template-areas:
+        "mid-name" 
+        "counselor-card";
+}
+
+.counselor-card-inner {
+    grid-area: counselor-card;
+    height: 100%;
+    display: grid;
+    padding-left: 10px;
+    padding-right: 10px;
+    grid-template-rows: 35px 45px 35px 95px 35px 45px 35px 45px 35px 1fr 70px;
+    
+    grid-gap: 10px;
+    grid-template-areas:
+    "card-reser" "card-reser-time"
+    "card-profile" "card-profile-cont"
+    "card-history" "card-history-count"
+    "card-last" "card-last-date"
+    "card-detail" "detail-list"
+    "card-button";
+}
+
+.card-title{
+    display: grid;
+    place-content: center start;
+    padding-left: 10px;
+
+    background-color: #d4e9bf;
+    border-radius: 15px;
+
+    margin: 0px;
+
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.counselor-card-place-holder {
+    height: 100%;
+    display: grid;
+    place-items: center center;
+}
+
+.font-pc-place-holder {
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    color: #B2B2B2;
+}
+
+.card-text {
+    display: grid;
+    padding-left: 20px;
+    place-content: center start;
+    
+    margin: 0px;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.card-reser{
+    grid-area: card-reser;
+}
+.card-reser-time {
+    grid-area: card-reser-time;
+}
+
+.card-profile {
+    grid-area: card-profile;
+}
+.card-profile-cont {
+    grid-area: card-profile-cont;
+    display: grid;
+    place-content: center start;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 110px 1fr;
+    grid-template-areas:
+    "card-img card-name"
+    "card-img card-cause";   
+}
+
+.card-profile-text {
+    display: grid;
+    padding-left: 20px;
+    place-content: center start;
+    margin: 0px;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.card-img {
+    grid-area: card-img;
+    display: grid;
+    place-items: center;
+}
+
+#card-img {
+    font-size: 90px;
+}
+
+.card-name {
+    grid-area: card-name;
+}
+.card-cause {
+    grid-area: card-cause;
+}
+
+.card-history {
+    grid-area: card-history;
+}
+.card-history-count {
+    grid-area: card-history-count;
+}
+
+.card-last {
+    grid-area: card-last;
+}
+.card-last-date {
+    grid-area: card-last-date;
+}
+
+/* 아래 버튼 *//* 아래 버튼 *//* 아래 버튼 */
+.card-button {
+    grid-area: card-button;
+    display: grid;
+    place-items: center center;
+}
+
+.style-button {
+    border-width: 0px;
+    background-color: #BAE291;
+    width: 350px;
+    height: 60px;
+    border-radius: 10px;
+
+    font-size: 24px;
+    font-weight: 700;
+    font-family: Inter;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.style-button:hover {
+    box-shadow: 0px 8px 8px 0px #00000040;
+}
+
+.style-button:active {
+    background-color: #9ec37a;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marigold</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body onload="fetchData()">
+    <div class="marigold-page-template-2">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i>
+            </div>
+            <div id="body-top-c">
+                <span class="font-content-title" onclick="fetchData()">건강분석</span>
+            </div>
+            <div id="body-top-r">
+                <img src="../../assets/leaf-filled.svg" class="leaf-title">
+                <span class="font-content-title">marigold</span>
+            </div>
+        </div>
+        <div class="body-mid">
+            <div id="left-section" class="section">
+                <div id="menu-body-left" class="menu-body-box">
+                    <p class="menu-title-font">수면</p>
+                    <div id="menu-body-left-array">
+                        <div id="graph-section">
+                            <canvas id="sleppCircle" class="sleppCircle"></canvas>
+                            <div id="graph-legend"></div>
+                        </div>
+                        <div id="ment-left">
+                            <div id="result-sleep" class="resultSleep"></div>
+                        </div>
+                        <div id="learn-more-left" class="learn-more">
+                            <p class="contents-font"><a href="../sleep-analysis/sleep-analysis.html"> 자세히 보기 > </a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="center-section" class="section">
+                <div id="menu-body-center" class="menu-body-box">
+                    <p class="menu-title-font">활동</p>
+                    <div id="menu-body-center-array">
+                        <div id="activity-graph">
+                            <canvas id="stepCircle"></canvas> 
+                        </div>
+                        <div id="ment-center">
+                            <div id="result-step" class="resultStep"></div>
+                        </div>
+                        <div id="learn-more-center" class="learn-more">
+                            <p class="contents-font"><a href="../activity-tracking/activity-tracking.html">자세히 보기 ></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section" id="right-section">
+                <div class="menu-body-box" id="menu-body-right">
+                    <p class="menu-title-font">일기 분석</p>
+                    <div id="menu-body-right-array">
+                        <div id="depression-bar">
+                            <img src="../../assets/temp/depression-bar.png">
+                        </div>
+                        <div id="ment-right">
+                            <p class="contents-font">최근 일기에 우울한 일이 많은 거 같아요. 😥 기분 전환 할겸 운동하러 가보는 건 어떨까요?</p>
+                        </div>
+                        <div id="learn-more-right">
+                            <p class="contents-font"><a href="../diary/diary.html">일기 쓰러 가기 ></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
+</html>

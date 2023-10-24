@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marigold Activity Tracking</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body onload="fetchData()">
+    <div class="marigold-page-template-2">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i>
+            </div>
+            <div id="body-top-c">
+                <span class="font-content-title">활동추적</span>
+            </div>
+            <div id="body-top-r">
+                <img src="../../assets/leaf-filled.svg" class="leaf-title">
+                <span class="font-content-title">marigold</span>
+            </div>
+        </div>
+        <div class="body-mid">
+            <div id="left-section">
+                <p id="left-section-title" class="title-font">걸음 수 통계</p>
+                <canvas id="StepChart" class="StepChart"></canvas>
+                <div id="left-section-contents-1" class="contents-font-25">데이터 수신중</div>
+                
+            </div>
+            <div id="center-section">
+                <div id="center-section-title" class="title-font">걸음 수</div>
+                <canvas id="StepCircle" class="StepCircle"></canvas> 
+                <div id="result-step" class="resultStep"></div>
+                
+            </div>
+            <div id="right-section">
+                <div id="topside">
+                    <div id="topside-header">
+                        <p id="topside-title" class="title-font">활동 추천</p>
+                        <div id="topside-contets">
+                            <p id="topside-contets-1" class="contents-font-semibold">날씨도 좋은데 이런 활동을 해보는건 어때요?</p>
+                        </div>
+                    </div>
+                    <div id="topside-body">
+
+                        <div id="activity-recommendation-1" class="activity-recommendation">
+                        </div>
+                        <img id="bicycle" class="reconmmendation-img" src="../../assets/activity-tracking/bicycle.png">
+                        <div id="activity-recommendation-2" class="activity-recommendation">
+                            <p class="contents-font-24">상쾌한 바람을 맞으며 자전거를 타는건 어때요?</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="bottom">
+                    <div id="bottom-header">
+                        <p id="bottom-title" class="title-font">활동 추천</p>
+                        <p id="bottom-contets-1" class="contents-font-semibold">오늘 나가기가 귀찮다면...</p>
+                    </div>
+                    <div id="bottom-body">
+                        <img id="reconmmendation-1-img" class="reconmmendation-img" src="../../assets/activity-tracking/cleaner.png">
+                        <div id="activity-recommendation-3" class="activity-recommendation">
+                            <p class="contents-font-30">거실 청소기를 돌려볼까요?</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
+</html>

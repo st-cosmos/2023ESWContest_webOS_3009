@@ -1,0 +1,308 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.marigold-page-template-2 {
+    height: 100vh;
+    background-color: #F2F2F2;
+
+    display: grid;
+    grid-template-rows: 100px calc(100vh - 100px);
+    grid-template-areas: "body-top"  "body-mid";
+}
+
+.body-top {
+    background-color: #FFFFFF;
+    grid-area: body-top;
+    padding: 20px 40px 20px 40px;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 0.8fr;
+    grid-template-areas: "body-top-l body-top-c body-top-r";
+}
+
+#body-top-l {
+    grid-area: body-top-l;
+
+    display: grid;
+    place-items: center start;
+}
+
+.leaf-title {
+    width:48px;
+    height:48px;
+}
+
+.font-content-title {
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#body-top-c {
+    grid-area: body-top-c;
+
+    display: grid;
+    place-items: center center;
+}
+
+#body-top-r {
+    grid-area: body-top-r;
+
+    display: flex;
+    align-items: center end;
+    justify-content: flex-end;
+}
+
+.material-icons.icon-bell-style {
+    font-size: 48px;
+}
+
+.material-icons.icon-bell-style:hover {
+    background-color: #EEEEEE;
+}
+
+.material-icons.icon-bell-style:active {
+    background-color: #F2F2F2;
+}
+
+.body-mid {
+    grid-area: body-mid;
+    padding: 20px 20px 20px 20px;
+
+    display: grid;
+    grid-template-rows: 20px 1fr 20px;
+    grid-template-columns: 20px 1fr 20px 1fr;
+    grid-template-areas:
+    ". . . . ."
+    ". left-section . right-section ."
+    ". . . . .";
+}
+.title-font{
+    color: #000;
+    text-align: justify;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#left-section{
+    grid-area: left-section;
+}
+#left-section-title{
+    grid-area: left-section-title;
+}
+#sleepCircle-section{
+    grid-area: sleepCircle-section;
+}
+#sleepCircle-content{
+    grid-area: sleepCircle-content;
+}
+#left-section{
+    width: inherit;
+    height: inherit;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+#left-section{
+    display: grid;
+    grid-template-rows: 10px 0.5fr 10px 1fr 1fr 10px;
+    grid-template-columns: 20px 1fr 20px;
+    max-height: inherit;
+    grid-template-areas: 
+    ". . ."
+    ". left-section-title ."
+    ". . ."
+    ". sleepCircle ."
+    ". result-sleep ."
+    ". . ."
+    
+}
+#sleepCircle-section{
+    display: grid;
+    grid-template-rows: 10px 1fr 10px 1fr 10px;
+    grid-template-columns: 10px 1fr 10px ;
+    max-height: 300px;
+    grid-template-areas: 
+    ". . ."
+    ". sleepCircle ."
+    ". . ."
+    ". result-sleep ."
+    ". . .";
+}
+
+#right-section{
+    grid-area: right-section;
+}
+#bottom{
+    grid-area: bottom;
+}
+#bottom-title{
+    grid-area: bottom-title;
+}
+#topside{
+    grid-area: topside;
+}
+#topside-title{
+    grid-area: topside-title;
+}
+#time-setting-ment{
+    grid-area: time-setting-ment;
+}
+#time-setting{
+    grid-area: time-setting;
+}
+#time-setting-am-pm{
+    grid-area: time-setting-am-pm;
+}
+#am-pm{
+    grid-area: am-pm;
+}
+#time-setting-hour{
+    grid-area: time-setting-hour;
+}
+#time-setting-min{
+    grid-area: time-setting-min;
+}
+#hour{
+    grid-area: hour;
+}
+#min{
+    grid-area: min;
+}
+#sleep-quality-recomendation-1{
+    grid-area: sleep-quality-recomendation-1;
+}
+#sleep-quality-recomendation-2{
+    grid-area: sleep-quality-recomendation-2;
+}
+#sleep-quality-chart{
+    grid-area: sleep-quality-chart;
+}
+#sleep-quality-analysis-1{
+    grid-area: sleep-quality-analysis-1;
+}
+#sleep-quality-analysis-2{
+    grid-area: sleep-quality-analysis-2;
+}
+
+#right-section{
+    display: grid;
+    grid-template-rows: 0px 1fr 20px 1fr 1px;
+    grid-template-columns: 10px 1fr 10px ;
+    max-height: inherit;
+    grid-template-areas: 
+    ". . ."
+    ". topside ."
+    ". . ."
+    ". bottom ."
+    ". . ."
+}
+#Q-sleep{
+    grid-area: Q-sleep;
+    font-size: 20px;
+}
+#cal-set{
+    grid-area: cal-set;
+}
+#cal-func{
+    grid-area: cal-func;
+}
+#cal-set {
+    display: grid;
+    grid-template-columns: 10px 2fr 10px 1fr 10px;
+    grid-template-rows: 10px 1fr 20px 1fr 10px;
+    grid-template-areas: 
+    ". . . . ."
+    ". Q-sleep  . cal-Sleep-Time ."
+    ". . . . ."
+    ". cal-func . . ."
+    ". . . . ."
+}
+
+#topside{
+    display: grid;
+    grid-template-rows: 10px 0.5fr 10px 0.5fr 10px;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-areas: 
+    ". . ."
+    ". topside-title ."
+    ". . ."
+    ". cal-set ."
+    ". . ."
+    
+}
+#topside{
+    width: inherit;
+    height: inherit;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+
+#bottom{
+    display: grid;
+    grid-template-rows: 20px 1fr 5px 2fr 20px;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-areas: 
+    ". . ."
+    ". bottom-title ."
+    ". . ."
+    ". sleepChart ."
+    ". . ."
+   
+}
+#sleepChart{
+    grid-area: sleepChart;
+    max-height: 300px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+#bottom{
+    width: inherit;
+    height: inherit;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35), 0px 4px 4px 0px rgba(0, 0, 0, 0.10) inset;
+}
+
+#cal-Sleep-Time{
+    grid-area: cal-Sleep-Time;
+    font-size: 20px;
+}
+#cal-func{
+    grid-area: cal-func;
+    font-size: 20px;
+}
+#sleepCircle{
+    grid-area: sleepCircle;
+}
+#result-sleep{
+    grid-area: result-sleep;
+}
+.sleepCircle{
+    max-height: 400px;
+    max-width: 300px;
+    display: block;
+    margin: 0 auto; /* 가로 가운데 정렬 */
+    margin-top: -50px;
+    
+}
+
+.resultSleep{
+    display: grid;
+    margin-top: -30px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr;
+    height: inherit;
+    width: inherit;
+    font-size: 20px;
+}

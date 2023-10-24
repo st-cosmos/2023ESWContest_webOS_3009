@@ -1,0 +1,9 @@
+{
+  "id": "com.marigold.app.service",
+  "description": "Marigold Service",
+  "services": [
+    {
+      "name": "com.marigold.app.service"
+    }
+  ]
+}

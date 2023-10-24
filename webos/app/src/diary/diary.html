@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marigold</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div class="marigold-page-template-2">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i>
+            </div>
+            <div id="body-top-c">
+                <span class="font-content-title">일기</span>
+            </div>
+            <div id="body-top-r">
+                <img src="../../assets/leaf-filled.svg" class="leaf-title">
+                <span class="font-content-title">marigold</span>
+            </div>
+        </div>
+        <div class="body-mid main-section-inner">
+            <div class="section-item1" id="left-section">
+                <div class="calendar">
+                    <div class="year">2023 년</div>
+                    <div class="months">
+                        <!-- JavaScript 코드가 여기에 삽입됩니다 -->
+                    </div>
+                    <div class="navigation">
+                        <br>
+                        <button id="prevMonth" class="actionButton">< 이전 달</button>
+                        <button id="nextMonth" class="actionButton">다음 달 > </button>
+                    </div>
+                </div>
+                <button id="writeButton" class="write-button">글쓰기</button>
+            </div>
+            <div class="section-item1" id="right-section">
+                <div id="right-box">
+                    <div class="rs-placeholder">일기를 선택하세요.</div>
+                    <!-- <div class="right-section-item" id="it5">
+                        <span class="font-preview-date">2023.07.07 금요일</span>
+                    </div>
+                    <div class="right-section-item" id="it7">
+                        <span class="font-preview-text">끝내주게</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
+</html>

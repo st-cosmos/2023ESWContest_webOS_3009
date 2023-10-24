@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>수면분석</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body onload="fetchData()">
+    <div class="marigold-page-template-2">
+        <div class="body-top">
+            <div id="body-top-l">                
+                <i class="material-icons icon-bell-style" onclick="goToMenuPage()">arrow_back_ios</i>
+            </div>
+            <div id="body-top-c">
+                <span class="font-content-title">수면분석</span>
+            </div>
+            <div id="body-top-r">
+                <img src="../../assets/leaf-filled.svg" class="leaf-title">
+                <span class="font-content-title">marigold</span>
+            </div>
+        </div>
+        <div class="body-mid">
+            <div id="left-section">
+                <p id="left-section-title" class="title-font">수면 시간</p>
+                <canvas id="sleepCircle" class="sleepCircle"></canvas>
+                <div id="result-sleep" class="resultSleep"></div>
+            </div>
+            <div id="right-section">
+                <div id="topside">
+                    <p id="topside-title" class="title-font">수면 시간 계산</p>
+                    <div id="cal-set" class="cal-set">
+                        <div id="Q-sleep" class="Q-sleep">일어나야하는 시간을 입력해 주세요.
+                        </div>
+                        <input id="cal-Sleep-Time" class="cal-Sleep-Time" type="time" placeholder="시간 선택">
+                        <div id="cal-func" class="cal-func">일어나야하는 시간을 입력하시면 취침시간을 추천해 드립니다.</div>
+                    </div>
+                </div>
+                <div id="bottom">
+                    <div id="bottom-title" class="title-font">수면의 질</div>
+                    <canvas id="sleepChart" ></canvas>
+                </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="./script.js"></script>
+</body>
+</html>
