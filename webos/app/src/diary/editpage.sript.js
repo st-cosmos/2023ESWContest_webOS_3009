@@ -16,8 +16,10 @@ const saveDiary = (text) => {
     });
     
     const callback = (msg) => {
-        console.log(msg);
+        // console.log(msg);
         diaryList = JSON.parse(JSON.parse(msg).Response);
+        console.log("일기가 저장되었습니다.");
+        window.location.href = "./diary.html";
     };
 
     bridge.onservicecallback = callback;

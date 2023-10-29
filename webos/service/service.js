@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const pkgInfo = require('./package.json');
 const Service = require('webos-service');
+const { default: axios } = require('axios');
 
 const service = new Service(pkgInfo.name); // Create service by service name on package.json
 const logHeader = `[${pkgInfo.name}]`;
@@ -15,7 +16,8 @@ const IP_ADDRESS = ip.address();
 const PORT = 3000;
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ server }); 
+const wss = new WebSocket.Server({ server });
+const EXT_SERVER_URL = "http://192.168.206.126:9000";
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -30,11 +32,13 @@ let userInfo = {
 let diaryList = [
     {
         createdAt: "2023-10-12T07:01:46.687Z",
-        text: "나는 오늘 끝내주게 숨을 쉬었다. :)"
+        text: "나는 오늘 끝내주게 숨을 쉬었다. :)",
+        score: 10,
     },
     {
         createdAt: "2023-10-20T07:01:46.687Z",
-        text: "나는 오늘 멋지게 숨을 쉬었다. ;>"
+        text: "나는 오늘 멋지게 숨을 쉬었다. ;>",
+        score: 8,
     },
 ];
 
@@ -76,7 +80,18 @@ service.register("addDiary", (message)=>{
 
     console.log(logHeader, "SERVICE_METHOD_CALLED:/addDiary | ", data);
 
-    diaryList.push(data);
+    axios.post(`${EXT_SERVER_URL}/Diary`, {
+        text: data.text,
+    })
+    .then((response)=>{
+        data["score"] = response.score;
+        diaryList.push(data);
+        console.log(diaryList);
+    })
+    .catch((error)=>{
+        console.log(error);
+    });
+
 
     message.respond({
         returnValue: true,

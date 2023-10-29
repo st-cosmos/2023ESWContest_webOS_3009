@@ -12,7 +12,6 @@ const int ledPin = 5; //led pin
 const int NeoPin = 4; //NeoPixel LED pin //D2
 const int NUM_LEDS = 1; 
 
-
 Adafruit_NeoPixel rgbNEO = Adafruit_NeoPixel(NUM_LEDS, NeoPin, NEO_GRB + NEO_KHZ800);
 
 websockets:: WebsocketsClient client;
@@ -60,7 +59,6 @@ void setup() {
   Serial.println("Connected to WiFi");
   pinMode(ledPin, OUTPUT);
  
-
   client.connect(serverAddress, serverPort, "/");
   client.onMessage(onMessage);
 
@@ -69,10 +67,8 @@ void setup() {
     Serial.println("Connecting to WebSocket server…");
   }
   Serial.println("Connected to WebSocket server");
-  
 }
 
 void loop() {
   client.poll(); 
-  
 }
