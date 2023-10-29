@@ -51,6 +51,9 @@ const createDiaryPreviewInnerHtml = (diary) => {
         <div class="right-section-item" id="it7">
             <span class="font-preview-text">${diary.text}</span>
         </div>
+        <div>
+            😄 ${diary.score}
+        </div>
         `;
     }
     else {

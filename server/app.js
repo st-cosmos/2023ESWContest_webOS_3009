@@ -41,19 +41,6 @@ app.get('/reserve', (req, res)=>{
     res.sendFile(path.join(__dirname, 'public/counselor/index.html'));
 });
 
-// POST 요청을 처리하는 엔드포인트
-app.post('/api/user', (req, res) => {
-    const userData = req.body;
-
-    // 여기에서 userData를 사용하거나 저장하는 작업을 수행할 수 있습니다.
-    // 예를 들어 데이터베이스에 저장하거나 다른 처리를 수행할 수 있습니다.
-
-    console.log('Received user data:', userData);
-
-    // 클라이언트에 응답을 보냅니다.
-    res.sendStatus(200); // 성공적인 응답을 보냅니다.
-});
-
 app.post('/Diary', (req, res)=>{
     let data = req.body;
     if(typeof(data) == 'string') {
