@@ -10,7 +10,7 @@ const config = {
 
 // setting video
 // const socket = io.connect('//');
-const socket = io.connect('http://192.168.206.126:9000');
+const socket = io.connect('http://192.168.206.250:9000');
 const videoLeft = document.querySelector("#video-left");
 const videoRight = document.querySelector("#video-right");
 
