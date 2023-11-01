@@ -290,8 +290,81 @@ let ledStatus = {
     "b" : 0,
 };
 
+let ledAutoConfig = {
+    "atp01" : {
+        "r" : 0,
+        "g" : 0,
+        "b" : 0,
+        "isOnOff" : true,
+    },
+    "atp02" : {
+        "r" : 0,
+        "g" : 0,
+        "b" : 0,
+        "isOnOff" : true,
+    },
+    "atp03" : {
+        "r" : 0,
+        "g" : 0,
+        "b" : 0,
+        "isOnOff" : true,
+    },
+    "atp04" : {
+        "r" : 0,
+        "g" : 0,
+        "b" : 0,
+        "isOnOff" : true,
+    },
+};
+
+const checkLed = () => {
+    console.log("CheckLed", ledAutoConfig["atp01"].r, ledAutoConfig["atp01"].g, ledAutoConfig["atp01"].b);
+};
+
+service.register("ledAutoMode", (message)=>{
+    // ==== heartbeat 구독
+    const sub = service.subscribe(`luna://${pkgInfo.name}/heartbeat`, {subscribe: true});
+    const max = 10;
+    let count = 0;
+    sub.addListener("response", function(msg) {
+        // console.log(JSON.stringify(msg.payload));
+        checkLed();
+
+        if (++count >= max) {
+            sub.cancel();
+            setTimeout(function(){
+                console.log(max+" responses received, exiting...");
+                process.exit(0);
+            }, 1000);
+        }
+    });
+
+    message.respond({
+        returnValue: true,
+        Response: JSON.stringify(ledAutoConfig),
+    });   
+});
+
 // service.register("light/getAutoConfig");
-// service.register("light/setAutoConfig");
+service.register("light/setAutoConfig", (message)=>{
+    let data = message.payload.data;
+    if(typeof(data) == String) {
+        data = JSON.parse(data);
+    }
+
+    console.log(logHeader, "SERVICE_METHOD_CALLED:/light/setAutoConfig | ", data);
+    let id = Object.keys(data)[0];
+    ledAutoConfig[id].r = data[id].r;
+    ledAutoConfig[id].g = data[id].g;
+    ledAutoConfig[id].b = data[id].b;
+    ledAutoConfig[id].isOnOff = data[id].isOnOff;
+    // console.log('light/setAutoConfig', ledAutoConfig);
+
+    message.respond({
+        returnValue: true,
+        Response: JSON.stringify(ledAutoConfig),
+    });    
+});
 // service.register("light/getStatus");
 
 service.register("light/setStatus", (message)=>{
