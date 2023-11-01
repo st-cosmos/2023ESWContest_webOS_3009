@@ -317,8 +317,68 @@ let ledAutoConfig = {
     },
 };
 
+const isInTimeRange = (startTime, endTime) => {
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
+    const currentMinutes = currentDate.getMinutes();
+  
+    const [startHour, startMinute] = startTime.split(':').map(Number);
+    const [endHour, endMinute] = endTime.split(':').map(Number);
+  
+    const startTimeInMinutes = startHour * 60 + startMinute;
+    const endTimeInMinutes = endHour * 60 + endMinute;
+    const currentTimeInMinutes = currentHour * 60 + currentMinutes;
+
+    if(currentTimeInMinutes >= startTimeInMinutes && currentTimeInMinutes < endTimeInMinutes) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 const checkLed = () => {
     console.log("CheckLed", ledAutoConfig["atp01"].r, ledAutoConfig["atp01"].g, ledAutoConfig["atp01"].b);
+
+    let data;
+    if(isInTimeRange("08:00", "12:00")) {
+        data = {
+            "id" : "LED001",
+            "r" : ledAutoConfig["atp01"].r,
+            "g" : ledAutoConfig["atp01"].g,
+            "b" : ledAutoConfig["atp01"].b,
+        };
+    }
+    else if(isInTimeRange("12:00", "17:00")) {
+        data = {
+            "id" : "LED001",
+            "r" : ledAutoConfig["atp02"].r,
+            "g" : ledAutoConfig["atp02"].g,
+            "b" : ledAutoConfig["atp02"].b,
+        };
+    }
+    else if(isInTimeRange("17:00", "20:00")) {
+        data = {
+            "id" : "LED001",
+            "r" : ledAutoConfig["atp03"].r,
+            "g" : ledAutoConfig["atp03"].g,
+            "b" : ledAutoConfig["atp03"].b,
+        };
+    }
+    else if(isInTimeRange("20:00", "22:00")) {
+        data = {
+            "id" : "LED001",
+            "r" : ledAutoConfig["atp04"].r,
+            "g" : ledAutoConfig["atp04"].g,
+            "b" : ledAutoConfig["atp04"].b,
+        };
+    }
+
+    wss.clients.forEach((client) => {
+        if (client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify(data));
+        }
+    });
 };
 
 service.register("ledAutoMode", (message)=>{
