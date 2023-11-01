@@ -14,7 +14,7 @@ let diaryList;
 //     },
 // ];
 
-let currentMonth = 10; // 현재 월
+let currentMonth = 11; // 현재 월
 const calendar = document.querySelector('.calendar');
 const monthsContainer = document.querySelector('.months');
 const prevMonthButton = document.getElementById('prevMonth');

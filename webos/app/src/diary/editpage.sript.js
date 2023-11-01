@@ -45,5 +45,6 @@ const showDate = () => {
 };
 
 window.onload = () => {
+    document.getElementById("diary-input").value = "오늘은 하루 종일 우울한 날이었다.";
     showDate();
 };
