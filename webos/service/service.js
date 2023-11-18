@@ -394,7 +394,7 @@ service.register("ledAutoMode", (message)=>{
             sub.cancel();
             setTimeout(function(){
                 console.log(max+" responses received, exiting...");
-                process.exit(0);
+                // process.exit(0);
             }, 1000);
         }
     });
@@ -483,7 +483,7 @@ service.register("startServer", (message)=>{
             sub.cancel();
             setTimeout(function(){
                 console.log(max+" responses received, exiting...");
-                process.exit(0);
+                // process.exit(0);
             }, 1000);
         }
     });
