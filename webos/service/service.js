@@ -292,27 +292,27 @@ let ledStatus = {
 
 let ledAutoConfig = {
     "atp01" : {
-        "r" : 0,
+        "r" : 255,
         "g" : 0,
         "b" : 0,
         "isOnOff" : true,
     },
     "atp02" : {
-        "r" : 0,
-        "g" : 0,
+        "r" : 255,
+        "g" : 255,
         "b" : 0,
         "isOnOff" : true,
     },
     "atp03" : {
         "r" : 0,
-        "g" : 0,
+        "g" : 255,
         "b" : 0,
         "isOnOff" : true,
     },
     "atp04" : {
         "r" : 0,
         "g" : 0,
-        "b" : 0,
+        "b" : 255,
         "isOnOff" : true,
     },
 };
@@ -329,6 +329,7 @@ const isInTimeRange = (startTime, endTime) => {
     const endTimeInMinutes = endHour * 60 + endMinute;
     const currentTimeInMinutes = currentHour * 60 + currentMinutes;
 
+    console.log("Time Debugging:", startTimeInMinutes, currentTimeInMinutes, endTimeInMinutes);
     if(currentTimeInMinutes >= startTimeInMinutes && currentTimeInMinutes < endTimeInMinutes) {
         return true;
     }
@@ -337,10 +338,12 @@ const isInTimeRange = (startTime, endTime) => {
     }
 }
 
+let timeFlag;
 const checkLed = () => {
-    console.log("CheckLed", ledAutoConfig["atp01"].r, ledAutoConfig["atp01"].g, ledAutoConfig["atp01"].b);
+    // console.log("CheckLed", ledAutoConfig);
 
     let data;
+    let currentTimeFlag;
     if(isInTimeRange("08:00", "12:00")) {
         data = {
             "id" : "LED001",
@@ -348,6 +351,7 @@ const checkLed = () => {
             "g" : ledAutoConfig["atp01"].g,
             "b" : ledAutoConfig["atp01"].b,
         };
+        currentTimeFlag = "atp01";
     }
     else if(isInTimeRange("12:00", "17:00")) {
         data = {
@@ -356,6 +360,7 @@ const checkLed = () => {
             "g" : ledAutoConfig["atp02"].g,
             "b" : ledAutoConfig["atp02"].b,
         };
+        currentTimeFlag = "atp02";
     }
     else if(isInTimeRange("17:00", "20:00")) {
         data = {
@@ -364,6 +369,7 @@ const checkLed = () => {
             "g" : ledAutoConfig["atp03"].g,
             "b" : ledAutoConfig["atp03"].b,
         };
+        currentTimeFlag = "atp03";
     }
     else if(isInTimeRange("20:00", "22:00")) {
         data = {
@@ -372,13 +378,18 @@ const checkLed = () => {
             "g" : ledAutoConfig["atp04"].g,
             "b" : ledAutoConfig["atp04"].b,
         };
+        currentTimeFlag = "atp04";
     }
+    console.log("ws data", data);
 
-    wss.clients.forEach((client) => {
-        if (client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify(data));
-        }
-    });
+    if(timeFlag != currentTimeFlag) {
+        timeFlag = currentTimeFlag;
+        wss.clients.forEach((client) => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(JSON.stringify(data));
+            }
+        });
+    }
 };
 
 service.register("ledAutoMode", (message)=>{
@@ -394,7 +405,7 @@ service.register("ledAutoMode", (message)=>{
             sub.cancel();
             setTimeout(function(){
                 console.log(max+" responses received, exiting...");
-                process.exit(0);
+                // process.exit(0);
             }, 1000);
         }
     });
@@ -405,7 +416,15 @@ service.register("ledAutoMode", (message)=>{
     });   
 });
 
-// service.register("light/getAutoConfig");
+service.register("light/getAutoConfig", (message)=>{
+    console.log(logHeader, "SERVICE_METHOD_CALLED:/light/getAutoConfig");
+
+    message.respond({
+        returnValue: true,
+        Response: JSON.stringify(ledAutoConfig),
+    });
+});
+
 service.register("light/setAutoConfig", (message)=>{
     let data = message.payload.data;
     if(typeof(data) == String) {
@@ -483,7 +502,7 @@ service.register("startServer", (message)=>{
             sub.cancel();
             setTimeout(function(){
                 console.log(max+" responses received, exiting...");
-                process.exit(0);
+                // process.exit(0);
             }, 1000);
         }
     });
