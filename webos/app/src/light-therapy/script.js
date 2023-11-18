@@ -1,3 +1,7 @@
+// === webOS service call
+// const bridge = new WebOSServiceBridge();
+const marigoldServiceUrl = "luna://com.marigold.app.service";
+
 let selectedNavId;
 let selectedAutoSettingId = "atp01";
 let selectedPresetItem;
@@ -65,15 +69,15 @@ const autoSettingItems = [
     {
         id: "atp01",
         timeDescription: "아침",
-        h: 180,
+        h: 0,
         s: 100,
         l: 50,
-        isOnOff: false,
+        isOnOff: true,
     },
     {
         id: "atp02",
         timeDescription: "점심",
-        h: 10,
+        h: 60,
         s: 100,
         l: 50,
         isOnOff: true,
@@ -81,7 +85,7 @@ const autoSettingItems = [
     {
         id: "atp03",
         timeDescription: "저녁",
-        h: 200,
+        h: 120,
         s: 100,
         l: 50,
         isOnOff: true,
@@ -89,10 +93,10 @@ const autoSettingItems = [
     {
         id: "atp04",
         timeDescription: "취침",
-        h: 180,
+        h: 240,
         s: 100,
         l: 50,
-        isOnOff: false,
+        isOnOff: true,
     },
 ];
 
@@ -205,11 +209,8 @@ const cvtHSLtoRGB = (hVal, sVal, lVal) => {
   return { r, g, b };
 };
 
-// === webOS service call
-const bridge = new WebOSServiceBridge();
-const marigoldServiceUrl = "luna://com.marigold.app.service";
-
 const setLedStatus = (color) => {
+    const bridge = new WebOSServiceBridge();
     const url = `${marigoldServiceUrl}/light/setStatus`;
 
     let data;
@@ -228,6 +229,44 @@ const setLedStatus = (color) => {
         "data" : data
     });
     
+    const callback = (msg) => {
+        console.log(msg);
+    };
+
+    bridge.onservicecallback = callback;
+    bridge.call(url, params);
+};
+
+// const getLedAutoConfig = () => {
+//     const bridge = new WebOSServiceBridge();
+//     const url = `${marigoldServiceUrl}/light/getAutoConfig`;
+
+//     const callback = (msg) => {
+//         let res = JSON.parse(msg).Response;
+//         console.log(res);
+//     };
+
+//     bridge.onservicecallback = callback;
+//     bridge.call(url, '{}');
+// };
+
+const setLedAutoConfig = (id, r, g, b, isOnOff) => {
+    const data = {};
+    data[id] = {
+        'r' : r,
+        'g' : g,
+        'b' : b,
+        'isOnOff' : isOnOff
+    };
+    console.log(data);
+
+    const bridge = new WebOSServiceBridge();
+    const url = `${marigoldServiceUrl}/light/setAutoConfig`;
+    
+    const params = JSON.stringify({
+        "data" : data
+    });
+
     const callback = (msg) => {
         console.log(msg);
     };
@@ -485,8 +524,14 @@ const getLightnessValueActive = () => {
 };
 
 const updatePreviewActive = (id, h, s, l) => {
-    const previewCircle = document.getElementById(id);
+    const previewCircle = document.getElementById(`pc-${id}`);
     previewCircle.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+    // console.log('Here', id, h, s, l);
+
+    let rgbColor = cvtHSLtoRGB(h, s, l);
+    // let atpId = id.split('-')[1];
+    let isOnOff = document.getElementById('switch-active').checked;
+    setLedAutoConfig(id, rgbColor.r, rgbColor.g, rgbColor.b, isOnOff);
 };
 
 const setHueSliderActive = () => {
@@ -516,7 +561,11 @@ const setHueSliderActive = () => {
         valueElem.classList.remove("up");
         // console.log(getHueValue());
         hslStateActive.h = getHueValueActive();
-        updatePreviewActive(`pc-${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
+
+        let setting = autoSettingItems.find(item => item.id == selectedAutoSettingId);
+        setting.h = getHueValueActive();
+
+        updatePreviewActive(`${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
         // updateDescription();
         // presetClick();
     });
@@ -524,7 +573,11 @@ const setHueSliderActive = () => {
 		valueElem.classList.remove("up");
         // console.log(getHueValue());
         hslStateActive.h = getHueValueActive();
-        updatePreviewActive(`pc-${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
+
+        let setting = autoSettingItems.find(item => item.id == selectedAutoSettingId);
+        setting.h = getHueValueActive();
+
+        updatePreviewActive(`${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
         // updateDescription();
         // presetClick();
 	});
@@ -558,7 +611,11 @@ const setLightnessSliderActive = () => {
 		valueElem.classList.remove("up");
         // console.log(getLightnessValue());
         hslStateActive.l = getLightnessValueActive();
-        updatePreviewActive(`pc-${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
+
+        let setting = autoSettingItems.find(item => item.id == selectedAutoSettingId);
+        setting.l = getLightnessValueActive();
+
+        updatePreviewActive(`${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
         // updateDescription();
         // presetClick();
 	});
@@ -566,7 +623,11 @@ const setLightnessSliderActive = () => {
 		valueElem.classList.remove("up");
         // console.log(getLightnessValue());
         hslStateActive.l = getLightnessValueActive();
-        updatePreviewActive(`pc-${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
+
+        let setting = autoSettingItems.find(item => item.id == selectedAutoSettingId);
+        setting.l = getLightnessValueActive();
+
+        updatePreviewActive(`${selectedAutoSettingId}`, hslStateActive.h, hslStateActive.s, hslStateActive.l);
         // updateDescription();
         // presetClick();
 	});
@@ -608,6 +669,14 @@ const toggleActiveSwitch = (element) => {
     let isOnOff = document.getElementById(element.id).checked;
     let setting = autoSettingItems.find(item => item.id == selectedAutoSettingId);
     setting.isOnOff = isOnOff;
+
+    if(isOnOff) {
+        let rgbColor = cvtHSLtoRGB(setting.h, setting.s, setting.l);
+        setLedAutoConfig(selectedAutoSettingId, rgbColor.r, rgbColor.g, rgbColor.b, isOnOff);
+    }
+    else {
+        setLedAutoConfig(selectedAutoSettingId, 0, 0, 0, isOnOff);
+    }
 };
 
 const onSwitchToggle = () => {
@@ -695,12 +764,19 @@ const updateTimerDisplay = () => {
 }
 
 window.onload = () => {
+    initAutoSettings();
     setHueSliderActive();
     setLightnessSliderActive();
-    initAutoSettings();
+
+    let setting = autoSettingItems.find(item => item.id == selectedAutoSettingId);
+    updateSwitchActive(setting.isOnOff);
+    updateHueSliderActive(setting.h);
+    updateLightnessSliderActive(setting.l);
+
     setColorPreset();
     setHueSlider();
     setLightnessSlider();
+    // getLedAutoConfig();
     updatePreview();
     updateDescription();
 };

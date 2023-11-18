@@ -6,20 +6,14 @@ const videoList = [
         id: "vid01",
         videoId: "JWtWc3bvDy4",
         title: "[Delta] Peaceful Night",
-        detailedInfo: "델타파란 어쩌구 저쩌구",
+        detailedInfo: "델타파는 두뇌의 영역 중 중심부인 연수, 뇌교, 중뇌 부위의 정보를 담고 있으며 무의식 상태에서의 델타파 유도는 직관력을 높이는 효과도 있습니다.",
     },
     {
         id: "vid02",
         videoId: "ws8ofAF0Gxk",
         title: "[Alpha] Alpha Waves Music",
-        detailedInfo: "알파파란 어쩌구 저쩌구",
+        detailedInfo: "알파파는 의식과 무의식을 연결하는 역할을 합니다. 눈을 감고 편안한 상태에서 후두엽에서 주로 나타나며 주로 긴장 이완시에 나타납니다.",
     },
-    // {
-    //     id: "vid03",
-    //     videoId: "ws8ofAF0Gxk",
-    //     title: "[Alpha] Alpha Waves Music",
-    //     detailedInfo: "알파파란 어쩌구 저쩌구",
-    // },
 ];
 
 const playList = [];

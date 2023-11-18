@@ -12,6 +12,7 @@
   "requiredPermissions": [
     "time.query",
     "activity.operation",
+    "notification.operation",
     "com.marigold.app.service.group",
     "tts.operation"
   ]
