@@ -19,6 +19,17 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 const EXT_SERVER_URL = "http://192.168.206.250:9000";
 
+const creatToast = (message) => {
+    let url = "luna://com.webos.notification/createToast";
+    let params = {
+        message: message
+    };
+  
+    service.call(url, params, (m2) => {
+        console.log(logHeader, "SERVICE_METHOD_CALLED:com.webos.notification/createToast");
+    });
+};
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -44,6 +55,8 @@ let diaryList = [
 
 let sessionData = []; // 활동량 데이터
 let SleepSessionData = []; // 수면 데이터
+let exerciseAlarms = [];
+let sleepAlarms = [];
 
 app.post('/api/healthdata', (req, res) => {
     const userData = req.body;
@@ -124,6 +137,69 @@ app.post('/api/healthdata', (req, res) => {
         SleepSessionData.push(SleepfinalData);
     }  
     
+    if (userData.incomHR) {
+        const date = moment(userData.incomHR, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD');
+
+        exerciseAlarms.push({
+            Date: date,
+            totalsteps: userData.totalsteps,
+        });
+        //console.log('holy moly', exerciseAlarm);
+
+        const today = moment().startOf('day');
+        const filteredData = exerciseAlarms.filter(data => moment(data.Date).isSame(today));
+
+        const todayTotalSteps = filteredData.reduce((sum, data) => sum + parseInt(data.totalsteps), 0);
+
+        console.log('Total steps for today:', todayTotalSteps);
+
+        if (todayTotalSteps < 10000) { // 운동 감지 후 처리
+            console.log('적다잉');
+            creatToast('오늘 날도 좋은데 산책 가보시는 건 어떨까요?');
+        }
+        // else{
+        //     console.log('그만혀');
+        // }
+    }
+
+    if (userData.SleepSessions) {
+        const meta = userData.SleepSessions;
+
+        const dateMatch = /Start Time: (\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)/;
+        const durationMatch = /Duration: (PT[\dH]+[\dM]+)/;
+
+        const date = dateMatch.exec(meta);
+        const duration = durationMatch.exec(meta);
+
+        if (date && duration) {
+            const sleepStartTime = moment(date[1]);
+            const sleepDurationString = duration[1];
+    
+            const sleepDuration = moment.duration(sleepDurationString);
+    
+            const totalSleepTime = sleepDurationString;
+    
+            const sleepAlarm = {
+                UID: userData.UID,
+                SleepStartTime: sleepStartTime.format(),
+                TotalSleepTime: totalSleepTime
+            };
+    
+            sleepAlarms.push(sleepAlarm);
+            console.log('수면 데이터가 받아지고 저장되었습니다.', sleepAlarms);
+    
+            const minSleepTime = moment.duration('PT10H');
+            const isShortSleep = sleepDuration.asMilliseconds() < minSleepTime.asMilliseconds();
+    
+            if (isShortSleep) { //수면 감지 후 처리
+                console.log('자라.');
+                creatToast('오늘은 자기 전에 사운드 테라피를 하는 걸 추천드려요');
+            }
+            // else{
+            //     console.log('충분혀')
+            // }
+        }
+    }
     
     //console.log(userData);
     res.sendStatus(200); 
