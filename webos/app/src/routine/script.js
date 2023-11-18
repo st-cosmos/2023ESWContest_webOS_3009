@@ -8,7 +8,7 @@ const routineItems = [
         "type": "medicine",
         "icon" : "pill",
         "title" : "아침 약 먹기",
-        "time" : "오전 08:00",
+        "time" : "08:00",
         "day" : ["월", "화", "수","목","금","토","일"],
         "isOnOff" : true,
     },
@@ -17,7 +17,7 @@ const routineItems = [
         "type": "consult",
         "icon" : "support_agent",
         "title" : "치과가기 ",
-        "time" : "오전 10:00",
+        "time" : "10:00",
         "day" : ["월", "화", "수"],
         "isOnOff" : true,
     },
@@ -26,7 +26,7 @@ const routineItems = [
         "type": "diary",
         "icon" : "book_5",
         "title" : "일기쓰기",
-        "time" : "오후 07:00",
+        "time" : "07:00",
         "day" : ["월", "화", "수","목","금","토","일"],
         "isOnOff" : true,
     },
@@ -35,7 +35,7 @@ const routineItems = [
         "type": "exercise",
         "icon" : "directions_run",
         "title" : "어쩌구 저쩌구",
-        "time" : "오전 08:00",
+        "time" : "08:00",
         "day" : ["월", "화", "수"],
         "isOnOff" : true,
     },
@@ -74,6 +74,7 @@ const createRoutineBlockRightInnerHtml = (routineItemRight) => {
     `;
 };
 const loadRoutineBlocksRight = (rightRoutineItems) =>{
+    document.getElementById("rt-editmode").style.display = "none";
     const container = document.getElementById("rt-viewmode");
     container.style.display = "block";
     container.innerHTML = createRoutineBlockRightInnerHtml(rightRoutineItems); 

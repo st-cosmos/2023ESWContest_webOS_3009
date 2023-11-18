@@ -67,11 +67,12 @@
                         <div id="rt-editmode">
                             <div id="routine-name">
                                 <div id="routine-name-a">
+                                    <label>icon select</label>
                                     <select id="routine-type" name="routine-type">
-                                        <option value="medicine">약 먹기</option>
-                                        <option value="consult">상담하기</option>
-                                        <option value="diary">일기쓰기</option>
-                                        <option value="exercise">운동하기</option>
+                                        <option value="medicine">약 </option>
+                                        <option value="consult">상담</option>
+                                        <option value="diary">일기</option>
+                                        <option value="exercise">운동</option>
                                     </select>
                                 </div>
                                 <div id="routine-name-b"> 
@@ -79,7 +80,10 @@
                                 </div>
                             </div>
                             <div id="routine-time-detail">
-                                <input type="text" id="timeInput" class="input-field" placeholder="오전/오후 00:00">
+                                <label id="time-label">시간을 선택하세요:</label>
+                                <span id="timeInputBox">
+                                    <input id="timeInput" type="time" name="appt-time">
+                                </span>
                             </div>
                             <div id="routine-day-picker">
                                 <label>요일을 선택하세요:</label>

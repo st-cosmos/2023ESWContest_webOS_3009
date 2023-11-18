@@ -19,6 +19,17 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 const EXT_SERVER_URL = "http://192.168.206.250:9000";
 
+const creatToast = (message) => {
+    let url = "luna://com.webos.notification/createToast";
+    let params = {
+        message: message
+    };
+  
+    service.call(url, params, (m2) => {
+        console.log(logHeader, "SERVICE_METHOD_CALLED:com.webos.notification/createToast");
+    });
+};
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -44,6 +55,8 @@ let diaryList = [
 
 let sessionData = []; // 활동량 데이터
 let SleepSessionData = []; // 수면 데이터
+let exerciseAlarms = [];
+let sleepAlarms = [];
 
 app.post('/api/healthdata', (req, res) => {
     const userData = req.body;
@@ -124,6 +137,69 @@ app.post('/api/healthdata', (req, res) => {
         SleepSessionData.push(SleepfinalData);
     }  
     
+    if (userData.incomHR) {
+        const date = moment(userData.incomHR, 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD');
+
+        exerciseAlarms.push({
+            Date: date,
+            totalsteps: userData.totalsteps,
+        });
+        //console.log('holy moly', exerciseAlarm);
+
+        const today = moment().startOf('day');
+        const filteredData = exerciseAlarms.filter(data => moment(data.Date).isSame(today));
+
+        const todayTotalSteps = filteredData.reduce((sum, data) => sum + parseInt(data.totalsteps), 0);
+
+        console.log('Total steps for today:', todayTotalSteps);
+
+        if (todayTotalSteps < 10000) { // 운동 감지 후 처리
+            console.log('적다잉');
+            creatToast('오늘 날도 좋은데 산책 가보시는 건 어떨까요?');
+        }
+        // else{
+        //     console.log('그만혀');
+        // }
+    }
+
+    if (userData.SleepSessions) {
+        const meta = userData.SleepSessions;
+
+        const dateMatch = /Start Time: (\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)/;
+        const durationMatch = /Duration: (PT[\dH]+[\dM]+)/;
+
+        const date = dateMatch.exec(meta);
+        const duration = durationMatch.exec(meta);
+
+        if (date && duration) {
+            const sleepStartTime = moment(date[1]);
+            const sleepDurationString = duration[1];
+    
+            const sleepDuration = moment.duration(sleepDurationString);
+    
+            const totalSleepTime = sleepDurationString;
+    
+            const sleepAlarm = {
+                UID: userData.UID,
+                SleepStartTime: sleepStartTime.format(),
+                TotalSleepTime: totalSleepTime
+            };
+    
+            sleepAlarms.push(sleepAlarm);
+            console.log('수면 데이터가 받아지고 저장되었습니다.', sleepAlarms);
+    
+            const minSleepTime = moment.duration('PT10H');
+            const isShortSleep = sleepDuration.asMilliseconds() < minSleepTime.asMilliseconds();
+    
+            if (isShortSleep) { //수면 감지 후 처리
+                console.log('자라.');
+                creatToast('오늘은 자기 전에 사운드 테라피를 하는 걸 추천드려요');
+            }
+            // else{
+            //     console.log('충분혀')
+            // }
+        }
+    }
     
     //console.log(userData);
     res.sendStatus(200); 
@@ -292,27 +368,27 @@ let ledStatus = {
 
 let ledAutoConfig = {
     "atp01" : {
-        "r" : 0,
+        "r" : 255,
         "g" : 0,
         "b" : 0,
         "isOnOff" : true,
     },
     "atp02" : {
-        "r" : 0,
-        "g" : 0,
+        "r" : 255,
+        "g" : 255,
         "b" : 0,
         "isOnOff" : true,
     },
     "atp03" : {
         "r" : 0,
-        "g" : 0,
+        "g" : 255,
         "b" : 0,
         "isOnOff" : true,
     },
     "atp04" : {
         "r" : 0,
         "g" : 0,
-        "b" : 0,
+        "b" : 255,
         "isOnOff" : true,
     },
 };
@@ -329,6 +405,7 @@ const isInTimeRange = (startTime, endTime) => {
     const endTimeInMinutes = endHour * 60 + endMinute;
     const currentTimeInMinutes = currentHour * 60 + currentMinutes;
 
+    console.log("Time Debugging:", startTimeInMinutes, currentTimeInMinutes, endTimeInMinutes);
     if(currentTimeInMinutes >= startTimeInMinutes && currentTimeInMinutes < endTimeInMinutes) {
         return true;
     }
@@ -337,10 +414,12 @@ const isInTimeRange = (startTime, endTime) => {
     }
 }
 
+let timeFlag;
 const checkLed = () => {
-    console.log("CheckLed", ledAutoConfig["atp01"].r, ledAutoConfig["atp01"].g, ledAutoConfig["atp01"].b);
+    // console.log("CheckLed", ledAutoConfig);
 
     let data;
+    let currentTimeFlag;
     if(isInTimeRange("08:00", "12:00")) {
         data = {
             "id" : "LED001",
@@ -348,6 +427,7 @@ const checkLed = () => {
             "g" : ledAutoConfig["atp01"].g,
             "b" : ledAutoConfig["atp01"].b,
         };
+        currentTimeFlag = "atp01";
     }
     else if(isInTimeRange("12:00", "17:00")) {
         data = {
@@ -356,6 +436,7 @@ const checkLed = () => {
             "g" : ledAutoConfig["atp02"].g,
             "b" : ledAutoConfig["atp02"].b,
         };
+        currentTimeFlag = "atp02";
     }
     else if(isInTimeRange("17:00", "20:00")) {
         data = {
@@ -364,6 +445,7 @@ const checkLed = () => {
             "g" : ledAutoConfig["atp03"].g,
             "b" : ledAutoConfig["atp03"].b,
         };
+        currentTimeFlag = "atp03";
     }
     else if(isInTimeRange("20:00", "22:00")) {
         data = {
@@ -372,13 +454,18 @@ const checkLed = () => {
             "g" : ledAutoConfig["atp04"].g,
             "b" : ledAutoConfig["atp04"].b,
         };
+        currentTimeFlag = "atp04";
     }
+    console.log("ws data", data);
 
-    wss.clients.forEach((client) => {
-        if (client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify(data));
-        }
-    });
+    if(timeFlag != currentTimeFlag) {
+        timeFlag = currentTimeFlag;
+        wss.clients.forEach((client) => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(JSON.stringify(data));
+            }
+        });
+    }
 };
 
 service.register("ledAutoMode", (message)=>{
@@ -405,7 +492,15 @@ service.register("ledAutoMode", (message)=>{
     });   
 });
 
-// service.register("light/getAutoConfig");
+service.register("light/getAutoConfig", (message)=>{
+    console.log(logHeader, "SERVICE_METHOD_CALLED:/light/getAutoConfig");
+
+    message.respond({
+        returnValue: true,
+        Response: JSON.stringify(ledAutoConfig),
+    });
+});
+
 service.register("light/setAutoConfig", (message)=>{
     let data = message.payload.data;
     if(typeof(data) == String) {
