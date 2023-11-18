@@ -4,6 +4,7 @@ const ip = require("ip");
 const http = require('http');
 const WebSocket = require('ws'); 
 const cors = require('cors');
+const moment = require('moment');
 
 const pkgInfo = require('./package.json');
 const Service = require('webos-service');
