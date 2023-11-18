@@ -132,6 +132,7 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    padding:20px;
 
     display:grid;
     grid-template-columns: 10fr 1fr;
@@ -252,6 +253,8 @@ body {
     /* padding-top:15px; */
     display: grid;
     place-items: center start;
+    padding-top:15px;
+    
 }
 #routine-time-detail{
     grid-area: time2;
@@ -339,6 +342,42 @@ body {
     font-style: normal;
     font-weight: 700;
     width:100%;
+}
+
+label{
+    color:#c7c6c6;
+}
+#routine-type{
+    color: #000;
+    font-family: Inter;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 700;
+    width:100%;
+    border:none;
+    padding-bottom:10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+#routine-time-detail{
+    font-size:30px;
+}
+#timeInputBox{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-areas: 
+        "timeInput .";
+}
+#timeInput{
+    grid-area:timeInput;
+    color: #000;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    width:100%;
+    border:none;
+    
 }
 
 .day-options {
