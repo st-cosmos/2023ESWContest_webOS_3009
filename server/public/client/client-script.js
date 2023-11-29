@@ -167,3 +167,7 @@ const endCounseling = () => {
   window.history.back();
   // window.location.href = "../../esc23-marigold/remote-consultation/remote-cons.html";
 };
+
+window.onload = () => {
+  toggleMicrophone();
+};
