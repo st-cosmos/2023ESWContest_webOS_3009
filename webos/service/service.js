@@ -18,7 +18,7 @@ const PORT = 3000;
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
-const EXT_SERVER_URL = "http://192.168.206.250:9000";
+const EXT_SERVER_URL = "http://192.168.131.46:9000";
 
 const creatToast = (message) => {
     let url = "luna://com.webos.notification/createToast";
@@ -472,19 +472,19 @@ const checkLed = () => {
 service.register("ledAutoMode", (message)=>{
     // ==== heartbeat 구독
     const sub = service.subscribe(`luna://${pkgInfo.name}/heartbeat`, {subscribe: true});
-    const max = 10;
-    let count = 0;
+    // const max = 10;
+    // let count = 0;
     sub.addListener("response", function(msg) {
         // console.log(JSON.stringify(msg.payload));
         checkLed();
 
-        if (++count >= max) {
-            sub.cancel();
-            setTimeout(function(){
-                console.log(max+" responses received, exiting...");
-                // process.exit(0);
-            }, 1000);
-        }
+        // if (++count >= max) {
+        //     sub.cancel();
+        //     setTimeout(function(){
+        //         console.log(max+" responses received, exiting...");
+        //         // process.exit(0);
+        //     }, 1000);
+        // }
     });
 
     message.respond({
@@ -571,17 +571,17 @@ service.register("startServer", (message)=>{
 
     // ==== heartbeat 구독
     const sub = service.subscribe(`luna://${pkgInfo.name}/heartbeat`, {subscribe: true});
-    const max = 500;
-    let count = 0;
+    // const max = 500;
+    // let count = 0;
     sub.addListener("response", function(msg) {
         console.log(JSON.stringify(msg.payload));
-        if (++count >= max) {
-            sub.cancel();
-            setTimeout(function(){
-                console.log(max+" responses received, exiting...");
-                // process.exit(0);
-            }, 1000);
-        }
+        // if (++count >= max) {
+        //     sub.cancel();
+        //     setTimeout(function(){
+        //         console.log(max+" responses received, exiting...");
+        //         // process.exit(0);
+        //     }, 1000);
+        // }
     });
 
     message.respond({

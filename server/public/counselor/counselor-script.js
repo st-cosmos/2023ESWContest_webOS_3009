@@ -229,8 +229,6 @@ const start = () => {
     window.location.href = "http://localhost:9000/client/";
 };
 
-goToMain
-counselorMainPage
 const goToMain = () => {
     window.location.href = "./counselorMainPage/"
 };
